@@ -1,7 +1,25 @@
 .container-size{
-    
+    position:relative;
+    top:100px;
+    left:50px;
     width: 500px;
     height: 150px;
     background-color:rgba(109, 105, 105, 0.2) 
     
+}
+
+
+@media only screen and (max-width: 767px) {
+ 
+
+   
+.container-size{
+    position:relative;
+    top:100px;
+    left:30px;
+    width: 425px;
+    height: 150px;
+    background-color:rgba(109, 105, 105, 0.2) 
+    
+}
 }

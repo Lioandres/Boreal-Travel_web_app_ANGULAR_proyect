@@ -26,15 +26,22 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [ "src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css" ]
-
-
-            ,
+           
+            "styles": [ 
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-               "node_modules/popper.js/dist/popper.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/lib/wow/wow.min.js",
+              "src/assets/lib/easing/easing.min.js",
+              "src/assets/lib/waypoints/waypoints.min.js",
+              "src/assets/lib/owlcarousel/owl.carousel.min.js",
+              "src/assets/js/main.js"
             ]
+
+            
           },
           "configurations": {
             "production": {

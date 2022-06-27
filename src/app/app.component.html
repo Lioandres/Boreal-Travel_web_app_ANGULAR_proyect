@@ -17,7 +17,7 @@
               </div>
               <h1 class="m-0 text-primary">Makaan</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -25,15 +25,15 @@
                 <a href="index.html" class="nav-item nav-link">Home</a>
                 <a href="about.html" class="nav-item nav-link active">About</a>
                 <div class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Property</a>
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
                   <div class="dropdown-menu rounded-0 m-0">
-                    <a href="property-list.html" class="dropdown-item">Property List</a>
+                    <a href="property-list.html" class="dropdown-item" routerLink="excursionsList" (click)="started=!started">Property List</a>
                     <a href="property-type.html" class="dropdown-item">Property Type</a>
                     <a href="property-agent.html" class="dropdown-item">Property Agent</a>
                   </div>
                 </div>
                 <div class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     <a href="404.html" class="dropdown-item">404 Error</a>
@@ -46,10 +46,13 @@
           </nav>
         </div>
         <!-- Navbar End -->
+        
+        <div *ngIf="started === false">
+            <app-home></app-home>
+         <div>
 
-        <app-home></app-home>
-
-
+        
+        
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
           <div class="container py-5">

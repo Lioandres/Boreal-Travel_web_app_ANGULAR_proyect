@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Spring_9_Tasca';
+  started:boolean=false
 }

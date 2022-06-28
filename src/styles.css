@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 /********** Template CSS **********/
 :root {
-    --primary: #00B98E;
+    --bs-primary:purple;
+    --primary:#00B98E;
     --secondary: #FF6922;
     --light: #EFFDF5;
     --dark: #0E2E50;
+
+
 }
 
 .back-to-top {
@@ -217,9 +219,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF !important;
+    /* background: #FFFFFF !important; */
     border-radius: 50px;
-    border: 1px dashed var(--primary) !important;
+    /* border: 1px dashed var(--primary) !important; */
 }
 
 

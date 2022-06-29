@@ -17,16 +17,16 @@
                 <div class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Excursiones y actividades</a>
                   <div class="dropdown-menu rounded-0 m-0">
-                    <a href="property-list.html" class="dropdown-item"routerLink="excursionsList">Tours de la Aurora Boreal</a>
-                    <a href="property-type.html" class="dropdown-item">Excursiones al lago azul</a>
-                    <a href="property-agent.html" class="dropdown-item">Excursiones al cículo de Oro</a>
+                    <a href="property-list.html" class="dropdown-item"routerLink="boreal">Tours de la Aurora Boreal</a>
+                    <a href="property-type.html" class="dropdown-item"routerLink="lake">Excursiones al lago azul</a>
+                    <a href="property-agent.html" class="dropdown-item"routerLink="circle">Excursiones al cículo de Oro</a>
                   </div>
                 </div>
-                <a href="index.html" class="nav-item nav-link" routerLink="home">Traslados desde el aeropuerto</a>
-                <a href="index.html" class="nav-item nav-link" routerLink="home">Recorridos en Bus</a>
-                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                <a href="index.html" class="nav-item nav-link" routerLink="airport">Traslados desde el aeropuerto</a>
+                <a href="index.html" class="nav-item nav-link" routerLink="bus">Recorridos en Bus</a>
+                <a href="contact.html" class="nav-item nav-link"routerLink="contact">Contacto</a>
               </div>
-              <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Registrarse</a>
+              <a href="" class="btn btn-primary px-3 d-none d-lg-flex"routerLink="signUp">Registrarse</a>
             </div>
           </nav>
         </div>
@@ -54,11 +54,10 @@
               </div>
               <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link text-white-50" href="">About Us</a>
-                <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                <a class="btn btn-link text-white-50" href="">Our Services</a>
-                <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+                <a class="btn btn-link text-white-50" href=""routerLink="about">Acerca de nosotros</a>
+                <a class="btn btn-link text-white-50" href=""routerLink="contact">Contact Us</a>
+                <a class="btn btn-link text-white-50" href=""routerLink="privacy">Privacy Policy</a>
+                <a class="btn btn-link text-white-50" href=""routerLink="terms">Terms & Condition</a>
               </div>
               <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Photo Gallery</h5>
@@ -87,9 +86,9 @@
                 <h5 class="text-white mb-4">Newsletter</h5>
                 <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                  <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                  <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Su email">
                   <button type="button"
-                    class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" routerLink="signUp">SignUp</button>
                 </div>
               </div>
             </div>
@@ -98,17 +97,16 @@
             <div class="copyright">
               <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                  &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                  &copy; <a class="border-bottom" href="#">Boreal</a>, All Right Reserved.
 
                   <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                   Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                   <div class="footer-menu">
-                    <a href="">Home</a>
-                    <a href="">Cookies</a>
-                    <a href="">Help</a>
-                    <a href="">FQAs</a>
+                    <a href=""routerLink="home">Home</a>
+                    <a href=""routerLink="cookies">Cookies</a>
+                   
                   </div>
                 </div>
               </div>

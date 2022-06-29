@@ -28,9 +28,9 @@
             ],
            
             "styles": [ 
-              "src/assets/scss/style.scss",
+              "src/assets/scss/style.scss"
             
-              "src/styles.css"
+            
               
             ],
             "scripts": [

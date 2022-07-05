@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ExcursionsComponent } from './excursions/excursions.component';
+
 import { BusComponent } from './bus/bus.component';
 import { BorealComponent } from './boreal/boreal.component';
 import { LakeComponent } from './lake/lake.component';
@@ -21,7 +21,7 @@ import { FooterModule } from './footer/footer.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    ExcursionsComponent,
+
     BusComponent,
     BorealComponent,
     LakeComponent,

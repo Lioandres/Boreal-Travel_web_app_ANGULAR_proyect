@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BorealComponent } from './boreal/boreal.component';
-import { ExcursionsComponent } from './excursions/excursions.component';
+
 import { HomeComponent } from './home/home.component';
 import { LakeComponent } from './lake/lake.component';
 import { BusComponent } from './bus/bus.component';
@@ -30,11 +30,6 @@ const routes: Routes = [
   pathMatch:'full'
 },
 
-{
-  path:'excursionsList',
-  component:ExcursionsComponent,
-  pathMatch:'full'
-},
 
 {
   path:'boreal',

@@ -1,12 +1,8 @@
 <img src="assets/img/bus.webp" class="video">
-
-<!-- Header End -->
-
-
-
-<!-- Bus List Start -->
 <div class="container-xxl py-5">
   <div class="container">
+
+    <!-- Bus header Start -->
     <div class="row g-0 gx-5 align-items-end">
       <div class="col-lg-6">
         <div class="text-start mx-auto mb-5 wow fadeInUp position-relative" data-wow-delay="0.1s">
@@ -23,26 +19,10 @@
         </div>
       </div>
     </div>
+     <!-- Bus header End -->
 
-    <div class="tab-content">
-      <div id="tab-1" class="tab-pane fade show p-0 active">
-        <div class="row g-4">
+    <app-excursions typeExcursion="bus"></app-excursions>
 
-          <div *ngFor="let item of busExcursionsList" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="property-item rounded overflow-hidden">
-              <div class="position-relative overflow-hidden">
-                <a href=""><img class="img-fluid" [src]="item.img" alt=""></a>
-              </div>
-              <div class="p-4 pb-0 position-relative">
-                <h5 class="text-primary mb-3">{{item.title}} </h5>
-                <a class="d-block h5 mb-2" href="">{{item.price}} EUR</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
   </div>
 </div>
-    <!-- Bus List End -->
+   

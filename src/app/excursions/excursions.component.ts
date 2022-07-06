@@ -14,7 +14,7 @@ export class ExcursionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input("data")   typeExcursion:string=""
+  @Input("typeExcursion")   typeExcursion:string=""
 
   get excursionList():Excursion[] {
     return this.excursionsService.excursionList

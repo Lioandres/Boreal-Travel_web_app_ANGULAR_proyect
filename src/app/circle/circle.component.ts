@@ -12,6 +12,5 @@ export class CircleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  typeExcursion:string="circle"
 
 }

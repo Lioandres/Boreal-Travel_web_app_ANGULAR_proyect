@@ -12,4 +12,6 @@ export class BorealComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  typeExcursion:string="boreal"
 }

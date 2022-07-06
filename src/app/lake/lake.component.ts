@@ -12,4 +12,5 @@ export class LakeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  typeExcursion:string="lake"
 }

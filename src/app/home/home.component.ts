@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Excursion } from '../interfaces/interfaces';
+import { ExcursionsService } from '../services/excursions.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private excursionService:ExcursionsService) { }
 
   ngOnInit(): void {
   }
 
+  get excursionList():Excursion[] {
+    return this.excursionService.excursionList
+  }
+  
 }

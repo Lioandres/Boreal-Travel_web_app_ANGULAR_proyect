@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FooterModule } from './footer/footer.module';
+import { ExcursionsComponent } from './excursions/excursions.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FooterModule } from './footer/footer.module';
     ContactComponent,
     SignUpComponent,
     SignInComponent,
+    ExcursionsComponent,
     
       ],
   imports: [

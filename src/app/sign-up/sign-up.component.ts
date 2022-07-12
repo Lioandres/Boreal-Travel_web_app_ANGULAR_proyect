@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuxService } from '../services/general.service';
+
 
 import { creatDateRangeValidator} from './custom.validator'
-import { Routes } from '@angular/router';
+import { AuxService } from '../services/general.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -48,10 +48,10 @@ export class SignUpComponent implements OnInit {
         userMail:mail,
         userpassword:password,
       })
-      console.log(this.signUpForm.value)
-      console.log(this.auxServ._userRepository)
+    
     }
     else{
+      
       alert("Rellene todo los campos correctamente")
     }
   }

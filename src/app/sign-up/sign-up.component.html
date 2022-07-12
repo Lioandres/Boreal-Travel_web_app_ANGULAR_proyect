@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <form FormGroup="signUpForm" (ngSubmit)="submit()">
+            <form [formGroup]="signUpForm" (ngSubmit)="submit()">
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Username</label>
                     <input formControlName="name" class="form-control" id="inputName">

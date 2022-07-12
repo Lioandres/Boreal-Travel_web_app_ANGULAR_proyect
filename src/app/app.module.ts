@@ -17,6 +17,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { FooterModule } from './footer/footer.module';
 import { ExcursionsComponent } from './excursions/excursions.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     FooterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
     
   ],
   providers: [],

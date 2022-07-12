@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Users } from '../interfaces/user.interface';
+import { HttpClient } from '@angular/common/http';
+import { Temps, Weather } from '../interfaces/temps.interface';
 
 
 
@@ -9,11 +11,13 @@ import { Users } from '../interfaces/user.interface';
 })
 export class AuxService {
 
-  constructor(private route:Router) {
+  constructor(private route:Router,
+              private http:HttpClient) {
     this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
     }
 
-  _userRepository: Users[] = [{ userName: '', userMail: '', userpassword: '' }];
+
+ _userRepository: Users[] = [{ userName: '', userMail: '', userpassword: '' }];
 
   get userRepository() {
     return [...this._userRepository];
@@ -66,8 +70,33 @@ export class AuxService {
   showNotice(){
     if(!this.loggedIn) {
       alert('Debe hacer log-in para acceder')
-    //this.route.navigate(['logIn'])
+      this.route.navigate(['signIn'])
     }
+  };
+
+icon:string='';
+
+temp= this.http.get<Temps>('https://api.openweathermap.org/data/2.5/weather?id=3128760&units=metric&lang=sp&appid=8e42f1a13fa0e057ce270526d580687f')
+.subscribe((resp:Temps)=> {return  resp.main.temp})
+
+
+  getWeather() {
+     this.http.get<Temps>('https://api.openweathermap.org/data/2.5/weather?id=3128760&units=metric&lang=sp&appid=8e42f1a13fa0e057ce270526d580687f')
+    .subscribe((resp:Temps)=>{
+         console.log(resp)
+         console.log(resp.weather[0].icon,resp.main.temp)
+         this.icon=resp.weather[0].icon
+             
+        })
+
   }
- 
+
+  get getIcon():string{
+    return this.icon
+  }
+
+  get getTemp() {
+    return this.temp
+  }
+
 }

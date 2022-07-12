@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
       let name=this.logInForm.get('name')?.value
       let password=this.logInForm.get('password')?.value
       this.auxServ.logIn(name,password)
-      console.log(this.logInForm.value)
+    
     
     }
     else{

@@ -16,6 +16,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FooterModule } from './footer/footer.module';
 import { ExcursionsComponent } from './excursions/excursions.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { ExcursionsComponent } from './excursions/excursions.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FooterModule
+    FooterModule,
+    ReactiveFormsModule,
+    FormsModule
     
   ],
   providers: [],

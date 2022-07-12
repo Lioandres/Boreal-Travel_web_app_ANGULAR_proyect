@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Users } from '../interfaces/user.interface';
 
 
@@ -8,7 +9,9 @@ import { Users } from '../interfaces/user.interface';
 })
 export class AuxService {
 
-  constructor() {  }
+  constructor(private route:Router) {
+    this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
+    }
 
   _userRepository: Users[] = [{ userName: '', userMail: '', userpassword: '' }];
 
@@ -34,7 +37,7 @@ export class AuxService {
     ) {
       this._userRepository.push(userInput);
       localStorage.setItem('users', JSON.stringify(this._userRepository));
-     // this.route.navigate(['starshipList'])
+      this.route.navigate(['home'])
       this._logInUser=`Bienvenido ${userInput.userName}`
       this._loggedIn=true
      } else alert('el usuario o email ya existen');
@@ -46,7 +49,7 @@ export class AuxService {
       this._userRepository.find((user) => user.userName === name) &&
       this._userRepository.find((user) => user.userpassword === password)
     ) {
-      //this.route.navigate(['starshipList'])
+      this.route.navigate(['home'])
       this._logInUser=`Bienvenido ${name}`
       this._loggedIn=true
     } else alert('el usuario o contraseña es incorrecto');

@@ -26,7 +26,13 @@
                 <a class="nav-item nav-link " routerLink="bus">Recorridos en Bus</a>
                 <a class="nav-item nav-link "routerLink="contact">Contacto</a>
               </div>
-              <a href="" class="btn btn-dark px-3 d-none d-lg-flex "routerLink="signUp">Registrarse</a>
+              <a *ngIf="loggedIn"class="btn btn-dark px-3 d-none d-lg-flex " (click)="started=true">{{logInUser}}</a>
+              <a *ngIf="loggedIn ; else noLog" class="btn btn-dark px-3 d-none d-lg-flex"  (click)="started=true ; logOut()" routerLink="signIn">LOG-OUT</a>
+              <ng-template #noLog>
+                <a class="btn btn-dark px-3 d-none d-lg-flex " (click)="started=true ; logOut()" routerLink="signIn">Ingresar</a>
+              </ng-template>
+              
+              
             </div>
           </nav>
         </div>

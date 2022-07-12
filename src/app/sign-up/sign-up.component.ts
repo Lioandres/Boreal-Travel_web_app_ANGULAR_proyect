@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuxService } from '../services/aux.service';
+import { AuxService } from '../services/general.service';
 
 import { creatDateRangeValidator} from './custom.validator'
+import { Routes } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',

@@ -1,0 +1,52 @@
+<div class="tab-content">
+    <div id="tab-1" class="tab-pane fade show p-0 active">
+      <div class="row g-4">
+           
+          <div  class="col-lg-9 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="property-item rounded overflow-hidden">
+              <div class="position-relative overflow-hidden">
+                <a routerLink="/boreal" href=""><img class="img-fluid" [src]="excursionList[idExcursion].img" alt=""></a>
+              </div>
+              <div class="p-4 pb-0 position-relative">
+                <h5 class="text-primary mb-3">{{excursionList[idExcursion].title}} </h5>
+                <a routerLink="/boreal" class="d-block h5 mb-2" href="">{{excursionList[idExcursion].price}} EUR</a>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi aspernatur earum quia amet provident repudiandae fugiat dolorum deserunt soluta assumenda totam itaque a, fuga recusandae cupiditate quas molestiae porro dolores mollitia facilis. Aperiam maiores, corrupti voluptatibus ipsum expedita nihil pariatur quaerat, temporibus vel quidem reiciendis hic suscipit magni non labore quae itaque similique officia ad eius. Quas pariatur consectetur illo!</p>
+            </div>
+          </div> 
+
+          <div class="col-lg-3 col-md-6">
+
+
+
+               <div class="border">
+                <form [formGroup]="myform">
+                            
+                  <div>
+                    <label for="people">Número de personas </label>
+                    <button (click)="increase()" >+</button>
+                    <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people">
+                    <button (click)="decrease()">-</button>                                      
+                    <div *ngIf="myform.get('peopleInput')?.invalid && myform.get('peopleInput')?.touched">
+                      ingrese un número mayor o igual a cero
+                    </div>
+                  </div>
+              
+                  <!-- --------------------- -->
+               
+              
+                </form>
+              </div>
+
+
+
+
+
+
+              
+          </div>
+ 
+      </div>
+    </div>
+  </div>
+  

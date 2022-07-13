@@ -15,6 +15,7 @@ import { AboutComponent } from './footer/about/about.component';
 import { PrivacyComponent } from './footer/privacy/privacy.component';
 import { TermsComponent } from './footer/terms/terms.component';
 import { CookiesComponent } from './footer/cookies/cookies.component';
+import { ExcuInfoComponent } from './excu-info/excu-info.component';
 
 const routes: Routes = [
 
@@ -94,6 +95,14 @@ const routes: Routes = [
   component: CookiesComponent,
   pathMatch:'full'
 },
+
+{
+  path:'excuInfo',
+  component: ExcuInfoComponent,
+  pathMatch:'full'
+},
+
+
 
 ];
 

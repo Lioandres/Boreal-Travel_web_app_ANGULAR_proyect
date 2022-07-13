@@ -1,0 +1,22 @@
+.border {
+    width: 370px;
+    height: 170px;
+    margin: 5px;
+    padding: 20px 5px 10px;
+    border: 1px black solid;
+    border-radius: 25px;
+}
+.box{
+    margin: 20px;
+}
+
+.warning{
+    font-size: 10px;
+    color:red;
+    margin-left: 0px;
+    
+    
+}
+label{
+    margin: 10px;
+}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  Input,  OnInit } from '@angular/core';
 import { Excursion } from '../interfaces/interfaces';
 import { ExcursionsService } from '../services/excursions.service';
 
@@ -14,11 +14,16 @@ export class ExcursionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input("typeExcursion")   typeExcursion:string=""
+ @Input("typeExcursion")   typeExcursion:string=""
 
   get excursionList():Excursion[] {
     return this.excursionsService.excursionList
   }
+
+  setExursionId (id:number) {
+  this.excursionsService.setId(id)   
+  }
+   
 
 
 

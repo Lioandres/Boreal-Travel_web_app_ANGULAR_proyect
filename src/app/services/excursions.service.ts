@@ -176,7 +176,21 @@ export class ExcursionsService {
  
  get excursionList():Excursion[] {
   return [...this.excursionRepository]
-}
+  }
+
+
+
+  _id:number=0
+
+  setId (id:number) {
+    this._id=id
+  } 
+
+
+  
+  get id () {
+    return this._id
+  }
 
 
 }

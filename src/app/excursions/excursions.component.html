@@ -5,11 +5,11 @@
         <div *ngFor="let item of excursionList"   [hidden]="item.type!=typeExcursion" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
           <div class="property-item rounded overflow-hidden">
             <div class="position-relative overflow-hidden">
-              <a href=""><img class="img-fluid" [src]="item.img" alt=""></a>
+              <a routerLink="/excuInfo" (click)="setExursionId(item.id-1)" href=""><img class="img-fluid" [src]="item.img" alt=""></a>
             </div>
             <div class="p-4 pb-0 position-relative">
               <h5 class="text-primary mb-3">{{item.title}} </h5>
-              <a class="d-block h5 mb-2" href="">{{item.price}} EUR</a>
+              <a routerLink="/excuInfo" (click)="setExursionId(item.id-1) " class="d-block h5 mb-2" href="">{{item.price}} EUR</a>
             </div>
           </div>
         </div> 

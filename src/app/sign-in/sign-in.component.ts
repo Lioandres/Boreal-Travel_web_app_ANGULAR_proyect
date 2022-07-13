@@ -13,8 +13,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private auxServ:AuxService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logInForm:FormGroup= this.fb.group({
     name:["",[Validators.required,Validators.minLength(5)]],

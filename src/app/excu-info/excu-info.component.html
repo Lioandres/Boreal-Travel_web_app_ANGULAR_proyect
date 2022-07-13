@@ -21,19 +21,25 @@
 
                <div class="border">
                 <form [formGroup]="myform">
-                            
-                  <div>
+
+
+                  <div class="input-group mb-3">
                     <label for="people">Número de personas </label>
-                    <button (click)="increase()" >+</button>
-                    <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people">
-                    <button (click)="decrease()">-</button>                                      
-                    <div *ngIf="myform.get('peopleInput')?.invalid && myform.get('peopleInput')?.touched">
+                    <div class="input-group-prepend">
+                       <button  class="input-group-text" (click)="increase()" >+</button>
+                    </div>
+                    <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people" class="form-control" >
+                    <div class="input-group-append">
+                      <button  class="input-group-text" (click)="decrease()">-</button>  
+                    </div>
+                    <div *ngIf="myform.get('peopleInput')?.invalid">
                       ingrese un número mayor o igual a cero
                     </div>
-                  </div>
+                  </div> 
+
+                            
+                  
               
-                  <!-- --------------------- -->
-               
               
                 </form>
               </div>

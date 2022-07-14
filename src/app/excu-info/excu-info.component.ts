@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { Excursion } from '../interfaces/interfaces';
 import { ExcursionsService } from '../services/excursions.service';
 
@@ -7,6 +7,7 @@ import { ExcursionsService } from '../services/excursions.service';
   selector: 'app-excu-info',
   templateUrl: './excu-info.component.html',
   styleUrls: ['./excu-info.component.css']
+  
 })
 export class ExcuInfoComponent implements OnInit {
 
@@ -35,9 +36,14 @@ export class ExcuInfoComponent implements OnInit {
 
   
   myform:FormGroup= this.fb.group({
-    peopleInput:[0,[Validators.required,Validators.min(0),Validators.pattern('^([1-9]+\\d*)|[0]')]]
+    peopleInput:[0,[Validators.required,Validators.min(0),Validators.pattern('^([1-9]+\\d*)|[0]')]],
+    date:[0,[Validators.required]]
   })
 
+
+
+
+  
 
 
 }

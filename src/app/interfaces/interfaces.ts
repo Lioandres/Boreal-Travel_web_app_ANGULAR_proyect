@@ -3,5 +3,6 @@ export interface Excursion{
     title:string;
     price:number;
     img:string;
-    type:string
+    type:string;
+    description:string
 }

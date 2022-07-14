@@ -1,68 +1,67 @@
 <div class="tab-content">
-    <div id="tab-1" class="tab-pane fade show p-0 active">
-      <div class="row g-4">
-           
-          <div  class="col-lg-9 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="property-item rounded overflow-hidden">
-              <div class="position-relative overflow-hidden">
-                <a routerLink="/boreal" href=""><img class="img-fluid" [src]="excursionList[idExcursion].img" alt=""></a>
+  <div id="tab-1" class="tab-pane fade show p-0 active">
+    <div class="row g-4">
+
+      <div class="col-lg-9 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="property-item rounded overflow-hidden">
+          <div class="position-relative overflow-hidden">
+            <a routerLink="/boreal" href=""><img class="img-fluid" [src]="excursionList[idExcursion].img" alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+
+
+        <div class="p-4 pb-0 position-relative">
+          <h5 class="text-primary mb-3">{{excursionList[idExcursion].title}} </h5>
+          <a routerLink="/boreal" class="d-block h5 mb-2" href="">{{excursionList[idExcursion].price}} EUR</a>
+        </div>
+        <p>{{excursionList[idExcursion].description}}</p>
+
+
+
+
+        <form [formGroup]="myform" (ngSubmit)="addToCar()" >
+          <div class="border">
+
+            <div class="input-group mb-3">
+              <label for="people">Número de personas</label>
+              <div class="input-group-prepend">
+                <button class="input-group-text" (click)="increase()">+</button>
+              </div>
+              <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people" class="form-control">
+              <div class="input-group-append">
+                <button class="input-group-text" (click)="decrease()">-</button>
+              </div>
+              <div *ngIf="myform.get('peopleInput')?.invalid && myform.get('peopleInput')?.touched">
+                ingrese un número mayor o igual a 1
               </div>
             </div>
-          </div> 
-
-          <div class="col-lg-3 col-md-6">
 
 
-            <div class="p-4 pb-0 position-relative">
-              <h5 class="text-primary mb-3">{{excursionList[idExcursion].title}} </h5>
-              <a routerLink="/boreal" class="d-block h5 mb-2" href="">{{excursionList[idExcursion].price}} EUR</a>
+            <div>
+              <ngbd-datepicker-popup formControlName="dateInput"></ngbd-datepicker-popup>
             </div>
-            <p>{{excursionList[idExcursion].description}}</p>
 
-
-
-           
-                <form [formGroup]="myform">
-                  <div class="border">
-                    <div class="input-group mb-3">
-                      <label for="people">Número de personas</label>
-                      <div class="input-group-prepend">
-                        <button  class="input-group-text" (click)="increase()" >+</button>
-                      </div>
-                      <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people" class="form-control" >
-                      <div class="input-group-append">
-                        <button  class="input-group-text" (click)="decrease()">-</button>  
-                      </div>
-                      <div *ngIf="myform.get('peopleInput')?.invalid">
-                        ingrese un número mayor o igual a cero
-                      </div>
-                    </div> 
-
-                              
-                    <div>
-                      <ngbd-datepicker-popup formControlName="date"></ngbd-datepicker-popup>
-                    </div>              
-
-                </div>
-              
-                  <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 ">Reservar</button>
-
-                </form>
-               
-        
-              
-              
-         
-
-
-
-
-
-
-              
           </div>
- 
+
+          <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 ">Reservar</button>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
+
     </div>
   </div>
-  
+</div>

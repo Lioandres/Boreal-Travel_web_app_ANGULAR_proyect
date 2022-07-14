@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Users } from '../interfaces/user.interface';
 
 
@@ -71,6 +72,17 @@ export class AuxService {
       this.route.navigate(['signIn'])
     }
   };
+
+  _date: NgbDateStruct| undefined;
+
+  setDate(date: NgbDateStruct | undefined){
+    this._date=date
+    console.log(this._date)
+  }
+
+  get date (){
+    return this._date
+  }
 
 
 

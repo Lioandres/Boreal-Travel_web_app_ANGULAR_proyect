@@ -1,6 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { AuxService } from '../services/general.service';
 
 @Component({
   selector: 'ngbd-datepicker-popup',
@@ -14,10 +15,14 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
   ]
 })
 export class NgbdDatepickerPopup implements ControlValueAccessor{
-  model: NgbDateStruct | undefined;
 
-  showModel(){
-    console.log(this.model)
+  constructor(private auxServ:AuxService){}
+
+  date: NgbDateStruct | undefined;
+
+  sendDateToSer(date1:  NgbDateStruct | undefined){
+    this.auxServ.setDate(date1)
+   
   }
 
 
@@ -27,7 +32,7 @@ export class NgbdDatepickerPopup implements ControlValueAccessor{
   disabled:boolean=false
   
   writeValue(valueI:NgbDateStruct):void{
-  this.model=valueI
+  this.date=valueI
   
   }
   

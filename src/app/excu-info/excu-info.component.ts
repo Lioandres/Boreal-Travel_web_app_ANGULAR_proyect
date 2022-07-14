@@ -1,7 +1,9 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Excursion } from '../interfaces/interfaces';
 import { ExcursionsService } from '../services/excursions.service';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { AuxService } from '../services/general.service';
 
 @Component({
   selector: 'app-excu-info',
@@ -12,6 +14,7 @@ import { ExcursionsService } from '../services/excursions.service';
 export class ExcuInfoComponent implements OnInit {
 
   constructor(private excursionsService:ExcursionsService,
+              private auxServ:AuxService,
               private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -24,6 +27,8 @@ export class ExcuInfoComponent implements OnInit {
     return this.excursionsService.excursionList
   }
 
+  // ----form component----
+  
  people:number=0
 
   increase(){
@@ -36,9 +41,21 @@ export class ExcuInfoComponent implements OnInit {
 
   
   myform:FormGroup= this.fb.group({
-    peopleInput:[0,[Validators.required,Validators.min(0),Validators.pattern('^([1-9]+\\d*)|[0]')]],
-    date:[0,[Validators.required]]
+    peopleInput:[0,[Validators.required,Validators.min(1),Validators.pattern('^([1-9]+\\d*)|[0]')]],
+    dateInput:[0,[Validators.required]]
   })
+  
+  cart:[number, NgbDateStruct|undefined]|undefined
+
+  addToCar() {
+    if(this.myform.valid){
+      this.cart=[this.myform.get('peopleInput')?.value,this.auxServ.date]
+      console.log(this.cart)
+    }
+    else{    
+      alert("Rellene todo los campos correctamente")
+    }
+  }
 
 
 

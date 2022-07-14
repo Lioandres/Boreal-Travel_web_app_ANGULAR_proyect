@@ -19,6 +19,7 @@ import { ExcursionsComponent } from './excursions/excursions.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ExcuInfoComponent } from './excu-info/excu-info.component';
+import { NgbdDatepickerPopupModule } from './datepicker/datepicker-popup.module';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { ExcuInfoComponent } from './excu-info/excu-info.component';
     FooterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbdDatepickerPopupModule
+    
     
   ],
   providers: [],

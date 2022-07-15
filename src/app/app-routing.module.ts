@@ -16,6 +16,7 @@ import { PrivacyComponent } from './footer/privacy/privacy.component';
 import { TermsComponent } from './footer/terms/terms.component';
 import { CookiesComponent } from './footer/cookies/cookies.component';
 import { ExcuInfoComponent } from './excu-info/excu-info.component';
+import { GaleriaComponent } from './galeria/galeria.component';
 
 const routes: Routes = [
 
@@ -101,7 +102,11 @@ const routes: Routes = [
   component: ExcuInfoComponent,
   pathMatch:'full'
 },
-
+{
+  path:'galeria',
+  component: GaleriaComponent,
+  pathMatch:'full'
+},
 
 
 ];

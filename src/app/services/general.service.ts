@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Cart } from '../interfaces/cart.interface';
 import { Users } from '../interfaces/user.interface';
 
 
@@ -13,13 +14,21 @@ export class AuxService {
 
   constructor(private route:Router) {
     this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
+    this._userRepositoryCart = JSON.parse(localStorage.getItem('users')!) || [];
     }
 
 
- _userRepository: Users[] = [{ userName: '', userMail: '', userpassword: '' }];
+ _userRepository: Users[] = [{ userName:"",  userMail: '', userpassword: '' }];
+
+ _userRepositoryCart: Cart[] = [{ userName:"", idExcursion:0,numPeople:0,  date:undefined,  totalPrice:0}];
+
 
   get userRepository() {
     return [...this._userRepository];
+  }
+
+  get userRepositoryCart() {
+    return [...this._userRepositoryCart];
   }
 
   _logInUser:string='LOG IN'
@@ -83,6 +92,8 @@ export class AuxService {
   get date (){
     return this._date
   }
+
+  cart:[number, NgbDateStruct|undefined]|undefined
 
 
 

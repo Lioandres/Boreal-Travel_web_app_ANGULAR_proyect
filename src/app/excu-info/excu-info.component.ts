@@ -45,16 +45,21 @@ export class ExcuInfoComponent implements OnInit {
     dateInput:[0,[Validators.required]]
   })
   
-  cart:[number, NgbDateStruct|undefined]|undefined
+ 
 
   addToCar() {
+    if(this.auxServ._loggedIn){
     if(this.myform.valid){
-      this.cart=[this.myform.get('peopleInput')?.value,this.auxServ.date]
-      console.log(this.cart)
+      this.auxServ.cart=[this.myform.get('peopleInput')?.value,this.auxServ.date]
+      console.log( this.auxServ.cart)
     }
     else{    
       alert("Rellene todo los campos correctamente")
     }
+  }
+  else {
+    alert("Debe registrarse para reservar")
+  }
   }
 
 

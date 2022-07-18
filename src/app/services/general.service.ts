@@ -14,7 +14,7 @@ export class AuxService {
 
   constructor(private route:Router) {
     this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
-    this._userRepositoryCart = JSON.parse(localStorage.getItem('users')!) || [];
+    this._userRepositoryCart = JSON.parse(localStorage.getItem('cart')!) || [];
     }
 
 
@@ -50,7 +50,7 @@ export class AuxService {
       this._userRepository.push(userInput);
       localStorage.setItem('users', JSON.stringify(this._userRepository));
       this.route.navigate(['home'])
-      this._logInUser=`Bienvenido ${userInput.userName}`
+      this._logInUser= userInput.userName
       this._loggedIn=true
      } else alert('el usuario o email ya existen');
   }
@@ -62,7 +62,7 @@ export class AuxService {
       this._userRepository.find((user) => user.userpassword === password)
     ) {
       this.route.navigate(['home'])
-      this._logInUser=`Bienvenido ${name}`
+      this._logInUser=name
       this._loggedIn=true
     } else alert('el usuario o contraseña es incorrecto');
   }
@@ -94,6 +94,26 @@ export class AuxService {
   }
 
   cart:[number, NgbDateStruct|undefined]|undefined
+
+
+  addToCar(people:number,date:NgbDateStruct|undefined,id:number,price:number) {
+    let excursionInfo:Cart={
+        userName:this._logInUser ,
+        idExcursion:id,
+        numPeople:people,
+        date:date, 
+        totalPrice:people*price
+      }
+      this._userRepositoryCart.push(excursionInfo)
+      localStorage.setItem('cart', JSON.stringify(this._userRepositoryCart))
+      
+  }
+
+
+  goToCart(){
+    if(this.loggedIn) 
+    this.route.navigate(['reservation'])
+  }
 
 
 

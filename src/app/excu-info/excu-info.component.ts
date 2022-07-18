@@ -47,11 +47,15 @@ export class ExcuInfoComponent implements OnInit {
   
  
 
-  addToCar() {
+  addToCar(id:number, price:number) {
     if(this.auxServ._loggedIn){
     if(this.myform.valid){
-      this.auxServ.cart=[this.myform.get('peopleInput')?.value,this.auxServ.date]
-      console.log( this.auxServ.cart)
+      let people=this.myform.get('peopleInput')?.value;
+      let date=this.auxServ.date;
+      //console.log( people, date)
+      let idExcursion=id
+      let priceExcursion=price
+      this.auxServ.addToCar(people,date,idExcursion,priceExcursion)
     }
     else{    
       alert("Rellene todo los campos correctamente")
@@ -60,6 +64,10 @@ export class ExcuInfoComponent implements OnInit {
   else {
     alert("Debe registrarse para reservar")
   }
+  }
+
+  goToCart(){
+    this.auxServ.goToCart()
   }
 
 

@@ -26,16 +26,5 @@ export class ReservationComponent implements OnInit {
     return this.auxServ.userRepositoryCart
   }
 
-  excursionFound:Excursion|undefined
-
-// To get the excursion object which contains the excursion selected
- getExcursion (idExcursion:number) {
-  this.excursionFound = this.excursionList.find(item =>item.id === idExcursion )
-  if(this.excursionFound) return this.excursionFound
-  else return "null"
-  //excursionFound ? excursionFound.img :undefined
   
-}
-
-
 }

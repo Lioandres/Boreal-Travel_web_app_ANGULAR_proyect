@@ -17,6 +17,7 @@ import { TermsComponent } from './footer/terms/terms.component';
 import { CookiesComponent } from './footer/cookies/cookies.component';
 import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
 
@@ -107,7 +108,11 @@ const routes: Routes = [
   component: GaleriaComponent,
   pathMatch:'full'
 },
-
+{
+  path:'reservation',
+  component: ReservationComponent,
+  pathMatch:'full'
+},
 
 ];
 

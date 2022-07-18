@@ -22,7 +22,7 @@
 
 
 
-        <form [formGroup]="myform" (ngSubmit)="addToCar()" >
+        <form [formGroup]="myform" (ngSubmit)="addToCar(excursionList[idExcursion].id,excursionList[idExcursion].price)" >
           <div class="border">
 
             <div class="input-group mb-3">
@@ -46,7 +46,8 @@
 
           </div>
 
-          <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 ">Reservar</button>
+          <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 me-3 ">Reservar</button>
+          <button  class="btn btn-primary mx-auto mt-3 mb-3 ms-3 " (click)="goToCart()">Ir al carrito</button>
         </form>
 
 

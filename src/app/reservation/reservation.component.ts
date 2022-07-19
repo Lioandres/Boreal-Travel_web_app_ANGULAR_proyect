@@ -26,5 +26,15 @@ export class ReservationComponent implements OnInit {
     return this.auxServ.userRepositoryCart
   }
 
-  
+
+  removeExcursion(i:number){
+    this.auxServ._userRepositoryCart.splice(i,1);
+    localStorage.setItem('cart', JSON.stringify(this.auxServ._userRepositoryCart))
+      
+}
+
+get logInUser(){
+  return this.auxServ.logInUser
+}
+
 }

@@ -17,5 +17,20 @@ export class HomeComponent implements OnInit {
   get excursionList():Excursion[] {
     return this.excursionService.excursionList
   }
+
+  get month(){
+    return this.excursionService.month
+  }
+
+  keyWord:string=""
+  resultExcursionFound:Excursion[]=[]
+
+  findExcursion(keyWord:string) {
+    this.excursionService.findExcursionAux(keyWord)
+  }
+    
+    
+    
+    
   
 }

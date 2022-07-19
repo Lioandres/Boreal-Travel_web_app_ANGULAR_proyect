@@ -22,6 +22,7 @@ import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { NgbdDatepickerPopupModule } from './datepicker/datepicker-popup.module';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ResultComponent } from './result/result.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ReservationComponent } from './reservation/reservation.component';
     ExcuInfoComponent,
     GaleriaComponent,
     ReservationComponent,
+    ResultComponent,
     
       ],
   imports: [

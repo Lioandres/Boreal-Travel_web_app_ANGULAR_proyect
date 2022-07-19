@@ -18,6 +18,7 @@ import { CookiesComponent } from './footer/cookies/cookies.component';
 import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
 
@@ -113,6 +114,15 @@ const routes: Routes = [
   component: ReservationComponent,
   pathMatch:'full'
 },
+
+{
+  path:'result',
+  component: ResultComponent,
+  pathMatch:'full'
+},
+
+
+
 
 ];
 

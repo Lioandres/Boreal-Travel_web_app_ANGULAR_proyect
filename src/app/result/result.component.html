@@ -1,0 +1,37 @@
+<!-- Result header Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-0 gx-5 align-items-end">
+        <div class="col-lg-6">
+          <div class="text-start mx-auto mb-5 wow fadeInUp position-relative" data-wow-delay="0.1s" >
+            <h1 style="z-index:-3" class="mb-3 ">Resultado de la búsqueda</h1>
+            <p>Estas son las excursiones que coinciden con el criterio de búsqueda</p>
+          </div>
+        </div>
+      </div> 
+      
+  <!-- Result End -->
+    <!-- <app-excursions typeExcursion="boreal"></app-excursions> -->
+
+  <div class="tab-content">
+    <div id="tab-1" class="tab-pane fade show p-0 active">
+      <div class="row g-4">
+           
+          <div *ngFor="let item of resultExcursionFound; let i = index"  class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="property-item rounded overflow-hidden">
+              <div class="position-relative overflow-hidden">
+               <img class="img-fluid" [src]="item.img" alt="">
+              </div>
+              <div class="p-4 pb-0 position-relative">
+                <h3 class="text-primary mb-3">{{item.title}} </h3>
+      
+              
+              </div>
+            </div>
+          </div> 
+  
+  
+      </div>
+    </div>
+  </div>
+  

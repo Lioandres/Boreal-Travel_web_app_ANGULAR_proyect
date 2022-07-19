@@ -4,5 +4,6 @@ export interface Excursion{
     price:number;
     img:string;
     type:string;
-    description:string
+    description:string;
+    month:string[]
 }

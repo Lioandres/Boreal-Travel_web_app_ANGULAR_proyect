@@ -18,7 +18,7 @@
     <div id="tab-1" class="tab-pane fade show p-0 active">
       <div class="row g-4">
            
-          <div *ngFor="let item of userRepositoryCart"  class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div *ngFor="let item of userRepositoryCart; let i = index"   [hidden]="item.userName!=logInUser" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="property-item rounded overflow-hidden">
               <div class="position-relative overflow-hidden">
                <img class="img-fluid" [src]="excursionList[item.idExcursion-1].img" alt="">
@@ -29,6 +29,7 @@
                 <h5>Fecha:{{item.date?.day}}/{{item.date?.month}}/{{item.date?.year}}</h5>
                 <h5>{{item.numPeople}} personas</h5>
                 <h3>Total {{item.totalPrice}} EUR</h3>
+                <button (click)="removeExcursion(i)" type="button" class="btn btn-primary mx-auto mt-3 mb-3 me-3 ">Quitar</button>
               
               </div>
             </div>

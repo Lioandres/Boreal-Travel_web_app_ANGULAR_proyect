@@ -22,17 +22,17 @@
 
 
 
-        <form [formGroup]="myform" (ngSubmit)="addToCar(excursionList[idExcursion].id,excursionList[idExcursion].price)" >
+        <form [formGroup]="myform" (ngSubmit)="addToCar(idExcursion,excursionList[idExcursion].price)" >
           <div class="border">
 
             <div class="input-group mb-3">
               <label for="people">Número de personas</label>
               <div class="input-group-prepend">
-                <button class="input-group-text" (click)="increase()">+</button>
+                <button type="button" class="input-group-text" (click)="increase()">+</button>
               </div>
               <input formControlName="peopleInput" type="text" name="people" [(ngModel)]="people" class="form-control">
               <div class="input-group-append">
-                <button class="input-group-text" (click)="decrease()">-</button>
+                <button type="button" class="input-group-text" (click)="decrease()">-</button>
               </div>
               <div *ngIf="myform.get('peopleInput')?.invalid && myform.get('peopleInput')?.touched">
                 ingrese un número mayor o igual a 1

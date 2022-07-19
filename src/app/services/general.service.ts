@@ -96,7 +96,7 @@ export class AuxService {
   cart:[number, NgbDateStruct|undefined]|undefined
 
 
-  addToCar(people:number,date:NgbDateStruct|undefined,id:number,price:number) {
+  addToCarServ(people:number,date:NgbDateStruct|undefined,id:number,price:number) {
     let excursionInfo:Cart={
         userName:this._logInUser ,
         idExcursion:id,
@@ -105,6 +105,7 @@ export class AuxService {
         totalPrice:people*price
       }
       this._userRepositoryCart.push(excursionInfo)
+      console.log(this._userRepositoryCart)
       localStorage.setItem('cart', JSON.stringify(this._userRepositoryCart))
       
   }

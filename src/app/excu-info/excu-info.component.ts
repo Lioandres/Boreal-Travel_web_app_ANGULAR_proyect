@@ -20,7 +20,7 @@ export class ExcuInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  // idExcursion  from Services 
   idExcursion:number=this.excursionsService.id
 
   get excursionList():Excursion[] {
@@ -52,10 +52,9 @@ export class ExcuInfoComponent implements OnInit {
     if(this.myform.valid){
       let people=this.myform.get('peopleInput')?.value;
       let date=this.auxServ.date;
-      //console.log( people, date)
       let idExcursion=id
       let priceExcursion=price
-      this.auxServ.addToCar(people,date,idExcursion,priceExcursion)
+      this.auxServ.addToCarServ(people,date,idExcursion,priceExcursion)
     }
     else{    
       alert("Rellene todo los campos correctamente")

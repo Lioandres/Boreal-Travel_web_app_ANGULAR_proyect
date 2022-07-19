@@ -116,6 +116,8 @@ export class AuxService {
     this.route.navigate(['reservation'])
   }
 
+  
+
 
 
 

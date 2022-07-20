@@ -107,6 +107,7 @@ export class AuxService {
       this._userRepositoryCart.push(excursionInfo)
       console.log(this._userRepositoryCart)
       localStorage.setItem('cart', JSON.stringify(this._userRepositoryCart))
+      alert('La excursion ha sido añadida a su carrito')
       
   }
 

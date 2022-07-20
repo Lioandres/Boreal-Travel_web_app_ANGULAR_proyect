@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2022 a las 12:57:02
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Servidor: localhost
+-- Tiempo de generación: 20-07-2022 a las 18:54:16
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `excursion` (
-  `id_excursion` int(3) NOT NULL,
+  `id_excursion` int(8) NOT NULL,
   `excursions_template_id` int(6) NOT NULL,
   `user_id` int(8) NOT NULL,
   `start` datetime NOT NULL,
@@ -52,6 +52,31 @@ CREATE TABLE `excursions_template` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `excursions_template`
+--
+
+INSERT INTO `excursions_template` (`id_excursion_template`, `title`, `img`, `type`, `description`) VALUES
+(1, '\"Auroral Boreal Tour\"', '\"assets/img/boreal_1.webp\"', '\"boreal\"', '\"\"'),
+(2, '\"Auroral Boreal Tour en bote\"', '\"assets/img/boreal_2.webp\"', '\"boreal\"', '\"\"'),
+(3, '\"Baño de luces boreales\"', '\"assets/img/boreal_3.webp\"', '\"boreal\"', '\"Conducimos a través del hermoso sitio de la UNESCO Þingvellir Parque Nacional en nuestro camino a Laugarvatn Fontana, donde tiene la opción de comprar la cena en su restaurante por un costo adicional. Fontana tiene tres salas de vapor construidas sobre una fuente termal natural y una sauna tradicional junto con cuatro piscinas calientes diferentes. Los viajeros más aventureros pueden darse un chapuzón en el lago Laugarvatn (cuando sea accesible) y refrescarse entre los baños de vapor y la sauna. Las temperaturas de vapor oscilan entre 40 ° C y 50 ° C (104 ° F y 122 ° F), dependiendo de la temperatura de las aguas termales y el clima. Las salas de vapor crean una experiencia única, ya que se puede oler el agua caliente natural hirviendo debajo de las rejillas en el suelo. La sauna tradicional tiene una humedad más baja que las salas de vapor, pero la temperatura es más alta, entre 80 ° C y 90 ° C (176 ° F y 194 ° F). Los tres baños minerales al aire libre conectados varían en profundidad, tamaño y temperatura. Es el escenario perfecto para relajarse y socializar. Desde los baños, se puede ver una vista panorámica del campo alrededor de Fontana y las auroras boreales bailando en el cielo si tienes suerte y aparecen temprano.El gel de ducha, el champú y el acondicionador de Sóley Organics están disponibles en los vestuarios.Caza de auroras boreales en Islandia   En nuestro camino de regreso a Reikiavik, vamos en una cacería de auroras boreales, una de las vistas más inolvidables de Islandia. Nuestro equipo de expertos estudia las auroras boreales y los pronósticos de nubes para encontrar el mejor lugar para un avistamiento, pero dado que las auroras boreales son un fenómeno natural, no se pueden garantizar los avistamientos.Duración del tour: 18:00 - 00:30.\"'),
+(4, '\"Auroral Boreal Tour-grupos pequeños\"', '\"assets/img/boreal_4.webp\"', '\"boreal\"', '\"\"'),
+(5, '\"Tour de exploración Auroral boreal en Super-Jeep\"', '\"assets/img/boreal_5.webp\"', '\"boreal\"', '\"\"'),
+(6, '\"Laguna Azul : Translados y admision\"', '\"assets/img/lake_1.webp\"', '\"lake\"', '\"\"'),
+(7, '\"Lago Azul- Translados y Admision Premium\"', '\"assets/img/lake_2_webp.webp\"', '\"lake\"', '\"\"'),
+(8, '\"Circulo Dorado en Directo\"', '\"assets/img/circle_1webp.webp\"', '\"circle\"', '\"\"'),
+(9, '\"Circulo Dorado y Friorheimer\"', '\"assets/img/circle_2.webp\"', '\"circle\"', '\"\"'),
+(10, '\"Círculo Dorado y SnowBorad\"', '\"assets/img/circle_3.webp\"', '\"circle\"', '\"\"'),
+(11, '\"Círculo dorado y Aurora Boreal\"', '\"assets/img/circle_4.webp\"', '\"circle\"', '\"\"'),
+(12, '\"Círculo Dorado y Fuente natural\"', '\"assets/img/circle_5.webp\"', '\"circle\"', '\"\"'),
+(13, '\"Círculo Dorado y tunel de lava\"', '\"assets/img/circle_6.webp\"', '\"circle\"', '\"\"'),
+(14, '\"Aventura en Þórsmörk\"', '\"assets/img/bus_1.webp\"', '\"bus\"', '\"\"'),
+(15, '\"Aventura Landmannalaugar\"', '\"assets/img/bus_2.webp\"', '\"bus\"', '\"\"'),
+(16, '\"Aventura Skógar\"', '\"assets/img/bus_3.webp\"', '\"bus\"', '\"\"'),
+(17, '\"Aventura Grænihryggur con guias de montaña\"', '\"assets/img/bus_4.webp\"', '\"bus\"', '\"\"'),
+(18, '\"Camino desde Reykjavik\"', '\"assets/img/bus_5.webp\"', '\"bus\"', '\"\"'),
+(19, '\"Combo tour Laugavegur & Fimmvörðuháls\"', '\"assets/img/bus_6.webp\"', '\"bus\"', '\"\"');
+
 -- --------------------------------------------------------
 
 --
@@ -74,8 +99,8 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `reservations` (
   `id_reservation` int(8) NOT NULL,
-  `excursion_Id` int(5) NOT NULL,
-  `payment_id` int(5) NOT NULL,
+  `excursion_Id` int(8) NOT NULL,
+  `payment_id` int(8) NOT NULL,
   `name` varchar(120) NOT NULL,
   `email` varchar(120) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -131,13 +156,13 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT de la tabla `excursion`
 --
 ALTER TABLE `excursion`
-  MODIFY `id_excursion` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_excursion` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `excursions_template`
 --
 ALTER TABLE `excursions_template`
-  MODIFY `id_excursion_template` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_excursion_template` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `reservations`

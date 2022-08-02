@@ -19,6 +19,7 @@ import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
+import { EditionComponent } from './templates/edition/edition.component';
 
 const routes: Routes = [
 
@@ -120,6 +121,13 @@ const routes: Routes = [
   component: ResultComponent,
   pathMatch:'full'
 },
+
+{
+  path:'edition',
+  component: EditionComponent,
+  pathMatch:'full'
+},
+
 
 
 

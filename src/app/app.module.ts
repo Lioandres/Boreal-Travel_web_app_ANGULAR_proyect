@@ -23,6 +23,8 @@ import { NgbdDatepickerPopupModule } from './datepicker/datepicker-popup.module'
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
+import { EditionComponent } from './templates/edition/edition.component';
+import { TemplatesModule } from './templates/templates.module';
 
 
 @NgModule({
@@ -44,16 +46,19 @@ import { ResultComponent } from './result/result.component';
     ReservationComponent,
     ResultComponent,
     
+    
       ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FooterModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbdDatepickerPopupModule
+
+    NgbdDatepickerPopupModule,
+    FooterModule,
+    TemplatesModule
     
     
   ],

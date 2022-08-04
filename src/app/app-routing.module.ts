@@ -23,6 +23,8 @@ import { EditionComponent } from './templates/edition/edition.component';
 import { FindIdComponent } from './templates/find-id/find-id.component';
 import { ModifyTempComponent } from './templates/modify-temp/modify-temp.component';
 import { AddTemplateComponent } from './templates/add-template/add-template.component';
+import { DeleteTempComponent } from './templates/delete-temp/delete-temp.component';
+import { ShowLitsTempComponent } from './templates/show-lits-temp/show-lits-temp.component';
 
 const routes: Routes = [
 
@@ -143,19 +145,18 @@ const routes: Routes = [
     path:'addTemplate',
     component: AddTemplateComponent,
      pathMatch:'full'
+  },
+  {
+    path:'deleteTemp',
+    component: DeleteTempComponent,
+     pathMatch:'full'
+  },
+  {
+    path:'showTempList',
+    component: ShowLitsTempComponent,
+     pathMatch:'full'
   }]
-},
-
-// {
-//   path:'findId',
-//   component: FindIdComponent,
-//   pathMatch:'full'
-// },
-// {
-//   path:'modify',
-//   component: ModifyTempComponent,
-//   pathMatch:'full'
-// }
+}
 
 ];
 

@@ -9,14 +9,10 @@ import { ExcursionsService } from '../../services/excursions.service';
 })
 export class EditionComponent implements OnInit {
 
-  constructor(private excursionsService:ExcursionsService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
- get excursionList(){
-   return this.excursionsService.excursionList
- }
-
  
 
 }

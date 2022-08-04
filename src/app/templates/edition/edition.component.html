@@ -3,30 +3,12 @@
         <a  class="btn btn-dark mb-3" routerLink="findId" routerLinkActive="activebutton">Buscar Template</a>
         <a class="btn btn-dark mb-3"routerLink="modify" routerLinkActive="activebutton">Modificar Template</a>
         <a  class="btn btn-dark mb-3" routerLink="addTemplate" routerLinkActive="activebutton">Añadir Template</a>
-        
-        
-        <button type="button" class="btn btn-dark mb-3">Eliminar Template</button>
-        <button type="button" class="btn btn-dark mb-3">Ver lista Template</button>
+        <a  class="btn btn-dark mb-3" routerLink="deleteTemp" routerLinkActive="activebutton">Eliminar Template</a>
+        <a  class="btn btn-dark mb-3" routerLink="showTempList" routerLinkActive="activebutton">Ver lista Template</a>
     </div>
 
-  
-    <div class="row">
+    <router-outlet></router-outlet>            
+   
+          
 
-
-        <div class="col-6">
-            <router-outlet></router-outlet>            
-        </div>
-
-        <div class="col-4">
-            <div *ngFor="let item of excursionList">
-                <div class="property-item rounded overflow-hidden">
-                  
-                  <div class="p-4 pb-0 position-relative">
-                    <h5 class="text-primary mb-3">id:{{item.id }}    title:{{item.title}} </h5>
-                   
-                  </div>
-                </div>
-              </div> 
-        </div>
-    </div>
 </div>

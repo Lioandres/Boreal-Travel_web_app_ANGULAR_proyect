@@ -5,6 +5,8 @@ import { FindIdComponent } from './find-id/find-id.component';
 import { ModifyTempComponent } from './modify-temp/modify-temp.component';
 import { RouterModule } from '@angular/router';
 import { AddTemplateComponent } from './add-template/add-template.component';
+import { ShowLitsTempComponent } from './show-lits-temp/show-lits-temp.component';
+import { DeleteTempComponent } from './delete-temp/delete-temp.component';
 
 
 
@@ -14,6 +16,8 @@ import { AddTemplateComponent } from './add-template/add-template.component';
     FindIdComponent,
     ModifyTempComponent,
     AddTemplateComponent,
+    ShowLitsTempComponent,
+    DeleteTempComponent,
   ],
   imports: [
     CommonModule,

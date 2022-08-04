@@ -17,4 +17,6 @@ export class EditionComponent implements OnInit {
    return this.excursionsService.excursionList
  }
 
+ 
+
 }

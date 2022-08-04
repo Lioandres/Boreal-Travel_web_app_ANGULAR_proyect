@@ -20,6 +20,9 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
 import { EditionComponent } from './templates/edition/edition.component';
+import { FindIdComponent } from './templates/find-id/find-id.component';
+import { ModifyTempComponent } from './templates/modify-temp/modify-temp.component';
+import { AddTemplateComponent } from './templates/add-template/add-template.component';
 
 const routes: Routes = [
 
@@ -125,12 +128,34 @@ const routes: Routes = [
 {
   path:'edition',
   component: EditionComponent,
-  pathMatch:'full'
+  children:[
+    {
+    path:'findId',
+    component: FindIdComponent,
+     pathMatch:'full'
+  },
+    {
+    path:'modify',
+    component: ModifyTempComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'addTemplate',
+    component: AddTemplateComponent,
+     pathMatch:'full'
+  }]
 },
 
-
-
-
+// {
+//   path:'findId',
+//   component: FindIdComponent,
+//   pathMatch:'full'
+// },
+// {
+//   path:'modify',
+//   component: ModifyTempComponent,
+//   pathMatch:'full'
+// }
 
 ];
 

@@ -20,13 +20,13 @@ export class ShowLitsTempComponent implements OnInit {
   }
 
  
-  excursionListAPI:ExcursionTemplate[]=[]
+  excursionListFromAPI:ExcursionTemplate[]=[]
  
 
   getTempList() {
     this.http.get<TemplateList>('http://localhost:8080/api/template/list')
               .subscribe((resp:TemplateList)=>{
-                    this.excursionListAPI=resp.data                 
+                    this.excursionListFromAPI=resp.data                 
        })
  }
 

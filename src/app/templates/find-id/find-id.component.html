@@ -1,76 +1,48 @@
 <div class="row">
+    
     <div class="col-6">
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el Id de la excursion"
+            <input type="number" [(ngModel)]="id" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"
                 aria-label="Recipient's username" aria-describedby="basic-addon2" />
             <div class="input-group-append">
-                <button class="btn btn-dark" (click)="hit=!hit" type="button">Buscar</button>
+                <button class="btn btn-dark" (click)="hit=!hit;getExcursionTemp(id)" type="button">Buscar</button>
             </div>
         </div>
 
     </div>
 
     <div *ngIf="hit" class="col-6">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el Id de la excursion"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                
+                <h5 class="text-primary mb-3">Título</h5>  
+                <p>   {{excursionTemp.title}} </p>
+                <hr>  
+               
+                <h5 class="text-primary mb-3">Descripción</h5>  
+                <p>   {{excursionTemp.description}} </p>
+                <hr>  
 
-        </div>
+                <h5 class="text-primary mb-3">img</h5>  
+                <p>   {{excursionTemp.img}} </p>
+                <hr>  
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo titulo"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
-            </div>
-        </div>
+                <h5 class="text-primary mb-3">Numero maximo Personas</h5>  
+                <p>   {{excursionTemp.max_num_people_default}} </p>
+                <hr>  
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese la ruta de la imagen"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
-            </div>
-        </div>
+                <h5 class="text-primary mb-3">Precio</h5>  
+                <p>   {{excursionTemp.price_default}} </p>
+                <hr>  
 
-        <div class="input-group mb-3">
-            <select class="form-select" id="inputGroupSelect04">
-                <option selected>Choose...</option>
-                <option value="boreal">boreal</option>
-                <option value="lake">lake</option>
-                <option value="circle">circle</option>
-                <option value="bus">bus</option>
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
+                <h5 class="text-primary mb-3">Tipo</h5>  
+                <p>   {{excursionTemp.type}} </p>
+                <hr>  
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese la nueva descripción"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
+                
+           
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo precio"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo num maximo de personas"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
-
+       
 
     </div>
 </div>

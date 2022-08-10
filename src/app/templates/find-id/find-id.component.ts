@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Show } from 'src/app/interfaces/show.interface';
-import { ExcursionTemplate, TemplateList } from 'src/app/interfaces/templateList.interface';
+import { ExcursionTemplate } from 'src/app/interfaces/templateList.interface';
 
 @Component({
   selector: 'app-find-id',
@@ -14,8 +14,8 @@ export class FindIdComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  excursionTemp:ExcursionTemplate={
+  
+ excursionTemp:ExcursionTemplate={
     id_excursion_template:  "",
     title:                  "",
     img:                    "",
@@ -23,17 +23,27 @@ export class FindIdComponent implements OnInit {
     description:            "",
     price_default:          "",
     max_num_people_default: "",
+} 
+ respShow:Show={
+    status: 0,
+    error:true,
+    messages:"",
+    data:this.excursionTemp
 }
 
   
+
+
   id:number=1
-  hit:boolean=false
+  // hit:boolean=false
+  // isError:boolean=true
+  // errorMessage:string=""
 
   getExcursionTemp(id:number) {
     this.http.get<Show>('http://localhost:8080/api/template/show/'+id)
               .subscribe((resp:Show)=>{
-                    console.log(resp)
-                    this.excursionTemp=resp.data               
+                    this.respShow=resp
+                               
        })
  }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Show } from 'src/app/interfaces/show.interface';
 import { ExcursionTemplate } from 'src/app/interfaces/templateList.interface';
+import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({
   selector: 'app-find-id',
@@ -10,40 +11,20 @@ import { ExcursionTemplate } from 'src/app/interfaces/templateList.interface';
 })
 export class FindIdComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
   }
-  
- excursionTemp:ExcursionTemplate={
-    id_excursion_template:  "",
-    title:                  "",
-    img:                    "",
-    type:                   "",
-    description:            "",
-    price_default:          "",
-    max_num_people_default: "",
-} 
- respShow:Show={
-    status: 0,
-    error:true,
-    messages:"",
-    data:this.excursionTemp
+
+
+id:number=1
+ 
+get respShow (){
+  return this.petitionServ.respShow
 }
 
-  
+getExcursionTemp(id:number){
+  this.petitionServ.getExcursionTemp(id)
+}
 
-
-  id:number=1
-  // hit:boolean=false
-  // isError:boolean=true
-  // errorMessage:string=""
-
-  getExcursionTemp(id:number) {
-    this.http.get<Show>('http://localhost:8080/api/template/show/'+id)
-              .subscribe((resp:Show)=>{
-                    this.respShow=resp
-                               
-       })
- }
 }

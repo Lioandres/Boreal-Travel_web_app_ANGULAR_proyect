@@ -1,10 +1,11 @@
 <div class="row">
-    
+
     <div class="col-6">
 
         <div class="input-group mb-3">
-            <input type="number" [(ngModel)]="id" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            <input type="number" [(ngModel)]="id" class="form-control"
+                placeholder="Ingrese el Id de la excursion a buscar" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" />
             <div class="input-group-append">
                 <button class="btn btn-dark" (click)="getExcursionTemp(id)" type="button">Buscar</button>
             </div>
@@ -13,41 +14,44 @@
     </div>
 
     <div *ngIf="respShow.status!=0" class="col-6">
-                <div *ngIf="respShow.status===500" >
-                    <h5 class="text-primary mb-3">Título</h5>  
-                     <p>   {{respShow.messages}} </p>
-                     <hr>  
-                </div>
-                
-                <h5 class="text-primary mb-3">Título</h5>  
-                <p>   {{respShow.data.title}} </p>
-                <hr>  
-               
-                <h5 class="text-primary mb-3">Descripción</h5>  
-                <p>   {{respShow.data.description}} </p>
-                <hr>  
+        <div *ngIf="respShow.status===500">
+            <hr>
+            <h3 class="text-primary mb-3">{{respShow.messages}}</h3>
+            <hr>
+        </div>
 
-                <h5 class="text-primary mb-3">img</h5>  
-                <p>   {{respShow.data.img}} </p>
-                <hr>  
+        <div *ngIf="respShow.status===200">
 
-                <h5 class="text-primary mb-3">Numero maximo Personas</h5>  
-                <p>   {{respShow.data.max_num_people_default}} </p>
-                <hr>  
+            <h5 class="text-primary mb-3">Título</h5>
+            <p> {{respShow.data.title}} </p>
+            <hr>
 
-                <h5 class="text-primary mb-3">Precio</h5>  
-                <p>   {{respShow.data.price_default}} </p>
-                <hr>  
+            <h5 class="text-primary mb-3">Descripción</h5>
+            <p> {{respShow.data.description}} </p>
+            <hr>
 
-                <h5 class="text-primary mb-3">Tipo</h5>  
-                <p>   {{respShow.data.type}} </p>
-                <hr>  
+            <h5 class="text-primary mb-3">img</h5>
+            <p> {{respShow.data.img}} </p>
+            <hr>
 
-                
-           
+            <h5 class="text-primary mb-3">Numero maximo Personas</h5>
+            <p> {{respShow.data.max_num_people_default}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">Precio</h5>
+            <p> {{respShow.data.price_default}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">Tipo</h5>
+            <p> {{respShow.data.type}} </p>
+            <hr>
+        </div>
 
 
-       
+
+
+
+
 
     </div>
 </div>

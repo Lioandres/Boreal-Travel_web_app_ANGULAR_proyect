@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExcursionsService } from 'src/app/services/excursions.service';
 import { HttpClient } from '@angular/common/http';
 import { ExcursionTemplate, TemplateList } from '../../interfaces/templateList.interface';
+import { PetitionService } from '../../services/petition.service';
 
 @Component({
   selector: 'app-show-lits-temp',
@@ -10,24 +11,20 @@ import { ExcursionTemplate, TemplateList } from '../../interfaces/templateList.i
 })
 export class ShowLitsTempComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private petitionServ:PetitionService) { }
 
 
   ngOnInit(): void {
 
    this.getTempList()
-  
   }
 
- 
-  excursionListFromAPI:ExcursionTemplate[]=[]
- 
+ get excursionListFromAPI (){
+   return this.petitionServ.excursionListFromAPI
+ }
 
-  getTempList() {
-    this.http.get<TemplateList>('http://localhost:8080/api/template/list')
-              .subscribe((resp:TemplateList)=>{
-                    this.excursionListFromAPI=resp.data                 
-       })
+ getTempList (){
+   this.petitionServ.getTempList()
  }
 
 }

@@ -1,40 +1,48 @@
 <div class="raw">
     <div class="col-6">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el Id de la excursion"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
 
+        <form [formGroup]="modifyTempForm" (ngSubmit)="submit()">
+
+            <!-- <div class="mb-3">
+                <label for="inputName" class="form-label">Username</label>
+                <input formControlName="name" class="form-control" id="inputName">
+                <div class="warning" *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched">Debe contener 5 caracteres min</div>
+            </div> -->
+
+        <div class="input-group mb-3">
+            <input  formControlName="id" class="form-control" placeholder="Ingrese el Id de la excursion"/>
+            <div class="warning" *ngIf="modifyTempForm.get('id')?.invalid && modifyTempForm.get('id')?.touched">Ingrese solo números</div>
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo titulo"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            <input type="text" formControlName="title" class="form-control" placeholder="Ingrese el nuevo titulo"/>
+            <div class="warning" *ngIf="modifyTempForm.get('title')?.invalid && modifyTempForm.get('title')?.touched">Ingrese el título</div>
             <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
+                <button class="btn btn-dark" type="submit">Modificar</button>
             </div>
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese la ruta de la imagen"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            <input type="text" formControlName="path" class="form-control" placeholder="Ingrese la ruta de la imagen"/>
+            <div class="warning" *ngIf="modifyTempForm.get('path')?.invalid && modifyTempForm.get('path')?.touched">Ingrese la ruta</div>
             <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
+                <button class="btn btn-dark" type="submit">Modificar</button>
             </div>
         </div>
 
         <div class="input-group mb-3">
-            <select class="form-select" id="inputGroupSelect04">
-                <option selected>Choose...</option>
+            <select formControlName="path" class="form-select" id="inputGroupSelect04">
+                <option selected>Seleccione el tipo de excursion</option>
                 <option value="boreal">boreal</option>
                 <option value="lake">lake</option>
                 <option value="circle">circle</option>
                 <option value="bus">bus</option>
             </select>
             <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
+                <button class="btn btn-dark" type="submit">modificar</button>
             </div>
         </div>
-
+<!-- 
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Ingrese la nueva descripción"
                 aria-label="Recipient's username" aria-describedby="basic-addon2" />
@@ -57,7 +65,9 @@
             <div class="input-group-append">
                 <button class="btn btn-dark" type="button">modificar</button>
             </div>
-        </div>
+        </div> -->
+
+        </form>
 
     </div>
 </div>

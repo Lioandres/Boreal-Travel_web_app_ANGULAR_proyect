@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AddTemplateComponent } from './add-template/add-template.component';
 import { ShowLitsTempComponent } from './show-lits-temp/show-lits-temp.component';
 import { DeleteTempComponent } from './delete-temp/delete-temp.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +23,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TemplatesModule { }

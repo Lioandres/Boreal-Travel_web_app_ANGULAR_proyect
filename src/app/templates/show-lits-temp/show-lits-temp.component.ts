@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExcursionsService } from 'src/app/services/excursions.service';
-import { HttpClient } from '@angular/common/http';
-import { ExcursionTemplate, TemplateList } from '../../interfaces/templateList.interface';
+import { ApiTemplateShowList, ExcursionTemplate } from '../../interfaces/apiTemplateShowList.interface';
 import { PetitionService } from '../../services/petition.service';
 
 @Component({
@@ -16,15 +14,14 @@ export class ShowLitsTempComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.getTempList()
+   this.showListTemp()
   }
 
- get excursionListFromAPI (){
-   return this.petitionServ.excursionListFromAPI
- }
+excursionListTempFromAPI:ExcursionTemplate[]=[]
 
- getTempList (){
-   this.petitionServ.getTempList()
+showListTemp (){
+   this.petitionServ.showListTemp()
+      .subscribe((resp:ApiTemplateShowList)=>{this.excursionListTempFromAPI=resp.data})
  }
 
 }

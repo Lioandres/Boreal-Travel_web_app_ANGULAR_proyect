@@ -6,16 +6,16 @@
             <input type="number" [(ngModel)]="id" class="form-control"
                 placeholder="Ingrese el Id de la excursion a eliminar"/>
             <div class="input-group-append">
-                <button class="btn btn-dark" (click)="deleteExcursionTemp(id)" type="button">Eliminar</button>
+                <button class="btn btn-dark" (click)="deleteExcursion(id)" type="button">Eliminar</button>
             </div>
         </div>
 
     </div>
 
 
-    <div class="col-6" *ngIf="excursionTempFromApi.status===500">
+    <div class="col-6" *ngIf="excursionFromApi.status===500">
         <hr>
-        <h3 class="text-primary mb-3">{{excursionTempFromApi.messages}}</h3>
+        <h3 class="text-primary mb-3">{{excursionFromApi.messages}}</h3>
         <hr>
     </div>
 </div>

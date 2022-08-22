@@ -1,110 +1,120 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Show } from '../interfaces/show.interface';
-import { ExcursionTemplate, TemplateList } from '../interfaces/templateList.interface';
-import { ExcursionsService } from './excursions.service';
+import { Observable } from 'rxjs';
+import { ApiTemplateShow } from '../interfaces/apiTemplateShow.interface';
+
+import { APITempUpdate } from '../interfaces/apiTempUpdate.interface';
+import { ApiTemplateShowList, ExcursionTemplate } from '../interfaces/apiTemplateShowList.interface';
+import { environment } from '../../environments/environment';
+import { ApiShowList, Excursion } from '../interfaces/apiShowList.interface';
+import { ApiShow } from '../interfaces/apiShow.interface';
+import { APIUpdate } from '../interfaces/apiUpdate.interface';
+
+
+const baseUrl:string=environment.baseUrl
+const headers1 = new HttpHeaders({ 
+  
+  //'Access-Control-Allow-Origin':'*',
+  //'Access-Control-Allow-Headers': 'X-API-KEY, Origin,X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization',
+  //'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PATCH, PUT, DELETE',
+  
+  //'Access-Control-Requested-Method':'PUT,POST',
+ // 'Content-Type':'application/json/x-www-form-urlencoded',
+ //'Content-Length':'<calculated when request is sent>'
+});
+
+const body1={
+  "title":"sss",
+   "img":"dddd",
+   "type":"wwww",
+   "description":"sssss",
+   "price_default":1.20,
+   "max_num_people_default":30
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PetitionService {
 
   constructor(private http:HttpClient) { }
 
-  excursionTemp:ExcursionTemplate={
-    id_excursion_template:  "",
-    title:                  "",
-    img:                    "",
-    type:                   "",
-    description:            "",
-    price_default:          "",
-    max_num_people_default: "",
-} 
- respShow:Show={
-    status: 0,
-    error:true,
-    messages:"",
-    data:this.excursionTemp
+
+  // Template module petitions
+
+showListTemp():Observable<ApiTemplateShowList> {
+   return this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
+        
 }
-
-  id:number=1
- 
-
-  getExcursionTemp(id:number) {
-    this.http.get<Show>('http://localhost:8080/api/template/show/'+id)
-              .subscribe((resp:Show)=>{
-                    this.respShow=resp
-                               
-       })
+showExcursionTemp(id:number) {
+    return this.http.get<ApiTemplateShow>(baseUrl+'/api/template/show/'+id)
  }
 
 
- excursionListFromAPI:ExcursionTemplate[]=[]
- 
-
- getTempList() {
-   this.http.get<TemplateList>('http://localhost:8080/api/template/list')
-             .subscribe((resp:TemplateList)=>{
-                   this.excursionListFromAPI=resp.data                 
-      })
+deleteExcursionTemp(id:number) {
+  return this.http.delete<ApiTemplateShow>(baseUrl+'/api/template/delete/'+id)
 }
 
+addExcursionTemp(excursionData:ExcursionTemplate) {
+  return this.http.post<APITempUpdate>(baseUrl+'/api/template/add/',
+   {
+     "title":excursionData.title,
+      "img":excursionData.img,
+      "type":excursionData.type,
+      "description":excursionData.description,
+      "price_default":excursionData.price_default,
+      "max_num_people_default":excursionData.max_num_people_default
+ },{headers:headers1})
+            
+ }
+ 
 
-modifyExcursionTemp() {
-  this.http.put<Show>('http://localhost:8080/api/template/update/20',
+modifyExcursionTemp(excursionData:ExcursionTemplate) {
+ return this.http.put<APITempUpdate>(baseUrl+'/api/template/update/'+excursionData.id_excursion_template,
   {
-    "title":"sss",
-     "img":"dddd",
-     "type":"wwww",
-     "description":"sssss",
-     "price_default":1.20,
-     "max_num_people_default":30
-})
-            .subscribe((resp:Show)=>{
-                  this.respShow=resp
-                  console.log(this.respShow.data)
-                             
-     })
+    "title":excursionData.title,
+     "img":excursionData.img,
+     "type":excursionData.type,
+     "description":excursionData.description,
+     "price_default":excursionData.price_default,
+     "max_num_people_default":excursionData.max_num_people_default
+},{headers:headers1})
+           
 }
 
-// modifyExcursionTemp(id:number,title:string,img:string,type:string,description:string,price_default:number,max_num_people_default:number) {
-//   this.http.put<Show>('http://localhost:8080/api/template/update/'+id,
-//   {
-//     "title":title,
-//      "img":img,
-//      "type":type,
-//      "description":description,
-//      "price_default":price_default,
-//      "max_num_people_default":max_num_people_default
-// })
-//             .subscribe((resp:Show)=>{
-//                   this.respShow=resp
-//                   console.log(this.respShow.data)
+// Excursion Module petitions
+
+showList():Observable<ApiShowList> {
+  return this.http.get<ApiShowList>(baseUrl+'/api/excursion/list')
+       
+}
+
+showExcursion(id:number):Observable<ApiShow> {
+  return this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
+}
+
+deleteExcursion(id:number):Observable<ApiShow> {
+  return this.http.delete<ApiShow>(baseUrl+'/api/excursion/delete/'+id)
+}
+
+modifyExcursion(excursionData:Excursion) {
+  return this.http.put<APIUpdate>(baseUrl+'/api/excursion/update/'+excursionData.id_excursion,
+   {
+     "excursions_template_id":excursionData.excursions_template_id,
+      "user_id":excursionData.user_id,
+      "num_max_people":excursionData.num_max_people,
+      "price":excursionData.price,
+      "start":excursionData.start,
+      "end":excursionData.end
+ },{headers:headers1})
+            
+ }
+          
                              
-//      })
-// }
-
-// modifyExcursionTemp(excursionData:ExcursionTemplate) {
-//   this.http.put<Show>('http://localhost:8080/api/template/update/'+excursionData.id_excursion_template,{
-//     "title":excursionData.title,
-//      "img":excursionData.img,
-//      "type":excursionData.type,
-//      "description":excursionData.description,
-//      "price_default":excursionData.price_default,
-//      "max_num_people_default":excursionData.max_num_people_default
-// })
-//             .subscribe((resp:Show)=>{
-//                   this.respShow=resp
-//                   console.log(this.respShow.data)
-                             
-//      })
-// }
-
-
- 
+     
 
 }
-function body<T>(arg0: string, body: any, arg2: { title: any; img: any; description: any; type: any; price: any; }) {
-  throw new Error('Function not implemented.');
-}
+
 

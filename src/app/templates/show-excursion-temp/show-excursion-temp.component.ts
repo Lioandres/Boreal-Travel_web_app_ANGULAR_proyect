@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiTemplateShow } from 'src/app/interfaces/apiTemplateShow.interface';
+import { ApiTemplateShow} from 'src/app/interfaces/apiTemplateShow.interface';
 import { ExcursionTemplate } from 'src/app/interfaces/apiTemplateShowList.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({
-  selector: 'app-delete-temp',
-  templateUrl: './delete-temp.component.html',
-  styleUrls: ['./delete-temp.component.css']
+  selector: 'app-show-excursion-temp',
+  templateUrl: './show-excursion-temp.component.html',
+  styleUrls: ['./show-excursion-temp.component.css']
 })
-export class DeleteTempComponent implements OnInit {
+export class ShowExcursionTempComponent implements OnInit {
 
   constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
   }
 
-  id:number=1
- 
-  excursionTemp:ExcursionTemplate={
+excursionTemp:ExcursionTemplate={
     id_excursion_template:  "",
     title:                  "",
     img:                    "",
@@ -33,10 +31,13 @@ export class DeleteTempComponent implements OnInit {
     data:this.excursionTemp
 }
 
-deleteExcursionTemp(id:number){
-       this.petitionServ.deleteExcursionTemp(id)
-              .subscribe((resp)=>console.log(resp))
+id:number=1
+ 
+
+
+showExcursionTemp(id:number){
+       this.petitionServ.showExcursionTemp(id)
+              .subscribe((resp:ApiTemplateShow)=>{this.excursionTempFromApi=resp})
   }
 
 }
-

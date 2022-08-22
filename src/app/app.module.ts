@@ -25,6 +25,12 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
 import { EditionComponent } from './templates/edition/edition.component';
 import { TemplatesModule } from './templates/templates.module';
+import { AddExcursionComponent } from './excursions/add-excursion/add-excursion.component';
+import { DeleteExcursionComponent } from './excursions/delete-excursion/delete-excursion.component';
+import { ModifyExcursionComponent } from './excursions/modify-excursion/modify-excursion.component';
+import { ShowExcursionComponent } from './excursions/show-excursion/show-excursion.component';
+import { ShowListExcursionComponent } from './excursions/show-list-excursion/show-list-excursion.component';
+import { EditionExcursionComponent } from './excursions/edition-excursion/edition-excursion.component';
 
 
 @NgModule({
@@ -45,6 +51,12 @@ import { TemplatesModule } from './templates/templates.module';
     GaleriaComponent,
     ReservationComponent,
     ResultComponent,
+    AddExcursionComponent,
+    DeleteExcursionComponent,
+    ModifyExcursionComponent,
+    ShowExcursionComponent,
+    ShowListExcursionComponent,
+    EditionExcursionComponent,
     
     
       ],

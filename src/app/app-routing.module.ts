@@ -1,7 +1,6 @@
 import { CircleComponent } from './circle/circle.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { BorealComponent } from './boreal/boreal.component';
 
 import { HomeComponent } from './home/home.component';
@@ -20,11 +19,17 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
 import { EditionComponent } from './templates/edition/edition.component';
-import { FindIdComponent } from './templates/find-id/find-id.component';
 import { ModifyTempComponent } from './templates/modify-temp/modify-temp.component';
 import { AddTemplateComponent } from './templates/add-template/add-template.component';
 import { DeleteTempComponent } from './templates/delete-temp/delete-temp.component';
 import { ShowLitsTempComponent } from './templates/show-lits-temp/show-lits-temp.component';
+import { ShowExcursionTempComponent } from './templates/show-excursion-temp/show-excursion-temp.component';
+import { EditionExcursionComponent } from './excursions/edition-excursion/edition-excursion.component';
+import { ShowExcursionComponent } from './excursions/show-excursion/show-excursion.component';
+import { ModifyExcursionComponent } from './excursions/modify-excursion/modify-excursion.component';
+import { AddExcursionComponent } from './excursions/add-excursion/add-excursion.component';
+import { DeleteExcursionComponent } from './excursions/delete-excursion/delete-excursion.component';
+import { ShowListExcursionComponent } from './excursions/show-list-excursion/show-list-excursion.component';
 
 const routes: Routes = [
 
@@ -132,8 +137,8 @@ const routes: Routes = [
   component: EditionComponent,
   children:[
     {
-    path:'findId',
-    component: FindIdComponent,
+    path:'showTemp',
+    component: ShowExcursionTempComponent,
      pathMatch:'full'
   },
     {
@@ -154,6 +159,36 @@ const routes: Routes = [
   {
     path:'showTempList',
     component: ShowLitsTempComponent,
+     pathMatch:'full'
+  }]
+},
+{
+  path:'editionExcursion',
+  component: EditionExcursionComponent,
+  children:[
+    {
+    path:'showExcursion',
+    component: ShowExcursionComponent,
+     pathMatch:'full'
+  },
+    {
+    path:'modifyExcursion',
+    component: ModifyExcursionComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'addExcursion',
+    component: AddExcursionComponent,
+     pathMatch:'full'
+  },
+  {
+    path:'deleteExcursion',
+    component: DeleteExcursionComponent,
+     pathMatch:'full'
+  },
+  {
+    path:'showListExcursion',
+    component: ShowListExcursionComponent,
      pathMatch:'full'
   }]
 }

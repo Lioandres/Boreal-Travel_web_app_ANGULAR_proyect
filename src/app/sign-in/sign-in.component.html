@@ -4,12 +4,12 @@
         <div class="col-4">
             <form [formGroup]=logInForm (ngSubmit)="logIn()">
                 <div class="mb-3">
-                    <label for="inputName" class="form-label">Username</label>
+                    <label for="inputName" class="form-label">Nombre de Usuario</label>
                     <input formControlName="name" class="form-control" id="inputName">
                     <div class="warning" *ngIf="logInForm.get('name')?.invalid && logInForm.get('name')?.touched">Debe contener 5 caracteres min</div>
                 </div>
                 <div class="mb-3">
-                  <label for="inputPassword" class="form-label">Password</label>
+                  <label for="inputPassword" class="form-label">Contraseña</label>
                   <input formControlName="password" class="form-control" id="inputPassword">
                   <div class="warning" *ngIf="logInForm.get('password')?.invalid && logInForm.get('password')?.touched">Debe contener 8 caracteres como mínimo</div>
                 </div>

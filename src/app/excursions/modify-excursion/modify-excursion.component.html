@@ -1,0 +1,56 @@
+<div class="raw">
+    <div class="col-6">
+
+        <form [formGroup]="modifyForm" (ngSubmit)="modifyExcursion()">
+
+            
+
+        <div class="input-group mb-3">
+            <input  formControlName="id_excursion" class="form-control" placeholder="Ingrese el Id de la excursion a modificar"/>
+            <div class="warning" *ngIf="modifyForm.get('id_excursion')?.invalid && modifyForm.get('id_excursion')?.touched" >Ingrese solo números</div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" formControlName="excursions_template_id" class="form-control" placeholder="Ingrese el id de template a asignar a la excursion"/>
+            <div class="warning" *ngIf="modifyForm.get('excursions_template_id')?.invalid && modifyForm.get('excursions_template_id')?.touched">Ingrese el id de templete de excursion</div>
+            
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" formControlName="user_id" class="form-control" placeholder="Ingrese el número de usuario"/>
+            <div class="warning" *ngIf="modifyForm.get('user_id')?.invalid && modifyForm.get('user_id')?.touched">Ingrese el numero de usuario</div>
+            
+        </div>
+         
+       
+        <div class="input-group mb-3">
+            <input type="text" formControlName="num_max_people" class="form-control" placeholder="Ingrese el número máximo de personas"/>
+            <div class="warning" *ngIf="modifyForm.get('num_max_people')?.invalid && modifyForm.get('num_max_people')?.touched">Ingrese el número máximo de personas"</div>
+        </div>
+ 
+      
+        <div class="input-group mb-3">
+            <input type="text" formControlName="price" class="form-control" placeholder="Ingrese el nuevo precio"/>
+            <div class="warning" *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">Formato con 2 decimales (ejem: 123.00) .Número máximo 9999.99</div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" formControlName="start" class="form-control" placeholder="Ingrese el dia de incio de la excursion"/>
+             <div class="warning" *ngIf="modifyForm.get('start')?.invalid && modifyForm.get('start')?.touched">Ingrese el dia de inicio de la excursion"</div>
+        </div> 
+
+      
+        <div class="input-group mb-3">
+            <input type="text" formControlName="end" class="form-control" placeholder="Ingrese el dia en que finaliza la excursion"/>
+             <div class="warning" *ngIf="modifyForm.get('end')?.touched">Ingrese el dia en que finaliza la excursion"</div>
+        </div> 
+
+
+        <div class="input-group-append">
+            <button class="btn btn-dark" type="submit">modificar</button>
+        </div>
+
+        </form>
+
+    </div>
+</div>

@@ -1,66 +1,53 @@
-<div class="row">
-
+<div class="raw">
     <div class="col-6">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el Id de la excursion"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
 
+        <form [formGroup]="addTempForm" (ngSubmit)="addExcursionTemp()">
+
+
+        <div class="input-group mb-3">
+            <input type="text" formControlName="title" class="form-control" placeholder="Ingrese el titulo"/>
+            <div class="warning" *ngIf="addTempForm.get('title')?.invalid && addTempForm.get('title')?.touched">Ingrese el título max 30 caracteres</div>
+            
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo titulo"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
-            </div>
+            <input type="text" formControlName="img" class="form-control" placeholder="Ingrese la ruta de la imagen"/>
+            <div class="warning" *ngIf="addTempForm.get('path')?.invalid && addTempForm.get('path')?.touched">Ingrese la ruta de la imagen como "assets/img/nombreImagen.webp"</div>
+            
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese la ruta de la imagen"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">Modificar</button>
-            </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <select class="form-select" id="inputGroupSelect04">
-                <option selected>Choose...</option>
+            <select formControlName="type" class="form-select" id="inputGroupSelect04">
+                <option value="" disabled selected hidden>Elija un tipo de excusión</option>
                 <option value="boreal">boreal</option>
                 <option value="lake">lake</option>
                 <option value="circle">circle</option>
                 <option value="bus">bus</option>
             </select>
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
+        </div>
+         
+       
+        <div class="input-group mb-3">
+            <input type="text" formControlName="description" class="form-control" placeholder="Ingrese la nueva descripción"/>
+            <div class="warning" *ngIf="addTempForm.get('description')?.invalid && addTempForm.get('description')?.touched">Ingrese la descripcion de la excursion. Max 1000 caracteres"</div>
+        </div>
+ 
+      
+        <div class="input-group mb-3">
+            <input type="text" formControlName="price_default" class="form-control" placeholder="Ingrese el nuevo precio"/>
+            <div class="warning" *ngIf="addTempForm.get('price_default')?.invalid && addTempForm.get('price_default')?.touched">Formato con 2 decimales (ejem: 123.00) .Número máximo 9999.99</div>
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese la nueva descripción"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
+            <input type="text" formControlName="max_num_people_default" class="form-control" placeholder="Ingrese el nuevo num maximo de personas"/>
+             <div class="warning" *ngIf="addTempForm.get('max_num_people_default')?.invalid && addTempForm.get('max_num_people_default')?.touched">Ingrese el número máximo de personas"</div>
+        </div> 
+
+        <div class="input-group-append">
+            <button class="btn btn-dark" type="submit">Añadir</button>
         </div>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo precio"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese el nuevo num maximo de personas"
-                aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button">modificar</button>
-            </div>
-        </div>
-
-        <button class="btn btn-dark" type="button">Añadir Template</button>
+        </form>
 
     </div>
 </div>

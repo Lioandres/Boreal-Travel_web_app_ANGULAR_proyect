@@ -1,38 +1,28 @@
 // To parse this data:
 //
-//   import { Convert, TemplateList } from "./file";
+//   import { Convert, APITempUpdate } from "./file";
 //
-//   const templateList = Convert.toTemplateList(json);
+//   const aPITempUpdate = Convert.toAPITempUpdate(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface TemplateList {
-    status:   number;
-    error:    boolean;
-    messages: string;
-    data:     ExcursionTemplate[];
-}
-
-export interface ExcursionTemplate {
-    id_excursion_template:  string;
-    title:                  string;
-    img:                    string;
-    type:                   string;
-    description:            string;
-    price_default:          string;
-    max_num_people_default: string;
+export interface APITempUpdate {
+    status:  number;
+    error:   boolean;
+    message: string;
+    data:    [];
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toTemplateList(json: string): TemplateList {
-        return cast(JSON.parse(json), r("TemplateList"));
+    public static toAPITempUpdate(json: string): APITempUpdate {
+        return cast(JSON.parse(json), r("APITempUpdate"));
     }
 
-    public static templateListToJson(value: TemplateList): string {
-        return JSON.stringify(uncast(value, r("TemplateList")), null, 2);
+    public static aPITempUpdateToJson(value: APITempUpdate): string {
+        return JSON.stringify(uncast(value, r("APITempUpdate")), null, 2);
     }
 }
 
@@ -169,19 +159,10 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "TemplateList": o([
+    "APITempUpdate": o([
         { json: "status", js: "status", typ: 0 },
         { json: "error", js: "error", typ: true },
-        { json: "messages", js: "messages", typ: "" },
-        { json: "data", js: "data", typ: a(r("ExcursionTemplate")) },
-    ], false),
-    "ExcursionTemplate": o([
-        { json: "id_excursion_template", js: "id_excursion_template", typ: "" },
-        { json: "title", js: "title", typ: "" },
-        { json: "img", js: "img", typ: "" },
-        { json: "type", js: "type", typ: "" },
-        { json: "description", js: "description", typ: "" },
-        { json: "price_default", js: "price_default", typ: "" },
-        { json: "max_num_people_default", js: "max_num_people_default", typ: "" },
+        { json: "message", js: "message", typ: "" },
+        { json: "data", js: "data", typ: a("any") },
     ], false),
 };

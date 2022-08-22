@@ -1,0 +1,33 @@
+import { Component, OnInit } from '@angular/core';
+import { Excursion } from 'src/app/interfaces/apiShow.interface';
+import { ApiShowList } from 'src/app/interfaces/apiShowList.interface';
+import { PetitionService } from 'src/app/services/petition.service';
+
+
+@Component({
+  selector: 'app-show-list-excursion',
+  templateUrl: './show-list-excursion.component.html',
+  styleUrls: ['./show-list-excursion.component.css']
+})
+export class ShowListExcursionComponent implements OnInit {
+
+  constructor(private petitionServ:PetitionService) { }
+
+
+  ngOnInit(): void {
+
+   this.showList()
+  }
+
+excursionListFromAPI:Excursion[]=[]
+
+
+showList (){
+   this.petitionServ.showList()
+      .subscribe((resp:ApiShowList)=>{this.excursionListFromAPI=resp.data})
+
+   }
+
+
+
+}

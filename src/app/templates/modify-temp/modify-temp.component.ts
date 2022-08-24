@@ -32,11 +32,12 @@ export class ModifyTempComponent implements OnInit {
   
 
   modifyExcursionTemp(){
+    this.modifyTempForm.markAllAsTouched()
+
     if(this.modifyTempForm.valid){
 
 
       console.log(this.modifyTempForm.value)
-
       console.log(
       this.modifyTempForm.get('id_excursion_template')?.value,
       this.modifyTempForm.get('title')?.value,

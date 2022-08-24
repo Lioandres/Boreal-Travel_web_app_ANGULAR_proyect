@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 import { ApiShowList, Excursion } from '../interfaces/apiShowList.interface';
 import { ApiShow } from '../interfaces/apiShow.interface';
 import { APIUpdate } from '../interfaces/apiUpdate.interface';
+import { apiExcursionTemplateBody } from '../interfaces/apiExcursionTemplateBody.interface';
 
 
 const baseUrl:string=environment.baseUrl
@@ -57,7 +58,7 @@ deleteExcursionTemp(id:number) {
   return this.http.delete<ApiTemplateShow>(baseUrl+'/api/template/delete/'+id)
 }
 
-addExcursionTemp(excursionData:ExcursionTemplate) {
+addExcursionTemp(excursionData:apiExcursionTemplateBody) {
   return this.http.post<APITempUpdate>(baseUrl+'/api/template/add/',
    {
      "title":excursionData.title,
@@ -99,15 +100,15 @@ deleteExcursion(id:number):Observable<ApiShow> {
   return this.http.delete<ApiShow>(baseUrl+'/api/excursion/delete/'+id)
 }
 
-modifyExcursion(excursionData:Excursion) {
+modifyExcursion(excursionData:Excursion,start:Date,end:Date) {
   return this.http.put<APIUpdate>(baseUrl+'/api/excursion/update/'+excursionData.id_excursion,
    {
      "excursions_template_id":excursionData.excursions_template_id,
       "user_id":excursionData.user_id,
       "num_max_people":excursionData.num_max_people,
       "price":excursionData.price,
-      "start":excursionData.start,
-      "end":excursionData.end
+      "start":start,
+      "end":end
  },{headers:headers1})
             
  }

@@ -29,6 +29,7 @@ export class AddTemplateComponent implements OnInit {
 
   
     addExcursionTemp(){
+      this.addTempForm.markAllAsTouched()
       if(this.addTempForm.valid){
   
         console.log(this.addTempForm.value)

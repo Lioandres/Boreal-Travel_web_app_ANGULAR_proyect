@@ -9,13 +9,13 @@ import { environment } from '../../environments/environment';
 import { ApiShowList, Excursion } from '../interfaces/apiShowList.interface';
 import { ApiShow } from '../interfaces/apiShow.interface';
 import { APIUpdate } from '../interfaces/apiUpdate.interface';
-import { apiExcursionTemplateBody } from '../interfaces/apiExcursionTemplateBody.interface';
+import { Temps } from '../interfaces/temps.interface';
 
 
 const baseUrl:string=environment.baseUrl
 const headers1 = new HttpHeaders({ 
   
-  //'Access-Control-Allow-Origin':'*',
+  'Access-Control-Allow-Origin':'*',
   //'Access-Control-Allow-Headers': 'X-API-KEY, Origin,X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization',
   //'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PATCH, PUT, DELETE',
   
@@ -42,13 +42,25 @@ export class PetitionService {
 
   constructor(private http:HttpClient) { }
 
+  // whather petitions
+
+  getWeather():Observable<Temps> {
+    return this.http.get<Temps>('https://api.openweathermap.org/data/2.5/weather?id=3413829&units=metric&lang=sp&appid=8e42f1a13fa0e057ce270526d580687f')     
+       }
+ 
+
 
   // Template module petitions
+excursionListTempFromAPI:ExcursionTemplate[]=[]
 
-showListTemp():Observable<ApiTemplateShowList> {
-   return this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
-        
+showListTemp() {
+   this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
+    .subscribe((resp:ApiTemplateShowList)=>{this.excursionListTempFromAPI=resp.data})
 }
+
+
+
+
 showExcursionTemp(id:number) {
     return this.http.get<ApiTemplateShow>(baseUrl+'/api/template/show/'+id)
  }
@@ -58,7 +70,7 @@ deleteExcursionTemp(id:number) {
   return this.http.delete<ApiTemplateShow>(baseUrl+'/api/template/delete/'+id)
 }
 
-addExcursionTemp(excursionData:apiExcursionTemplateBody) {
+addExcursionTemp(excursionData:ExcursionTemplate) {
   return this.http.post<APITempUpdate>(baseUrl+'/api/template/add/',
    {
      "title":excursionData.title,
@@ -87,10 +99,12 @@ modifyExcursionTemp(excursionData:ExcursionTemplate) {
 
 // Excursion Module petitions
 
-showList():Observable<ApiShowList> {
-  return this.http.get<ApiShowList>(baseUrl+'/api/excursion/list')
-       
+excursionListFromAPI:Excursion[]=[]
+showList() {
+   this.http.get<ApiShowList>(baseUrl+'/api/excursion/list')
+    .subscribe((resp:ApiShowList)=>{this.excursionListFromAPI=resp.data})
 }
+
 
 showExcursion(id:number):Observable<ApiShow> {
   return this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
@@ -100,16 +114,35 @@ deleteExcursion(id:number):Observable<ApiShow> {
   return this.http.delete<ApiShow>(baseUrl+'/api/excursion/delete/'+id)
 }
 
-modifyExcursion(excursionData:Excursion,start:Date,end:Date) {
-  return this.http.put<APIUpdate>(baseUrl+'/api/excursion/update/'+excursionData.id_excursion,
-   {
+
+addExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdate> {
+
+  return this.http.post<APIUpdate>(baseUrl+'/api/excursion/add',
+{
      "excursions_template_id":excursionData.excursions_template_id,
       "user_id":excursionData.user_id,
       "num_max_people":excursionData.num_max_people,
       "price":excursionData.price,
       "start":start,
       "end":end
- },{headers:headers1})
+ },
+ {headers:headers1})
+            
+ }
+
+modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdate> {
+
+
+  return this.http.put<APIUpdate>(baseUrl+'/api/excursion/update/'+excursionData.id_excursion,
+{
+     "excursions_template_id":excursionData.excursions_template_id,
+      "user_id":excursionData.user_id,
+      "num_max_people":excursionData.num_max_people,
+      "price":excursionData.price,
+      "start":start,
+      "end":end
+ },
+ {headers:headers1})
             
  }
           

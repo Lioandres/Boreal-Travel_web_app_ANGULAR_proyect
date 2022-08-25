@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup,  Validators } from '@angular/forms';
-import { Excursion } from '../interfaces/interfaces';
+import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuxService } from '../services/general.service';
@@ -23,7 +23,7 @@ export class ExcuInfoComponent implements OnInit {
   // idExcursion  from Services 
   idExcursion:number=this.excursionsService.id
 
-  get excursionList():Excursion[] {
+  get excursionList():Excursion_[] {
     return this.excursionsService.excursionList
   }
 
@@ -42,7 +42,7 @@ export class ExcuInfoComponent implements OnInit {
   
   myform:FormGroup= this.fb.group({
     peopleInput:[0,[Validators.required,Validators.min(1),Validators.pattern('^([1-9]+\\d*)|[0]')]],
-    dateInput:[0,[Validators.required]]
+    
   })
   
  

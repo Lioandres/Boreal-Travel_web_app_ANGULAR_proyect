@@ -1,4 +1,4 @@
-export interface Excursion{
+export interface Excursion_{
     id:number;
     title:string;
     price:number;

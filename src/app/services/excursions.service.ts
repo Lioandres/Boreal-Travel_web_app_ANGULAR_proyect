@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Excursion } from '../interfaces/interfaces';
+import { Router } from '@angular/router';
+import { Excursion } from '../interfaces/apiShowList.interface';
+import { Excursion_ } from '../interfaces/excursion_';
+import { PetitionService } from './petition.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExcursionsService {
 
-  constructor() { }
+  constructor(private route:Router,
+              private petitionServ:PetitionService) { }
 
- excursionRepository: Excursion[]=[
+ excursionRepository: Excursion_[]=[
 
 
   {
@@ -270,7 +275,7 @@ _month:{value:number, month:string, year:number}[]=[
 
 
  
- get excursionList():Excursion[] {
+ get excursionList():Excursion_[] {
   return [...this.excursionRepository]
   }
 
@@ -292,11 +297,26 @@ _month:{value:number, month:string, year:number}[]=[
   }
 
 
-resultExcursionFound:Excursion[]=[]
+resultExcursionFound:Excursion_[]=[]
 
 findExcursionAux(KeyWord:string) {
     let keyWord=KeyWord.toLowerCase()
     this.resultExcursionFound=this.excursionList.filter(excursion=>excursion.title.toLowerCase().includes(keyWord) ||excursion.description.toLowerCase().includes(keyWord) || excursion.month.includes(keyWord))
     console.log (this.resultExcursionFound)
     } 
+
+resultExcursionFound2:Excursion[]=[]
+
+findExcursions2 (start:Date,end:Date) {
+
+  this.resultExcursionFound2=this.petitionServ.excursionListFromAPI.filter(excursion=>excursion.start<=start)
+
+  this.route.navigate(['/result'])
+  
+  console.log(this.resultExcursionFound2)
+  console.log(start,end)
+
 }
+
+}
+

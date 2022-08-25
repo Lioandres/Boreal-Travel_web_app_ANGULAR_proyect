@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExcursionsService } from '../services/excursions.service';
 import { AuxService } from '../services/general.service';
-import { Excursion } from '../interfaces/interfaces';
+
 
 @Component({
   selector: 'app-reservation',

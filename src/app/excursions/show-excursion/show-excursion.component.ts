@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiShow, Excursion } from 'src/app/interfaces/apiShow.interface';
+import { ApiShow } from 'src/app/interfaces/apiShow.interface';
+import { Excursion } from 'src/app/interfaces/apiShowList.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({

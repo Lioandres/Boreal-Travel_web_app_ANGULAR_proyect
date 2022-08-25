@@ -14,9 +14,14 @@ import { AuxService } from '../services/general.service';
     }
   ]
 })
+
+
 export class NgbdDatepickerPopup implements ControlValueAccessor{
 
   constructor(private auxServ:AuxService){}
+
+  
+ 
 
   date: NgbDateStruct | undefined;
 

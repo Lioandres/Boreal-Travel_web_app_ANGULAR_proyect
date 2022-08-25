@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Excursion } from 'src/app/interfaces/apiShow.interface';
-import { ApiShowList } from 'src/app/interfaces/apiShowList.interface';
+import { ApiShowList, Excursion } from 'src/app/interfaces/apiShowList.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 
 
@@ -16,17 +15,13 @@ export class ShowListExcursionComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.showList()
   }
 
-excursionListFromAPI:Excursion[]=[]
+get excursionListFromAPI(){
+  return this.petitionServ.excursionListFromAPI
+}
 
 
-showList (){
-   this.petitionServ.showList()
-      .subscribe((resp:ApiShowList)=>{this.excursionListFromAPI=resp.data})
-
-   }
 
 
 

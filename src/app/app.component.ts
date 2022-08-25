@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Temps } from './interfaces/temps.interface';
 import { AuxService } from './services/general.service';
 import { HttpClient } from '@angular/common/http';
+import { PetitionService } from './services/petition.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   constructor(private auxServ:AuxService,
-              private http:HttpClient
+              private petitionServ:PetitionService,
+           
                             
               ){}
               
@@ -18,6 +20,8 @@ export class AppComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
    this.getWeather()
+   this.petitionServ.showListTemp()
+   this.petitionServ.showList()
   
   }
 
@@ -26,9 +30,8 @@ export class AppComponent {
   temp:number=3
 
   getWeather() {
-    this.http.get<Temps>('https://api.openweathermap.org/data/2.5/weather?id=3413829&units=metric&lang=sp&appid=8e42f1a13fa0e057ce270526d580687f')
+    this.petitionServ.getWeather()
               .subscribe((resp:Temps)=>{
-                    console.log(resp.weather[0].icon)
                     this.icon=resp.weather[0].icon  
                     this.temp=resp.main.temp          
        })

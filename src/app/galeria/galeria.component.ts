@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Excursion } from '../interfaces/interfaces';
+import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
 
 
@@ -14,7 +14,7 @@ export class GaleriaComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  get excursionList():Excursion[] {
+  get excursionList():Excursion_[] {
     return this.excursionsService.excursionList
   }
 

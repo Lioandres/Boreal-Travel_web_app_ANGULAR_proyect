@@ -1,5 +1,5 @@
 import { Component,  Input,  OnInit } from '@angular/core';
-import { Excursion } from '../interfaces/interfaces';
+import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ExcursionsComponent implements OnInit {
 
  @Input("typeExcursion")   typeExcursion:string=""
 
-  get excursionList():Excursion[] {
+  get excursionList():Excursion_[] {
     return this.excursionsService.excursionList
   }
 

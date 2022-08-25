@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Excursion } from '../interfaces/interfaces';
+import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
 
 @Component({
@@ -14,11 +14,11 @@ export class BusComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get excursionList():Excursion[] {
+  get excursionList():Excursion_[] {
     return this.excursionsService.excursionList
   }
 
-  busExcursionsList:Excursion[]=this.excursionList.filter(item=>item.type==="bus")
+  busExcursionsList:Excursion_[]=this.excursionList.filter(item=>item.type==="bus")
 
 
 }

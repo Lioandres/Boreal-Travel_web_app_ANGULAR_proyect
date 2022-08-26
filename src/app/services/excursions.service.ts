@@ -273,48 +273,58 @@ _month:{value:number, month:string, year:number}[]=[
 ]
 
 
-
- 
  get excursionList():Excursion_[] {
   return [...this.excursionRepository]
   }
 
+  
   get month() {
     return [...this._month]
   }
 
 
-  _id:number=0
+id:number=0
+idTemp:number=0
 
-  setId (id:number) {
-    this._id=id
+setExcursionIds (id:number,idTemp:number) {
+    this.id=id
+    this.idTemp=idTemp
   } 
 
 
   
-  get id () {
-    return this._id
-  }
+ 
 
 
-resultExcursionFound:Excursion_[]=[]
+// resultExcursionFound:Excursion_[]=[]
 
-findExcursionAux(KeyWord:string) {
-    let keyWord=KeyWord.toLowerCase()
-    this.resultExcursionFound=this.excursionList.filter(excursion=>excursion.title.toLowerCase().includes(keyWord) ||excursion.description.toLowerCase().includes(keyWord) || excursion.month.includes(keyWord))
-    console.log (this.resultExcursionFound)
-    } 
+// findExcursionAux(KeyWord:string) {
+//     let keyWord=KeyWord.toLowerCase()
+//     this.resultExcursionFound=this.excursionList.filter(excursion=>excursion.title.toLowerCase().includes(keyWord) ||excursion.description.toLowerCase().includes(keyWord) || excursion.month.includes(keyWord))
+//     console.log (this.resultExcursionFound)
+//     } 
 
-resultExcursionFound2:Excursion[]=[]
 
-findExcursions2 (start:Date,end:Date) {
 
-  this.resultExcursionFound2=this.petitionServ.excursionListFromAPI.filter(excursion=>excursion.start<=start)
+
+
+
+
+
+resultExcursionFound:Excursion[]=[]
+
+findExcursions (start:Date,end:Date) {
+  
+ 
+ 
+
+  this.resultExcursionFound=this.petitionServ.excursionListFromAPI.filter(excursion=>(new Date(excursion.start).getTime()>=start.getTime())&&(new Date(excursion.end).getTime()<=end.getTime())) 
+
+  console.log(this.resultExcursionFound)
 
   this.route.navigate(['/result'])
   
-  console.log(this.resultExcursionFound2)
-  console.log(start,end)
+
 
 }
 

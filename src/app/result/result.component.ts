@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExcursionsService } from '../services/excursions.service';
 import { AuxService } from '../services/general.service';
+import { PetitionService } from '../services/petition.service';
 
 @Component({
   selector: 'app-result',
@@ -9,7 +10,8 @@ import { AuxService } from '../services/general.service';
 })
 export class ResultComponent implements OnInit {
 
-  constructor(private excursionService:ExcursionsService) { }
+  constructor(private excursionService:ExcursionsService,
+              private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
   }
@@ -18,9 +20,22 @@ export class ResultComponent implements OnInit {
     return this.excursionService.resultExcursionFound
   }
 
-  setExursionId (id:number) {
-    this.excursionService.setId(id)   
-    }
+  get excursionListTempFromAPI (){
+    return this.petitionServ.excursionListTempFromAPI
+  }
+
+lookIndexTemp(id_template:string):number{
+ return this.petitionServ.lookIndexTemp(id_template) 
+}
+
+// setExcursionIds (id:string,idTemp:string) {
+//     this.excursionService.setExcursionIds(parseInt(id),parseInt(idTemp))   
+//     }
+  
+setExcursions (id:string,idTemp:string){
+  this.petitionServ.showExcursion(parseInt(id))
+  this.petitionServ.showExcursionTemp(parseInt(idTemp))
+}
      
   
   

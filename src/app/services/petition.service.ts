@@ -53,6 +53,10 @@ export class PetitionService {
   // Template module petitions
 excursionListTempFromAPI:ExcursionTemplate[]=[]
 
+lookIndexTemp(id_template:string):number{  
+  return this.excursionListTempFromAPI.findIndex(excursion=>excursion.id_excursion_template===id_template)
+}
+
 showListTemp() {
    this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
     .subscribe((resp:ApiTemplateShowList)=>{this.excursionListTempFromAPI=resp.data})
@@ -60,9 +64,25 @@ showListTemp() {
 
 
 
-
+excursionTemp:ExcursionTemplate={
+  id_excursion_template:  "",
+  title:                  "",
+  img:                    "",
+  type:                   "",
+  description:            "",
+  price_default:          "",
+  max_num_people_default: "",
+}
+excursionTempFromApi:ApiTemplateShow={
+  status: 0,
+  error:true,
+  messages:"",
+  data:this.excursionTemp
+}
 showExcursionTemp(id:number) {
-    return this.http.get<ApiTemplateShow>(baseUrl+'/api/template/show/'+id)
+    this.http.get<ApiTemplateShow>(baseUrl+'/api/template/show/'+id)
+     .subscribe((resp:ApiTemplateShow)=>{this.excursionTempFromApi=resp
+                                         this.excursionTemp=resp.data})
  }
 
 
@@ -106,9 +126,29 @@ showList() {
 }
 
 
-showExcursion(id:number):Observable<ApiShow> {
-  return this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
+excursion:Excursion={
+  id_excursion:"",
+  excursions_template_id:  "",
+  user_id:                  "",
+  num_max_people: "",
+  price:          "",
+  start:          new(Date) ,
+  end:            new(Date),
+  created_at:     new(Date),
+  updated_at:     new(Date)
+} 
+excursionFromApi:ApiShow={
+  status: 0,
+  error:true,
+  messages:"",
+  data:this.excursion
 }
+showExcursion(id:number) {
+  this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
+    .subscribe(resp=>{this.excursionFromApi=resp
+                      this.excursion=resp.data})
+}
+
 
 deleteExcursion(id:number):Observable<ApiShow> {
   return this.http.delete<ApiShow>(baseUrl+'/api/excursion/delete/'+id)

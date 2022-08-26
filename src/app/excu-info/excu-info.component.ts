@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup,  Validators } from '@angular/forms';
-import { Excursion_ } from '../interfaces/excursion_';
-import { ExcursionsService } from '../services/excursions.service';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuxService } from '../services/general.service';
+import { PetitionService } from '../services/petition.service';
 
 @Component({
   selector: 'app-excu-info',
@@ -13,21 +11,24 @@ import { AuxService } from '../services/general.service';
 })
 export class ExcuInfoComponent implements OnInit {
 
-  constructor(private excursionsService:ExcursionsService,
-              private auxServ:AuxService,
+  constructor(private auxServ:AuxService,
+              private petitionServ:PetitionService,
               private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    
   }
 
   // idExcursion  from Services 
-  idExcursion:number=this.excursionsService.id
-
-  get excursionList():Excursion_[] {
-    return this.excursionsService.excursionList
+ 
+  get excursion(){
+    return this.petitionServ.excursion
   }
 
-  // ----form component----
+  get excursionTemp(){
+    return this.petitionServ.excursionTemp
+  }
+
   
  people:number=0
 

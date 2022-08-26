@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   });
 
   
-  findExcursions2 () {
+  findExcursions () {
    
     if(this.searchForm.valid){
       
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
       let  startDateAndTime= new Date(dateStart.year,dateStart.month,dateStart.day,0o0,0o0,0o0)
       let  endDateAndTime=new Date(dateEnd.year,dateEnd.month,dateEnd.day,0o0,0o0,0o0)
     
-      this.excursionService.findExcursions2(startDateAndTime,endDateAndTime)
+      this.excursionService.findExcursions(startDateAndTime,endDateAndTime)
     }
 
     else {alert('complete todos los campos')}

@@ -7,7 +7,7 @@ export interface ApiTemplateShowList {
 }
 
 export interface ExcursionTemplate {
-    id_excursion_template?:  string;
+    id_excursion_template:  string;
     title:                  string;
     img:                    string;
     type:                   string;

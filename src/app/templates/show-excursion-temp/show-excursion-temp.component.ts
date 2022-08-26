@@ -13,31 +13,18 @@ export class ShowExcursionTempComponent implements OnInit {
   constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
+    this.showExcursionTemp(this.id)
   }
 
-excursionTemp:ExcursionTemplate={
-    id_excursion_template:  "",
-    title:                  "",
-    img:                    "",
-    type:                   "",
-    description:            "",
-    price_default:          "",
-    max_num_people_default: "",
-} 
- excursionTempFromApi:ApiTemplateShow={
-    status: 0,
-    error:true,
-    messages:"",
-    data:this.excursionTemp
-}
-
 id:number=1
- 
 
+get excursionTempFromApi(){
+  return this.petitionServ.excursionTempFromApi
+}
 
 showExcursionTemp(id:number){
        this.petitionServ.showExcursionTemp(id)
-              .subscribe((resp:ApiTemplateShow)=>{this.excursionTempFromApi=resp})
+
   }
 
 }

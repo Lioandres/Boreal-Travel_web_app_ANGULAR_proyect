@@ -8,6 +8,8 @@ import { ShowLitsTempComponent } from './show-lits-temp/show-lits-temp.component
 import { DeleteTempComponent } from './delete-temp/delete-temp.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowExcursionTempComponent } from './show-excursion-temp/show-excursion-temp.component';
+import { ExcursionListTempComponent } from './excursion-list-temp/excursion-list-temp.component';
+import { ExcuInfoTempComponent } from './excu-info-temp/excu-info-temp.component';
 
 
 
@@ -20,12 +22,17 @@ import { ShowExcursionTempComponent } from './show-excursion-temp/show-excursion
     ShowLitsTempComponent,
     DeleteTempComponent,
     ShowExcursionTempComponent,
+    ExcursionListTempComponent,
+    ExcuInfoTempComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    ExcursionListTempComponent
   ]
 })
 export class TemplatesModule { }

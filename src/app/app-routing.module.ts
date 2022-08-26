@@ -30,6 +30,7 @@ import { ModifyExcursionComponent } from './excursions/modify-excursion/modify-e
 import { AddExcursionComponent } from './excursions/add-excursion/add-excursion.component';
 import { DeleteExcursionComponent } from './excursions/delete-excursion/delete-excursion.component';
 import { ShowListExcursionComponent } from './excursions/show-list-excursion/show-list-excursion.component';
+import { ExcuInfoTempComponent } from './templates/excu-info-temp/excu-info-temp.component';
 
 const routes: Routes = [
 
@@ -113,6 +114,11 @@ const routes: Routes = [
 {
   path:'excuInfo',
   component: ExcuInfoComponent,
+  pathMatch:'full'
+},
+{
+  path:'excuInfoTemp',
+  component: ExcuInfoTempComponent,
   pathMatch:'full'
 },
 {

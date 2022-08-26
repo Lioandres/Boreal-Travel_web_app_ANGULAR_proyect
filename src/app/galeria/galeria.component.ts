@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
+import { PetitionService } from '../services/petition.service';
 
 
 @Component({
@@ -10,12 +11,12 @@ import { ExcursionsService } from '../services/excursions.service';
 })
 export class GaleriaComponent implements OnInit {
 
-  constructor(private excursionsService:ExcursionsService) { }
+  constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void { }
 
-  get excursionList():Excursion_[] {
-    return this.excursionsService.excursionList
+  get excursionListTempFromAPI(){
+    return this.petitionServ.excursionListTempFromAPI
   }
 
 }

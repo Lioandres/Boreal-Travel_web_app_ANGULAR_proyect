@@ -26,6 +26,7 @@ import { ResultComponent } from './result/result.component';
 import { TemplatesModule } from './templates/templates.module';
 
 import { ExcursionsModule } from './excursions/excursions.module';
+import { PeopleCounterComponent } from './people-counter/people-counter.component';
 
 
 
@@ -46,6 +47,7 @@ import { ExcursionsModule } from './excursions/excursions.module';
     GaleriaComponent,
     ReservationComponent,
     ResultComponent,
+    PeopleCounterComponent,
 
     
   

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup,  Validators } from '@angular/forms';
+
+import { Router } from '@angular/router';
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 
@@ -11,15 +12,14 @@ import { PetitionService } from '../services/petition.service';
 })
 export class ExcuInfoComponent implements OnInit {
 
-  constructor(private auxServ:AuxService,
-              private petitionServ:PetitionService,
-              private fb:FormBuilder) { }
+  constructor(private petitionServ:PetitionService,
+              private route:Router,
+             ) { }
 
   ngOnInit(): void {
     
   }
 
-  // idExcursion  from Services 
  
   get excursion(){
     return this.petitionServ.excursion
@@ -29,51 +29,10 @@ export class ExcuInfoComponent implements OnInit {
     return this.petitionServ.excursionTemp
   }
 
-  
- people:number=0
-
-  increase(){
-   this.people++  
+  toReserve(eventData:number){
+    this.route.navigate(['reservation']) 
+    console.log(eventData, 'ese fue el numero de personas recivofdos de la reserva')
   }
-
-  decrease(){
-    this.people--    
-  }
-
-  
-  myform:FormGroup= this.fb.group({
-    peopleInput:[0,[Validators.required,Validators.min(1),Validators.pattern('^([1-9]+\\d*)|[0]')]],
-    
-  })
-  
  
-
-  addToCar(id:number, price:number) {
-    if(this.auxServ._loggedIn){
-    if(this.myform.valid){
-      let people=this.myform.get('peopleInput')?.value;
-      let date=this.auxServ.date;
-      let idExcursion=id
-      let priceExcursion=price
-      this.auxServ.addToCarServ(people,date,idExcursion,priceExcursion)
-    }
-    else{    
-      alert("Rellene todo los campos correctamente")
-    }
-  }
-  else {
-    alert("Debe registrarse para reservar")
-  }
-  }
-
-  goToCart(){
-    this.auxServ.goToCart()
-  }
-
-
-
-
   
-
-
 }

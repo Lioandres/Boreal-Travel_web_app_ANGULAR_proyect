@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Excursion_ } from '../interfaces/excursion_';
-import { ExcursionsService } from '../services/excursions.service';
 import { PetitionService } from '../services/petition.service';
 
 

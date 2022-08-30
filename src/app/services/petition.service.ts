@@ -10,6 +10,7 @@ import { ApiShowList, Excursion } from '../interfaces/apiShowList.interface';
 import { ApiShow } from '../interfaces/apiShow.interface';
 import { APIUpdate } from '../interfaces/apiUpdate.interface';
 import { Temps } from '../interfaces/temps.interface';
+import { ApiReservationBody } from '../interfaces/apiReservationBody.interface';
 
 
 const baseUrl:string=environment.baseUrl
@@ -87,7 +88,7 @@ showExcursionTemp(id:number) {
 
 
 deleteExcursionTemp(id:number) {
-  return this.http.delete<ApiTemplateShow>(baseUrl+'/api/template/delete/'+id)
+  return this.http.delete<APIUpdate>(baseUrl+'/api/template/delete/'+id)
 }
 
 addExcursionTemp(excursionData:ExcursionTemplate) {
@@ -150,8 +151,8 @@ showExcursion(id:number) {
 }
 
 
-deleteExcursion(id:number):Observable<ApiShow> {
-  return this.http.delete<ApiShow>(baseUrl+'/api/excursion/delete/'+id)
+deleteExcursion(id:number):Observable<APIUpdate> {
+  return this.http.delete<APIUpdate>(baseUrl+'/api/excursion/delete/'+id)
 }
 
 
@@ -183,6 +184,12 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
       "end":end
  },
  {headers:headers1})
+            
+ }
+
+ addReserve(body:ApiReservationBody):Observable<APIUpdate> {
+
+  return this.http.post<APIUpdate>(baseUrl+'/api/reservation/add',body,{headers:headers1})
             
  }
           

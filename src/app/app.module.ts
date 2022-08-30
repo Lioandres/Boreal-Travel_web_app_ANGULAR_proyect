@@ -27,6 +27,7 @@ import { TemplatesModule } from './templates/templates.module';
 
 import { ExcursionsModule } from './excursions/excursions.module';
 import { PeopleCounterComponent } from './people-counter/people-counter.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -48,6 +49,7 @@ import { PeopleCounterComponent } from './people-counter/people-counter.componen
     ReservationComponent,
     ResultComponent,
     PeopleCounterComponent,
+    PaymentComponent,
 
     
   

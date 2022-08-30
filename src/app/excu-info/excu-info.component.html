@@ -22,26 +22,6 @@
           <h5 class="text-primary mb-3">Precio:<h6>{{excursion.price}} EUR</h6> </h5> 
        </div>
 
-       <!-- <form [formGroup]="myform">
-        <div class="input-group mb-3">
-          <label for="people">Número de personas</label>
-          <div class="input-group-prepend">
-            <button type="button" class="input-group-text" (click)="increase()">+</button>
-          </div>
-          <input formControlName="people" type="text" name="people" class="form-control">
-          <div class="input-group-append">
-            <button type="button" class="input-group-text" (click)="decrease()">-</button>
-          </div>
-          <div *ngIf="myform.get('people')?.invalid && myform.get('people')?.touched" class="warning">
-            ingrese un número mayor o igual a 1
-          </div>
-        </div>
-  
-  
-      <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 me-3 ">Reservar</button>
-     
-      </form> -->
-
       <app-people-counter (peopleNumEvent)="toReserve($event)"></app-people-counter>
 
         <p>{{excursionTemp.description}}</p>

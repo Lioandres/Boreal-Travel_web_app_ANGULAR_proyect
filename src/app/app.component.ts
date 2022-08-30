@@ -23,6 +23,7 @@ export class AppComponent {
    this.petitionServ.showListTemp()
    this.petitionServ.showList()
   
+  
   }
 
  

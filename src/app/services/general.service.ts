@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Excursion } from '../interfaces/apiShowList.interface';
 import { Cart } from '../interfaces/cart.interface';
 import { Users } from '../interfaces/user.interface';
 
@@ -14,22 +15,27 @@ export class AuxService {
 
   constructor(private route:Router) {
     this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
-    this._userRepositoryCart = JSON.parse(localStorage.getItem('cart')!) || [];
+   
     }
 
 
- _userRepository: Users[] = [{ userName:"",  userMail: '', userpassword: '' }];
-
- _userRepositoryCart: Cart[] = [{ userName:"", idExcursion:0,numPeople:0,  date:undefined,  totalPrice:0}];
-
+  _userRepository: Users[] = [{ userName:"",  userMail: '', userpassword: '' }];
 
   get userRepository() {
     return [...this._userRepository];
   }
 
-  get userRepositoryCart() {
-    return [...this._userRepositoryCart];
-  }
+
+
+repositoryCart: Cart[] = []
+
+addToCart(excursionChosen:Excursion,numberChosen:number) {
+    let item={excursion:excursionChosen,
+              numberPeople:numberChosen,
+              totalPrice:parseInt(excursionChosen.price)*numberChosen}
+    this.repositoryCart.push(item)
+}
+
 
   _logInUser:string='LOG IN'
   _loggedIn:boolean=false
@@ -96,20 +102,7 @@ export class AuxService {
   cart:[number, NgbDateStruct|undefined]|undefined
 
 
-  addToCarServ(people:number,date:NgbDateStruct|undefined,id:number,price:number) {
-    let excursionInfo:Cart={
-        userName:this._logInUser ,
-        idExcursion:id,
-        numPeople:people,
-        date:date, 
-        totalPrice:people*price
-      }
-      this._userRepositoryCart.push(excursionInfo)
-      console.log(this._userRepositoryCart)
-      localStorage.setItem('cart', JSON.stringify(this._userRepositoryCart))
-      alert('La excursion ha sido añadida a su carrito')
-      
-  }
+ 
 
 
   goToCart(){

@@ -69,9 +69,10 @@ continue():void {
 
  
 isPaymentFormFilled:boolean=false
-
-confirmReserve(eventDate:boolean) {
-  this.isPaymentFormFilled=eventDate
+isReservationOK:boolean=false
+confirmReserve(eventData:boolean) {
+  this.isPaymentFormFilled=eventData
+  if (this.repositoryCart.length===0) return alert('debe elegir una excursion') 
   if(this.isPaymentFormFilled){
     this.repositoryCart.forEach(item=>{
       let reservation:ApiReservationBody={
@@ -84,17 +85,11 @@ confirmReserve(eventDate:boolean) {
               num_people:item.numberPeople
               }
         this.petitionServ.addReserve(reservation)
-        
-    })
-    
-    
-  }
+              .subscribe((resp)=>{console.log (resp.message)
+                                    this.isReservationOK=!resp.error})
+      })
+    }
   this.auxServ.repositoryCart=[]
  }
-
-
-
- 
-
 
 }

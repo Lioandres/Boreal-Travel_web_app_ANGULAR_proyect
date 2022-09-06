@@ -11,6 +11,7 @@ export class ShowLitsTempComponent implements OnInit {
   constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
+    this.petitionServ.showListTemp()
   }
 
 get excursionListTempFromAPI(){

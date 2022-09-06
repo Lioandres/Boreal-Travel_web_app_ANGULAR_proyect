@@ -33,7 +33,6 @@ export class ExcuInfoComponent implements OnInit {
   toReserve(eventData:number){
     this.auxServ.addToCart(this.excursion,eventData)
     this.route.navigate(['reservation']) 
-    console.log(eventData, 'ese fue el numero de personas recivofdos de la reserva')
   }
  
   

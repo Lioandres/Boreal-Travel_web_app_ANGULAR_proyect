@@ -11,28 +11,35 @@ import { ApiShow } from '../interfaces/apiShow.interface';
 import { APIUpdate } from '../interfaces/apiUpdate.interface';
 import { Temps } from '../interfaces/temps.interface';
 import { ApiReservationBody } from '../interfaces/apiReservationBody.interface';
+import { User1 } from '../interfaces/user1.interface';
 
 
 const baseUrl:string=environment.baseUrl
-const headers1 = new HttpHeaders({ 
+const headers1 = new HttpHeaders(
+   { 
   
-  'Access-Control-Allow-Origin':'*',
-  //'Access-Control-Allow-Headers': 'X-API-KEY, Origin,X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization',
-  //'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PATCH, PUT, DELETE',
+//   'Access-Control-Allow-Origin':'*',
+//   'Access-Control-Allow-Headers': 'X-API-KEY, Origin,X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization',
+//   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PATCH, PUT, DELETE',
   
-  //'Access-Control-Requested-Method':'PUT,POST',
- // 'Content-Type':'application/json/x-www-form-urlencoded',
- //'Content-Length':'<calculated when request is sent>'
-});
+//   'Access-Control-Requested-Method':'PUT,POST',
+//  'Content-Type':'application/json',
+//  'Content-Length':'<calculated when request is sent>'
+ }
+)
+headers1.append('Content-Type','application/json')
 
-const body1={
-  "title":"sss",
-   "img":"dddd",
-   "type":"wwww",
-   "description":"sssss",
-   "price_default":1.20,
-   "max_num_people_default":30
+const body1=
+JSON.stringify( 
+  {
+   title:"sss",
+   img:"dddd",
+   type:"wwww",
+   description:"sssss",
+   price_default:1.20,
+   max_num_people_default:30
 }
+)
 
 @Injectable({
   providedIn: 'root'
@@ -86,22 +93,19 @@ showExcursionTemp(id:number) {
                                          this.excursionTemp=resp.data})
  }
 
-
 deleteExcursionTemp(id:number) {
   return this.http.delete<APIUpdate>(baseUrl+'/api/template/delete/'+id)
 }
 
-addExcursionTemp(excursionData:ExcursionTemplate) {
-  return this.http.post<APITempUpdate>(baseUrl+'/api/template/add/',
-   {
-     "title":excursionData.title,
-      "img":excursionData.img,
-      "type":excursionData.type,
-      "description":excursionData.description,
-      "price_default":excursionData.price_default,
-      "max_num_people_default":excursionData.max_num_people_default
- },{headers:headers1})
-            
+addExcursionTemp(data:ExcursionTemplate) {
+  return this.http.post<APITempUpdate>(baseUrl+
+  '/api/template/add?title='+data.title+
+  '&img='+data.img+
+  '&type='+data.type+
+  '&description='+data.description+
+  '&price_default='+data.price_default+
+  '&max_num_people_default='+data.max_num_people_default, 
+  body1)
  }
  
 
@@ -189,13 +193,26 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
 
  addReserve(body:ApiReservationBody):Observable<APIUpdate> {
 
-  return this.http.post<APIUpdate>(baseUrl+'/api/reservation/add',body,{headers:headers1})
-            
+  return this.http.post<APIUpdate>(baseUrl+
+    '/api/reservation/add?excursion_id='+body.excursion_id+
+    '&payment_id='+body.payment_id+
+    '&name='+body.name+
+    '&last_name='+body.last_name+
+    '&email='+body.email+
+    '&phone='+body.phone+
+    '&num_people='+body.num_people,
+    JSON.stringify(body))
  }
-          
-                             
-     
 
+ addUser(data:User1):Observable<APIUpdate> {
+    return this.http.post<APIUpdate>(baseUrl+
+    '/api/user/add?user_name='+data.user_name+
+    '&user_mail='+data.user_mail+
+    '&user_rol='+data.user_rol+
+    '&user_password='+data.user_password
+     
+    ,JSON.stringify(data))
+   }
 }
 
 

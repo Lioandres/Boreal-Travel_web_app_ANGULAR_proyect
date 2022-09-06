@@ -45,7 +45,9 @@ export class AddTemplateComponent implements OnInit {
         
         this.petitionServ.addExcursionTemp(this.addTempForm.value)
          .subscribe((resp:APITempUpdate)=>alert(resp.message)) 
+         this.petitionServ.showListTemp()
       }
+       
       else {alert('complete todos los campos')}
     }
   

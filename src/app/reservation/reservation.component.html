@@ -70,7 +70,7 @@
               <label for="phone" class="form-label">Telefono</label>
               <input formControlName="phone" class="form-control" id="phone">
               <div class="warning" *ngIf="reserveForm.get('phone')?.invalid && reserveForm.get('phone')?.touched">Debe
-                contener 5 caracteres min</div>
+                contener 9 caracteres min</div>
             </div>
 
             <button type="submit" class="btn btn-dark mb-3">Continuar</button>
@@ -78,7 +78,7 @@
 
           <app-payment *ngIf="isReserveFormFilled && !isPaymentFormFilled" (isPaymentFormFilled)="confirmReserve($event)"></app-payment>
 
-           <h3 *ngIf="isReserveFormFilled && isPaymentFormFilled">La reserva se ha realizado con éxito. Su número de reserva es el :POST(reservation_id) </h3>
+           <h3 *ngIf="isReservationOK">La reserva se ha realizado con éxito. Su número de reserva es el :POST(reservation_id) </h3>
 
         </div>
 

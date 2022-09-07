@@ -48,30 +48,30 @@ addToCart(excursionChosen:Excursion,numberChosen:number) {
     return this._loggedIn
   }
 
-  signUp(userInput: Users) {
-    if (
-      !this._userRepository.find((user) => user.userName === userInput.userName) &&
-      !this._userRepository.find((user) => user.userMail === userInput.userMail)
-    ) {
-      this._userRepository.push(userInput);
-      localStorage.setItem('users', JSON.stringify(this._userRepository));
-      this.route.navigate(['home'])
-      this._logInUser= userInput.userName
-      this._loggedIn=true
-     } else alert('el usuario o email ya existen');
-  }
+  // signUp(userInput: Users) {
+  //   if (
+  //     !this._userRepository.find((user) => user.userName === userInput.userName) &&
+  //     !this._userRepository.find((user) => user.userMail === userInput.userMail)
+  //   ) {
+  //     this._userRepository.push(userInput);
+  //     localStorage.setItem('users', JSON.stringify(this._userRepository));
+  //     this.route.navigate(['home'])
+  //     this._logInUser= userInput.userName
+  //     this._loggedIn=true
+  //    } else alert('el usuario o email ya existen');
+  // }
   
-  logIn(name:string,password:string) {
+  // logIn(name:string,password:string) {
     
-    if (
-      this._userRepository.find((user) => user.userName === name) &&
-      this._userRepository.find((user) => user.userpassword === password)
-    ) {
-      this.route.navigate(['home'])
-      this._logInUser=name
-      this._loggedIn=true
-    } else alert('el usuario o contraseña es incorrecto');
-  }
+  //   if (
+  //     this._userRepository.find((user) => user.userName === name) &&
+  //     this._userRepository.find((user) => user.userpassword === password)
+  //   ) {
+  //     this.route.navigate(['home'])
+  //     this._logInUser=name
+  //     this._loggedIn=true
+  //   } else alert('el usuario o contraseña es incorrecto');
+  // }
 
   logOut() {
     if(this.loggedIn===true){

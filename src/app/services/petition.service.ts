@@ -192,27 +192,35 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
  }
 
  addReserve(body:ApiReservationBody):Observable<APIUpdate> {
-
   return this.http.post<APIUpdate>(baseUrl+
-    '/api/reservation/add?excursion_id='+body.excursion_id+
-    '&payment_id='+body.payment_id+
-    '&name='+body.name+
-    '&last_name='+body.last_name+
-    '&email='+body.email+
-    '&phone='+body.phone+
-    '&num_people='+body.num_people,
-    JSON.stringify(body))
+      '/api/reservation/add?excursion_id='+body.excursion_id+
+      '&payment_id='+body.payment_id+
+      '&name='+body.name+
+      '&last_name='+body.last_name+
+      '&email='+body.email+
+      '&phone='+body.phone+
+      '&num_people='+body.num_people,
+      JSON.stringify(body))
  }
 
  addUser(data:User1):Observable<APIUpdate> {
     return this.http.post<APIUpdate>(baseUrl+
-    '/api/user/add?user_name='+data.user_name+
-    '&user_mail='+data.user_mail+
-    '&user_rol='+data.user_rol+
-    '&user_password='+data.user_password
+      '/api/register?user_name='+data.user_name+
+      '&user_email='+data.user_email+
+      '&user_role='+data.user_role+
+      '&user_password='+data.user_password
      
     ,JSON.stringify(data))
    }
+
+   logIn(data:User1):Observable<APIUpdate> {
+    return this.http.post<APIUpdate>(baseUrl+
+      '/api/login?user_email='+data.user_email+
+      '&user_password='+data.user_password
+     
+    ,JSON.stringify(data))
+   }
+
 }
 
 

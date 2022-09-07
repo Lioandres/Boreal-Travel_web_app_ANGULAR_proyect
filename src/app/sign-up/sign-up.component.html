@@ -3,18 +3,18 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+            <form [formGroup]="signUpForm" (ngSubmit)="addUser()">
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Username</label>
                     <input formControlName="user_name" class="form-control" id="inputName">
                     <div class="warning" *ngIf="signUpForm.get('user_name')?.invalid && signUpForm.get('user_name')?.touched">Debe contener 5 caracteres min</div>
                 </div>
                 <div class="mb-3">
-                    <label for="user_rol" class="form-label">User Rol</label>
-                    <select formControlName="user_rol" class="form-select" id="user_rol">
-                        <option value="" disabled selected hidden>Elija un rol de usuario</option>
-                        <option value="boreal">operador</option>
-                        <option value="lake">administrador</option>
+                    <label for="user_role" class="form-label">User Role</label>
+                    <select formControlName="user_role" class="form-select" id="user_role">
+                        <option value="" disabled selected hidden>Choose a user role</option>
+                        <option value="operator">operator</option>
+                        <option value="admin">admin</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -24,16 +24,16 @@
                 </div>
                 <div class="mb-3">
                     <label for="InputEmail1" class="form-label">Email address</label>
-                    <input formControlName="user_mail"  class="form-control" id="InputEmail1" aria-describedby="emailHelp">
-                    <div class="warning" *ngIf="signUpForm.get('user_mail')?.invalid && signUpForm.get('user_mail')?.touched">Direccion de mail no válida</div>
+                    <input formControlName="user_email"  class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                    <div class="warning" *ngIf="signUpForm.get('user_email')?.invalid && signUpForm.get('user_email')?.touched">Direccion de mail no válida</div>
                 </div>
                 <div class="mb-3">
                     <label for="repeatMail" class="form-label">Confirm Email address</label>
                     <input formControlName="repeatMail" class="form-control" id="repeatMail">
-                    <div class="warning" *ngIf="signUpForm.get('repeatMail')?.value!=signUpForm.get('user_mail')?.value && signUpForm.get('repeatMail')?.touched">Los mails no coinciden</div>
+                    <div class="warning" *ngIf="signUpForm.get('repeatMail')?.value!=signUpForm.get('user_email')?.value && signUpForm.get('repeatMail')?.touched">Los mails no coinciden</div>
                 </div>
                
-                <button type="submit" class="btn btn-dark mb-3">Registrarse</button>
+                <button type="submit" class="btn btn-dark mb-3">Register</button>
               </form>
             
 

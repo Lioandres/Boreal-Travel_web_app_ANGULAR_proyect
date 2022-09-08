@@ -116,5 +116,8 @@
       }
     }
   },
-  "defaultProject": "Spring_9_Tasca"
+  "defaultProject": "Spring_9_Tasca",
+  "cli": {
+    "analytics": "26294b23-1cf5-420c-bce0-c8851a5e3475"
+  }
 }

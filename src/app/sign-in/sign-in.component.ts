@@ -36,6 +36,7 @@ export class SignInComponent implements OnInit {
                               this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
                               this.auxServ.id_user}
+                              
                           })
 
       }

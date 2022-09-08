@@ -31,6 +31,7 @@ import { AddExcursionComponent } from './excursions/add-excursion/add-excursion.
 import { DeleteExcursionComponent } from './excursions/delete-excursion/delete-excursion.component';
 import { ShowListExcursionComponent } from './excursions/show-list-excursion/show-list-excursion.component';
 import { ExcuInfoTempComponent } from './templates/excu-info-temp/excu-info-temp.component';
+import { EditGuard } from './guards/edit.guard';
 
 const routes: Routes = [
 
@@ -141,6 +142,7 @@ const routes: Routes = [
 {
   path:'edition',
   component: EditionComponent,
+  canActivate:[EditGuard],
   children:[
     {
     path:'showTemp',
@@ -171,6 +173,7 @@ const routes: Routes = [
 {
   path:'editionExcursion',
   component: EditionExcursionComponent,
+  canActivate:[EditGuard],
   children:[
     {
     path:'showExcursion',

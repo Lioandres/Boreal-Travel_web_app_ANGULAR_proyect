@@ -38,14 +38,14 @@
                 <label for="name" class="form-label">Nombre</label>
                 <input formControlName="name" class="form-control" id="name">
                 <div class="warning" *ngIf="reserveForm.get('name')?.invalid && reserveForm.get('name')?.touched">Debe
-                  contener 2 caracteres min</div>
+                  contener 2 caracteres como minimo</div>
               </div>
               <div class="col-4 mb-3">
                 <label for="lastName" class="form-label">Apellido</label>
                 <input formControlName="lastName" class="form-control" id="lastName">
                 <div class="warning"
                   *ngIf="reserveForm.get('lastName')?.invalid && reserveForm.get('lastName')?.touched">Debe contener 2
-                  caracteres min</div>
+                  caracteres como minimo</div>
               </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                   Ingrese un email válido</div>
               </div>
               <div class="col-4 mb-3">
-                <label for="emailRepete" class="form-label">reingrese el correo electronico</label>
+                <label for="emailRepete" class="form-label">Confirme su correo electrónico</label>
                 <input formControlName="emailRepete" class="form-control" id="emailRepete">
                 <div class="warning"
                   *ngIf="reserveForm.get('emailRepete')?.invalid && reserveForm.get('emailRepete')?.touched">ingrese un

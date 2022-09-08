@@ -42,8 +42,8 @@ addUser(){
       .subscribe(resp=>{alert(JSON.stringify(resp.message,null,4))
                         if(resp.status===200) {
                           this.route.navigate(['home'])
-                          this.auxServ._logInUser= this.signUpForm.get('user_name')?.value
-                          this.auxServ._loggedIn=true}
+                          this.auxServ.logInUser= this.signUpForm.get('user_name')?.value
+                          this.auxServ.loggedIn=true}
                       })
 
   }

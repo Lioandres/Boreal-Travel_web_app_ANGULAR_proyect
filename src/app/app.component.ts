@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Temps } from './interfaces/temps.interface';
 import { AuxService } from './services/general.service';
-import { HttpClient } from '@angular/common/http';
 import { PetitionService } from './services/petition.service';
 
 @Component({
@@ -11,10 +10,7 @@ import { PetitionService } from './services/petition.service';
 })
 export class AppComponent {
   constructor(private auxServ:AuxService,
-              private petitionServ:PetitionService,
-           
-                            
-              ){}
+              private petitionServ:PetitionService){}
               
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -23,12 +19,11 @@ export class AppComponent {
    this.petitionServ.showListTemp()
    this.petitionServ.showList()
   
-  
   }
 
  
   icon:string=""
-  temp:number=3
+  temp:number=1111
 
   getWeather() {
     this.petitionServ.getWeather()
@@ -37,7 +32,6 @@ export class AppComponent {
                     this.temp=resp.main.temp          
        })
  }
-
 
 
   get logInUser(){
@@ -52,10 +46,10 @@ export class AppComponent {
     this.auxServ.logOut()
   }
 
-  showNotice(){
-    this.auxServ.showNotice()
-  }
+  // showNotice(){
+  //   this.auxServ.showNotice()
+  // }
 
-  title = 'Spring_9_Tasca';
+  title = 'Reikjavik Excursiones';
   started:boolean=false
 }

@@ -14,17 +14,8 @@ import { Users } from '../interfaces/user.interface';
 export class AuxService {
 
   constructor(private route:Router) {
-    this._userRepository = JSON.parse(localStorage.getItem('users')!) || [];
-   
+
     }
-
-
-  _userRepository: Users[] = [{ userName:"",  userMail: '', userpassword: '' }];
-
-  get userRepository() {
-    return [...this._userRepository];
-  }
-
 
 
 repositoryCart: Cart[] = []
@@ -37,56 +28,19 @@ addToCart(excursionChosen:Excursion,numberChosen:number) {
 }
 
 
-  _logInUser:string='LOG IN'
-  _loggedIn:boolean=false
+  logInUser:string='LOG IN'
+  loggedIn:boolean=false
+  id_user:number=0
 
-  get logInUser():string{
-    return this._logInUser
-  }
-
-  get loggedIn():boolean{
-    return this._loggedIn
-  }
-
-  // signUp(userInput: Users) {
-  //   if (
-  //     !this._userRepository.find((user) => user.userName === userInput.userName) &&
-  //     !this._userRepository.find((user) => user.userMail === userInput.userMail)
-  //   ) {
-  //     this._userRepository.push(userInput);
-  //     localStorage.setItem('users', JSON.stringify(this._userRepository));
-  //     this.route.navigate(['home'])
-  //     this._logInUser= userInput.userName
-  //     this._loggedIn=true
-  //    } else alert('el usuario o email ya existen');
-  // }
-  
-  // logIn(name:string,password:string) {
-    
-  //   if (
-  //     this._userRepository.find((user) => user.userName === name) &&
-  //     this._userRepository.find((user) => user.userpassword === password)
-  //   ) {
-  //     this.route.navigate(['home'])
-  //     this._logInUser=name
-  //     this._loggedIn=true
-  //   } else alert('el usuario o contraseña es incorrecto');
-  // }
 
   logOut() {
     if(this.loggedIn===true){
-      this._logInUser='LOG IN'
-      this._loggedIn=false
+      this.logInUser='LOG IN'
+      this.loggedIn=false
       console.log('logeado:', false)
     }
   }
 
-  showNotice(){
-    if(!this.loggedIn) {
-      alert('Debe hacer log-in para acceder')
-      this.route.navigate(['signIn'])
-    }
-  };
 
   _date: NgbDateStruct| undefined;
 

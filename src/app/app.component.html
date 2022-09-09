@@ -27,10 +27,11 @@
         <a class="nav-item nav-link " routerLink="airport">Traslados desde el aeropuerto</a>
         <a class="nav-item nav-link " routerLink="bus">Recorridos en Bus</a>
         <div *ngIf="loggedIn" class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">editar excursiones</a>
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
           <div class="dropdown-menu rounded-0 m-0 bg-transparent">
-            <a class="dropdown-item " routerLink="editionExcursion/showExcursion">Operar excursiones</a>
-            <a class="dropdown-item " routerLink="edition/showTemp">Editar templates</a>
+            <a class="dropdown-item " routerLink="editionExcursion/showExcursion">Operate Excursions</a>
+            <a class="dropdown-item " routerLink="edition/showTemp">Edit Templates</a>
+            <a class="dropdown-item " routerLink="editionUser/showUser">Edit User</a>
           </div>
         </div>
 
@@ -52,6 +53,7 @@
        <a *ngIf="loggedIn" class=" btn btn-dark px-3  me-3" (click)="started=true ; logOut()"
     routerLink="signIn">LOG-OUT</a>
 
+        
 
 
     </div>

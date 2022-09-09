@@ -18,7 +18,7 @@ import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
-import { EditionComponent } from './templates/edition/edition.component';
+
 import { ModifyTempComponent } from './templates/modify-temp/modify-temp.component';
 import { AddTemplateComponent } from './templates/add-template/add-template.component';
 import { DeleteTempComponent } from './templates/delete-temp/delete-temp.component';
@@ -32,6 +32,13 @@ import { DeleteExcursionComponent } from './excursions/delete-excursion/delete-e
 import { ShowListExcursionComponent } from './excursions/show-list-excursion/show-list-excursion.component';
 import { ExcuInfoTempComponent } from './templates/excu-info-temp/excu-info-temp.component';
 import { EditGuard } from './guards/edit.guard';
+import { EditionComponent } from './templates/edition/edition.component';
+import { EditionUserComponent } from './user/edition-user/edition-user.component';
+import { ShowUserComponent } from './user/show-user/show-user.component';
+import { PasswordUserComponent } from './user/password-user/password-user.component';
+import { EmailUserComponent } from './user/email-user/email-user.component';
+import { RolUserComponent } from './user/rol-user/rol-user.component';
+import { ShowListUserComponent } from './user/show-list-user/show-list-user.component';
 
 const routes: Routes = [
 
@@ -198,6 +205,37 @@ const routes: Routes = [
   {
     path:'showListExcursion',
     component: ShowListExcursionComponent,
+     pathMatch:'full'
+  }]
+},
+{
+  path:'editionUser',
+  component: EditionUserComponent,
+  canActivate:[EditGuard],
+  children:[
+    {
+    path:'showUser',
+    component: ShowUserComponent,
+     pathMatch:'full'
+  },
+    {
+    path:'passwordUser',
+    component: PasswordUserComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'emailUser',
+    component: EmailUserComponent,
+     pathMatch:'full'
+  },
+  {
+    path:'rolUser',
+    component: RolUserComponent,
+     pathMatch:'full'
+  },
+  {
+    path:'listUser',
+    component: ShowListUserComponent,
      pathMatch:'full'
   }]
 }

@@ -18,7 +18,6 @@ import { FooterModule } from './footer/footer.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ExcuInfoComponent } from './excu-info/excu-info.component';
-import { NgbdDatepickerPopupModule } from './datepicker/datepicker-popup.module';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
@@ -28,6 +27,10 @@ import { TemplatesModule } from './templates/templates.module';
 import { ExcursionsModule } from './excursions/excursions.module';
 import { PeopleCounterComponent } from './people-counter/people-counter.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CookieService } from 'ngx-cookie-service';
+
+import { UserModule } from './user/user.module';
+
 
 
 
@@ -52,6 +55,9 @@ import { PaymentComponent } from './payment/payment.component';
     PeopleCounterComponent,
     PaymentComponent,
 
+  
+    
+
     
   
     
@@ -66,14 +72,15 @@ import { PaymentComponent } from './payment/payment.component';
     FormsModule,
     HttpClientModule,
 
-    NgbdDatepickerPopupModule,
+   
     FooterModule,
     TemplatesModule,
-    ExcursionsModule
+    ExcursionsModule,
+    UserModule
     
     
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

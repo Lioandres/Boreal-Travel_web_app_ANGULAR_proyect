@@ -11,7 +11,11 @@ import { ApiShow } from '../interfaces/apiShow.interface';
 import { APIUpdate } from '../interfaces/apiUpdate.interface';
 import { Temps } from '../interfaces/temps.interface';
 import { ApiReservationBody } from '../interfaces/apiReservationBody.interface';
-import { User1 } from '../interfaces/user1.interface';
+
+import { APIToken } from '../interfaces/apiToken.interface';
+import { User } from '../interfaces/user.interface';
+import { apiUserMail } from '../interfaces/apiUserMail.interface';
+import { apiUserPass } from '../interfaces/apiUserPass.interface';
 
 
 const baseUrl:string=environment.baseUrl
@@ -150,7 +154,7 @@ excursionFromApi:ApiShow={
 }
 showExcursion(id:number) {
   this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
-    .subscribe(resp=>{this.excursionFromApi=resp
+    .subscribe((resp:ApiShow)=>{this.excursionFromApi=resp
                       this.excursion=resp.data})
 }
 
@@ -203,7 +207,7 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
       JSON.stringify(body))
  }
 
- addUser(data:User1):Observable<APIUpdate> {
+ addUser(data:User):Observable<APIUpdate> {
     return this.http.post<APIUpdate>(baseUrl+
       '/api/register?user_name='+data.user_name+
       '&user_email='+data.user_email+
@@ -213,14 +217,33 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
     ,JSON.stringify(data))
    }
 
-   logIn(data:User1):Observable<APIUpdate> {
-    return this.http.post<APIUpdate>(baseUrl+
+   logIn(data:User):Observable<APIToken> {
+    return this.http.post<APIToken>(baseUrl+
       '/api/login?user_email='+data.user_email+
       '&user_password='+data.user_password
      
     ,JSON.stringify(data))
    }
 
-}
+   changeMail(data:apiUserMail):Observable<APIUpdate> {
+    return this.http.post<APIUpdate>(baseUrl+
+      '/api/changeMail?old_email='+data.old_email+
+      '&user_email='+data.user_email+
+      '&user_password='+data.user_password
+
+    ,JSON.stringify(data))
+   }
+
+   changePass(data:apiUserPass):Observable<APIUpdate> {
+    return this.http.post<APIUpdate>(baseUrl+
+      '/api/changePass?old_password='+data.old_password+
+      '&user_email='+data.user_email+
+      '&user_password='+data.user_password
+     
+    ,JSON.stringify(data))
+   }
+   }
+
+
 
 

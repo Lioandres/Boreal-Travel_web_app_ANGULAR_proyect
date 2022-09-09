@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -6,6 +6,7 @@ import { creatDateRangeValidator} from './custom.validator'
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +18,8 @@ export class SignUpComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private auxServ:AuxService,
               private pettionServ:PetitionService,
-              private route:Router) {
+              private route:Router,
+            ) {
   }
 
   ngOnInit(): void {
@@ -43,7 +45,8 @@ addUser(){
                         if(resp.status===200) {
                           this.route.navigate(['home'])
                           this.auxServ.logInUser= this.signUpForm.get('user_name')?.value
-                          this.auxServ.loggedIn=true}
+                          this.auxServ.loggedIn=true
+                          }
                       })
 
   }
@@ -55,22 +58,6 @@ addUser(){
  
     
     
-  // submit():void {
-  //   if (this.signUpForm.valid) {
-  //     let name=this.signUpForm.get('name')?.value
-  //     let mail=this.signUpForm.get('mail')?.value
-  //     let password=this.signUpForm.get('password')?.value
-  //     this.auxServ.signUp({
-  //       userName:name,
-  //       userMail:mail,
-  //       userpassword:password,
-  //     })
-    
-  //   }
-  //   else{
-      
-  //     alert("Rellene todo los campos correctamente")
-  //   }
-  // }
+  
 }
 

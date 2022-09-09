@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuxService } from '../../services/general.service';
-import { ExcursionsService } from '../../services/excursions.service';
+
 
 @Component({
   selector: 'app-edition',

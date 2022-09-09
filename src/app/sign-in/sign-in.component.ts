@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,8 @@ export class SignInComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private auxServ:AuxService,
               private pettionServ:PetitionService,
-              private route:Router) { }
+              private route:Router,
+              private cookieService:CookieService) { }
 
   ngOnInit(): void {}
 
@@ -35,7 +37,8 @@ export class SignInComponent implements OnInit {
                               this.route.navigate(['home'])
                               this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
-                              this.auxServ.id_user}
+                              this.auxServ.id_user
+                              this.cookieService.set('token',resp.data.token)}
                               
                           })
 

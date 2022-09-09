@@ -9,7 +9,6 @@ import { AddExcursionComponent } from './add-excursion/add-excursion.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExcursionListComponent } from './excursion-list/excursion-list.component';
-import { NgbdDatepickerPopupModule } from '../datepicker/datepicker-popup.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -30,7 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbdDatepickerPopupModule,
+   
     NgbModule
   ]
 })

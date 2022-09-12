@@ -22,6 +22,7 @@ export class ExcursionListTempComponent implements OnInit {
 
   setExcursionTemp (idTemp:string){
     this.petitionServ.showExcursionTemp(parseInt(idTemp))
+    this.petitionServ.getChosenExcursions(idTemp)
   }
 
 }

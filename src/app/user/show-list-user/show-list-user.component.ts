@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({
   selector: 'app-show-list-user',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowListUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private petitionServ:PetitionService) { }
 
   ngOnInit(): void {
+    this.petitionServ.showListUser()
+    this.petitionServ.getProfile()
+   
   }
+
+get userListFromAPI(){
+  return this.petitionServ.userListFromAPI
+}
+
+
+
+
+  
 
 }

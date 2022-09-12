@@ -16,6 +16,11 @@ import { APIToken } from '../interfaces/apiToken.interface';
 import { User } from '../interfaces/user.interface';
 import { apiUserMail } from '../interfaces/apiUserMail.interface';
 import { apiUserPass } from '../interfaces/apiUserPass.interface';
+import { apiUserRole } from '../interfaces/apiUserRole.interface';
+import { ApiUser, ApiUserList } from '../interfaces/apiUserList.interface';
+import { ApiUserShow } from '../interfaces/apiUserShow.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { ApiProfile } from '../interfaces/apiProfile.interface';
 
 
 const baseUrl:string=environment.baseUrl
@@ -52,7 +57,8 @@ JSON.stringify(
 
 export class PetitionService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private cookieService:CookieService) { }
 
   // whather petitions
 
@@ -242,7 +248,78 @@ modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdat
      
     ,JSON.stringify(data))
    }
+
+   changeRole(data:apiUserRole):Observable<APIUpdate> {
+    return this.http.post<APIUpdate>(baseUrl+
+      '/api/changeRole?id_user='+data.id_user+
+      '&user_role='+data.user_role
+     
+    ,JSON.stringify(data))
    }
+
+
+
+
+  userListFromAPI:ApiUser[]=[]
+  showListUser() {
+      this.http.get<ApiUserList>(baseUrl+'/api/listUser')
+                .subscribe((resp:ApiUserList)=>{this.userListFromAPI=resp.data})
+ }
+  
+
+ 
+user:ApiUser= {
+    id_user: 0,
+    user_name: "",
+    user_email: "",
+    user_password: "",
+    user_role: "",
+    created_at: new Date(),
+    updated_at: new Date()
+}
+
+userFromApi: ApiUserShow= {
+    status:   0,
+    error:    false,
+    messages: "",
+    data:     this.user
+}
+
+ showUser(id:number) {
+  this.http.get<ApiUserShow>(baseUrl+'/api/showUser/'+id)
+   .subscribe((resp:ApiUserShow)=>{this.userFromApi=resp
+                                    this.user=resp.data})
+}
+
+getProfile() {
+  let headers2=new HttpHeaders(
+    {  
+      //'Authorization': 'Bearer ' + this.cookieService.get('token'),
+      // 'Origin': 'http://localhost:4200',
+      // 'Access-Control-Request-Methods': 'GET',
+      // 'Access-Control-Request-Headers': 'Authorization'
+
+  })
+  const headers3= {  
+    //'Authorization': 'Bearer ' + this.cookieService.get('token'),
+    //'Origin': 'http://localhost:4200',
+    'Access-Control-Request-Methods': 'GET',
+    'Access-Control-Request-Header': 'Authorization'
+
+}
+    this.http.get<ApiProfile>(baseUrl + "/api/profile",{headers:headers3})
+        .subscribe((resp:ApiProfile)=>console.log(resp));
+}
+
+excursionListFromId:Excursion[]=[]
+getChosenExcursions(idTemp:string) {
+  this.excursionListFromId=this.excursionListFromAPI.filter(item=>item.excursions_template_id===idTemp)
+}
+
+
+   }
+
+
 
 
 

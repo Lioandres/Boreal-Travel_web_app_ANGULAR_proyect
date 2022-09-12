@@ -1,1 +1,48 @@
-<p>show-user works!</p>
+<div class="row">
+
+    <div class="col-6">
+        <form [formGroup]="idForm" (ngSubmit)="showUser()">
+        <div class="input-group mb-3">
+            <input type="number" formControlName="id_user" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"/>
+            <div class="warning" *ngIf="idForm.get('id_user')?.invalid && idForm.get('id_user')?.touched" >only int numbers (max 999)</div>
+            <div class="input-group-append">
+                <button class="btn btn-dark"  type="submit">Buscar</button>
+            </div>
+        </div>
+         </form>
+
+    </div>
+
+    <div *ngIf="userFromApi.status!=0" class="col-6">
+        <div *ngIf="userFromApi.status===500">
+            <hr>
+            <h3 class="text-primary mb-3">{{userFromApi.messages}}</h3>
+            <hr>
+        </div>
+
+        <div *ngIf="userFromApi.status===200">
+
+            <h5 class="text-primary mb-3">user Id</h5>
+            <p> {{userFromApi.data.id_user}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">user Name</h5>
+            <p> {{userFromApi.data.user_name}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">User Email</h5>
+            <p> {{userFromApi.data.user_email}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">user Role</h5>
+            <p> {{userFromApi.data.user_role}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">user Created At</h5>
+            <p> {{userFromApi.data.created_at}} </p>
+            <hr>
+
+            <h5 class="text-primary mb-3">last user Update</h5>
+            <p> {{userFromApi.data.updated_at}} </p>
+            <hr>
+        </div>

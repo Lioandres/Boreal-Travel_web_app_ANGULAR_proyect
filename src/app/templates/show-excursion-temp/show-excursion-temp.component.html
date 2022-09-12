@@ -1,14 +1,15 @@
 <div class="row">
 
     <div class="col-6">
-
+        <form [formGroup]="idForm" (ngSubmit)="showExcursionTemp()">
         <div class="input-group mb-3">
-            <input type="number" [(ngModel)]="id" class="form-control"
-                placeholder="Ingrese el Id de la excursion a buscar"/>
+            <input type="number" formControlName="id" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"/>
+            <div class="warning" *ngIf="idForm.get('id')?.invalid && idForm.get('id')?.touched" >only int numbers (max 999)</div>
             <div class="input-group-append">
-                <button class="btn btn-dark" (click)="showExcursionTemp(id)" type="button">Buscar</button>
+                <button class="btn btn-dark"  type="button">Buscar</button>
             </div>
         </div>
+        </form>
 
     </div>
 

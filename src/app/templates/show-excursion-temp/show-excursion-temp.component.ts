@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiTemplateShow} from 'src/app/interfaces/apiTemplateShow.interface';
-import { ExcursionTemplate } from 'src/app/interfaces/apiTemplateShowList.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({
@@ -10,21 +9,28 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class ShowExcursionTempComponent implements OnInit {
 
-  constructor(private petitionServ:PetitionService) { }
-
-  ngOnInit(): void {
-    this.showExcursionTemp(this.id)
-  }
-
-id:number=1
+  constructor(private fb:FormBuilder,
+    private petitionServ:PetitionService) { }
+  
+    ngOnInit(): void {
+    }
+  
+      idForm:FormGroup= this.fb.group({
+           id:["",[Validators.required,Validators.pattern("[0-9]{1,3}")]],
+      });
 
 get excursionTempFromApi(){
   return this.petitionServ.excursionTempFromApi
 }
 
-showExcursionTemp(id:number){
-       this.petitionServ.showExcursionTemp(id)
-
+showExcursionTemp(){
+  this.idForm.markAllAsTouched()
+  
+  if(this.idForm.valid){
+       this.petitionServ.showExcursionTemp(this.idForm.get('id')?.value)
   }
+  else {alert('Enter a valid user id')}
+
+}
 
 }

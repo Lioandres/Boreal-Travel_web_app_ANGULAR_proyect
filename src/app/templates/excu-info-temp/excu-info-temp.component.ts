@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuxService } from 'src/app/services/general.service';
 import { PetitionService } from 'src/app/services/petition.service';
@@ -10,19 +12,39 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class ExcuInfoTempComponent implements OnInit {
 
-  constructor(private auxServ:AuxService,
-              private petitionServ:PetitionService) { }
+  constructor(private petitionServ:PetitionService,
+              private route:Router,
+              private fb:FormBuilder) { }
 
 ngOnInit(): void {
 
 }
 
-// idExcursion  from Services 
-
 
 
 get excursionTemp(){
-return this.petitionServ.excursionTemp
+    return this.petitionServ.excursionTemp
+}
+
+get excursionListFromId(){
+  return this.petitionServ.excursionListFromId
+}
+
+excuForm:FormGroup= this.fb.group({
+   
+  id_excursion:["",[Validators.required]],
+  
+});
+
+setExcursion(){
+  console.log('ok')
+  console.log('el id de la excursion elegida es',this.excuForm.get('id_excursion')?.value)
+  this.excuForm.markAllAsTouched()
+  if(this.excuForm.valid){
+    this.petitionServ.showExcursion(parseInt(this.excuForm.get('id_excursion')?.value))
+    this.route.navigate(['excuInfo'])
+}
+  else alert('debe elegir una fecha válida')
 }
 
 }

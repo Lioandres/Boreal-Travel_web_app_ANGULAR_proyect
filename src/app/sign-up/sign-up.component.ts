@@ -6,6 +6,7 @@ import { creatDateRangeValidator} from './custom.validator'
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class SignUpComponent implements OnInit {
               private auxServ:AuxService,
               private pettionServ:PetitionService,
               private route:Router,
+
             ) {
   }
 

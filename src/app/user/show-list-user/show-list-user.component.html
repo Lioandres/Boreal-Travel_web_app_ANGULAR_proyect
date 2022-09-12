@@ -1,1 +1,47 @@
-<p>show-list-user works!</p>
+<div class="row">
+
+    <div class="p-4 pb-0 position-relative col-3">
+      <h5 class="text-primary mb-3">id</h5>
+    </div>
+
+    <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">name</h5>
+    </div>
+
+    <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">mail</h5>
+    </div>
+  
+    <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">rol</h5>
+    </div>
+    
+
+</div>
+
+   
+<div *ngFor="let item of userListFromAPI">
+    <div class="property-item rounded overflow-hidden">
+      <div class="row">
+
+      <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">{{item.id_user }}    </h5>
+      </div>
+
+      <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">{{item.user_name}} </h5>
+      </div>
+
+
+      <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">{{item.user_email }}    </h5>
+      </div>
+
+
+      <div class="p-4 pb-0 position-relative col-3">
+        <h5 class="text-primary mb-3">{{item.user_role}}    </h5>
+      </div>
+
+    </div>
+    </div>
+  </div> 

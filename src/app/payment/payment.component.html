@@ -19,7 +19,7 @@
         <label for="expirationDate" class="form-label">Fecha de expiración </label>
         <input formControlName="expirationDate" class="form-control" id="expirationDate" placeholder="MM-YYYY">
         <div class="warning" *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched">
-          Ingrese una fecha vádlida válido</div>
+          Ingrese una fecha vádlida</div>
       </div>
       <div class="col-4 mb-3">
         <label for="CVV" class="form-label">CVV</label>

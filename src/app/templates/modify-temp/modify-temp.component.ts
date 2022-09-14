@@ -35,25 +35,16 @@ export class ModifyTempComponent implements OnInit {
     this.modifyTempForm.markAllAsTouched()
 
     if(this.modifyTempForm.valid){
-
-
-      console.log(this.modifyTempForm.value)
-      console.log(
-      this.modifyTempForm.get('id_excursion_template')?.value,
-      this.modifyTempForm.get('title')?.value,
-      this.modifyTempForm.get('img')?.value,
-      this.modifyTempForm.get('type')?.value,
-      this.modifyTempForm.get('description')?.value,
-      this.modifyTempForm.get('price_default')?.value,
-      this.modifyTempForm.get('max_num_people_default')?.value)
       
       this.petitionServ.modifyExcursionTemp(this.modifyTempForm.value)
-       .subscribe((resp:APITempUpdate)=>alert(resp.message)) 
+       .subscribe((resp:APITempUpdate)=>{alert(resp.message)
+                                          if(resp.status===200) {
+                                            this.modifyTempForm.reset()
+                                          }
+                                        }) 
     }
     else {alert('ingrese el id de la excursion')}
   
   }
-
-
 
 }

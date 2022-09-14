@@ -120,15 +120,17 @@ addExcursionTemp(data:ExcursionTemplate) {
  
 
 modifyExcursionTemp(excursionData:ExcursionTemplate) {
- return this.http.put<APITempUpdate>(baseUrl+'/api/template/update/'+excursionData.id_excursion_template,
-  {
-    "title":excursionData.title,
-     "img":excursionData.img,
-     "type":excursionData.type,
-     "description":excursionData.description,
-     "price_default":excursionData.price_default,
-     "max_num_people_default":excursionData.max_num_people_default
-},{headers:headers1})
+  
+  return this.http.post<APITempUpdate>(baseUrl+
+        '/api/template/update/'+excursionData.id_excursion_template+
+        "?title="+excursionData.title+
+        "&img="+excursionData.img+
+        "&type="+excursionData.type+
+        "&description="+excursionData.description+
+        "&price_default="+excursionData.price_default+
+        "&max_num_people_default="+excursionData.max_num_people_default,
+        JSON.stringify(excursionData))
+                  
            
 }
 
@@ -170,34 +172,41 @@ deleteExcursion(id:number):Observable<APIUpdate> {
 }
 
 
-addExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdate> {
+addExcursion(excursionData:Excursion,start:string,end:string):Observable<APIUpdate> {
 
-  return this.http.post<APIUpdate>(baseUrl+'/api/excursion/add',
-{
-     "excursions_template_id":excursionData.excursions_template_id,
-      "user_id":excursionData.user_id,
-      "num_max_people":excursionData.num_max_people,
-      "price":excursionData.price,
-      "start":start,
-      "end":end
- },
- {headers:headers1})
+  return this.http.post<APIUpdate>(baseUrl+
+    '/api/excursion/add?excursions_template_id='+excursionData.excursions_template_id+
+    "&user_id="+excursionData.user_id+
+    "&num_max_people="+excursionData.num_max_people+
+    "&price="+excursionData.price+
+    // "&start="+start.getFullYear()+'-'+start.getMonth()+'-'+start.getDay()+' '+start.toLocaleTimeString()+
+    // "&end="+end.getFullYear()+'-'+end.getMonth()+'-'+end.getDay()+' '+end.toLocaleTimeString(), 
+    "&start="+start+
+    "&end="+end,
+    JSON.stringify(excursionData))
+}
+    
+    
+    
+    
+    
+  
             
- }
+ 
 
-modifyExcursion(excursionData:Excursion,start:Date,end:Date):Observable<APIUpdate> {
+modifyExcursion(excursionData:Excursion,start:string,end:string):Observable<APIUpdate> {
 
 
-  return this.http.put<APIUpdate>(baseUrl+'/api/excursion/update/'+excursionData.id_excursion,
-{
-     "excursions_template_id":excursionData.excursions_template_id,
-      "user_id":excursionData.user_id,
-      "num_max_people":excursionData.num_max_people,
-      "price":excursionData.price,
-      "start":start,
-      "end":end
- },
- {headers:headers1})
+  return this.http.post<APIUpdate>(baseUrl+
+    
+    '/api/excursion/update/'+excursionData.id_excursion+
+    '?excursions_template_id='+excursionData.excursions_template_id+
+    "&user_id="+excursionData.user_id+
+    "&num_max_people="+excursionData.num_max_people+
+    "&price="+excursionData.price+
+    "&start="+start+
+    "&end="+end,
+    JSON.stringify(excursionData))
             
  }
 

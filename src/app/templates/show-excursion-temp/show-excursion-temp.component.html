@@ -6,7 +6,7 @@
             <input type="number" formControlName="id" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"/>
             <div class="warning" *ngIf="idForm.get('id')?.invalid && idForm.get('id')?.touched" >only int numbers (max 999)</div>
             <div class="input-group-append">
-                <button class="btn btn-dark"  type="button">Buscar</button>
+                <button class="btn btn-dark"  type="submit">Buscar</button>
             </div>
         </div>
         </form>

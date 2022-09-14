@@ -31,21 +31,14 @@ export class AddTemplateComponent implements OnInit {
     addExcursionTemp(){
       this.addTempForm.markAllAsTouched()
       if(this.addTempForm.valid){
-  
-        // console.log(this.addTempForm.value)
-  
-        // console.log(
-        
-        // this.addTempForm.get('title')?.value,
-        // this.addTempForm.get('img')?.value,
-        // this.addTempForm.get('type')?.value,
-        // this.addTempForm.get('description')?.value,
-        // this.addTempForm.get('price_default')?.value,
-        // this.addTempForm.get('max_num_people_default')?.value)
         
         this.petitionServ.addExcursionTemp(this.addTempForm.value)
-         .subscribe((resp:APITempUpdate)=>alert(resp.message)) 
-         this.petitionServ.showListTemp()
+         .subscribe((resp:APITempUpdate)=>{alert(resp.message)
+                                            if(resp.status===200) {
+                                              this.addTempForm.reset()
+                                            }
+                                          }) 
+         
       }
        
       else {alert('complete todos los campos')}

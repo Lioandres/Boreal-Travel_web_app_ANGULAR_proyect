@@ -17,7 +17,7 @@
     <div id="tab-1" class="tab-pane fade show p-0 active">
       <div class="row g-4">
            
-          <div *ngFor="let item of resultExcursionFound"  class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <!-- <div *ngFor="let item of resultExcursionFound"  class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="property-item rounded overflow-hidden">
               <div class="position-relative overflow-hidden">
                 <a routerLink="/excuInfo" (click)="setExcursions(item.id_excursion, item.excursions_template_id)" href="">
@@ -29,10 +29,34 @@
               
               </div>
             </div>
-          </div> 
+          </div>  -->
   
   
       </div>
+
+     <div *ngFor="let item of resultExcursionFound"  class="row m-2 wow fadeInUp borderResults" data-wow-delay="0.1s">
+            
+              <div class="col-4 position-relative overflow-hidden"> <img class="img-fluid"
+                  [src]="excursionListTempFromAPI[lookIndexTemp(item.excursions_template_id)].img" alt="">
+              </div>
+              <h5 class="col-2">
+                {{excursionListTempFromAPI[lookIndexTemp(item.excursions_template_id)].title}}</h5>
+              <h5 class="col-2">{{item.start | date}}</h5>
+              <h5 class="col-2">{{item.end | date}}</h5>
+              <h5 class="col-1">{{item.price}} EUR</h5>
+              <div class="col-1">
+              <button routerLink="/excuInfo" (click)="setExcursions(item.id_excursion, item.excursions_template_id)"  type="button" class="btn btn-primary">Ver detalles</button>
+             </div>
+            
+             
+    </div>
+
+
+
+
+
+
+
     </div>
   </div>
   

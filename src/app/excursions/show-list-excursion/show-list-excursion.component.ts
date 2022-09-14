@@ -14,7 +14,7 @@ export class ShowListExcursionComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.petitionServ.showList()
   }
 
 get excursionListFromAPI(){

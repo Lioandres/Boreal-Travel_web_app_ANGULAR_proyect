@@ -23,8 +23,8 @@ export class ModifyExcursionComponent implements OnInit {
         id_excursion:["",[Validators.required]],
         excursions_template_id:["",[Validators.required]],
         user_id:["",[Validators.required]],
-        num_max_people:["",[Validators.required]],
-        price:["",[Validators.required]],
+        num_max_people:["",[Validators.required,Validators.max(30)]],
+        price:["",[Validators.required, Validators.pattern("[0-9]{1,4}[.][0-9]{2}")]],
         dateStart:["",[Validators.required]],
         dateEnd:["",[Validators.required]],
         timeStart:["",[Validators.required]],
@@ -44,14 +44,18 @@ export class ModifyExcursionComponent implements OnInit {
         let dateEnd=this.modifyForm.get('dateEnd')?.value
         let timeEnd=this.modifyForm.get('timeEnd')?.value
        
-        let  startDateAndTime= new Date(dateStart.year,dateStart.month,dateStart.day,timeStart.hour,timeStart.minute,timeStart.second)
-        let  endDateAndTime=new Date(dateEnd.year,dateEnd.month,dateEnd.day,timeEnd.hour,timeEnd.minute,timeEnd.second)
-    
-       
+        let  startDateAndTime=dateStart.year+'-'+dateStart.month+'-'+dateStart.day+' '+timeStart.hour+':'+timeStart.minute+':'+timeStart.second
+        let  endDateAndTime=dateEnd.year+'-'+dateEnd.month+'-'+dateEnd.day+' '+timeEnd.hour+':'+timeEnd.minute+':'+timeEnd.second
+
         
         
           this.petitionServ.modifyExcursion(this.modifyForm.value,startDateAndTime,endDateAndTime)
-           .subscribe((resp:APIUpdate)=>alert(resp.message)) 
+           .subscribe((resp:APIUpdate)=>{alert(resp.message)
+                                        
+                                          if(resp.status===200) {
+                                            this.modifyForm.reset()
+
+                                          } }) 
           }
           
         else alert('complete todos los campos');

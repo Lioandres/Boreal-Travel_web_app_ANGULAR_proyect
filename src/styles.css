@@ -481,3 +481,9 @@
     border: 1px black solid;
     border-radius: 25px;
 }
+
+.borderResults{
+    padding: 20px 5px 10px;
+    border: 4px green;
+    border-radius: 25px;
+}

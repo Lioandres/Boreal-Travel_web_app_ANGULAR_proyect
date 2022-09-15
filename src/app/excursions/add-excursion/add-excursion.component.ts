@@ -55,9 +55,11 @@ export class AddExcursionComponent implements OnInit {
            .subscribe((resp:APIUpdate)=>{alert(JSON.stringify(resp.message,null,4))
                                           if(resp.status===200) {
                                             this.addForm.reset()
+                                            this.petitionServ.showList()
 
                                           }
                                         }) 
+            
           }
           
         else alert('complete todos los campos');

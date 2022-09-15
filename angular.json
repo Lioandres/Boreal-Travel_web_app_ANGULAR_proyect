@@ -80,6 +80,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.config.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "Spring_9_Tasca:build:production"
@@ -116,7 +119,7 @@
       }
     }
   },
-  "defaultProject": "Spring_9_Tasca",
+ "defaultProject": "Spring_9_Tasca",
   "cli": {
     "analytics": "26294b23-1cf5-420c-bce0-c8851a5e3475"
   }

@@ -36,6 +36,7 @@ export class AddTemplateComponent implements OnInit {
          .subscribe((resp:APITempUpdate)=>{alert(resp.message)
                                             if(resp.status===200) {
                                               this.addTempForm.reset()
+                                              this.petitionServ.showListTemp()
                                             }
                                           }) 
          

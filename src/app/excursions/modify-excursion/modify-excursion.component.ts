@@ -54,6 +54,7 @@ export class ModifyExcursionComponent implements OnInit {
                                         
                                           if(resp.status===200) {
                                             this.modifyForm.reset()
+                                            this.petitionServ.showList()
 
                                           } }) 
           }

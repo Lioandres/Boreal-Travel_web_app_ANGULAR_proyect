@@ -75,6 +75,11 @@ lookIndexTemp(id_template:string):number{
   return this.excursionListTempFromAPI.findIndex(excursion=>excursion.id_excursion_template===id_template)
 }
 
+excursionListFromId:Excursion[]=[]
+getChosenExcursions(idTemp:string) {
+  this.excursionListFromId=this.excursionListFromAPI.filter(item=>item.excursions_template_id===idTemp)
+}
+
 showListTemp() {
    this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
     .subscribe((resp:ApiTemplateShowList)=>{this.excursionListTempFromAPI=resp.data})
@@ -310,8 +315,8 @@ getProfile() {
 
   })
   const headers3= {  
-    //'Authorization': 'Bearer ' + this.cookieService.get('token'),
-    //'Origin': 'http://localhost:4200',
+    'Authorization': 'Bearer ' + this.cookieService.get('token'),
+    'Origin': 'http://localhost:4200',
     'Access-Control-Request-Methods': 'GET',
     'Access-Control-Request-Header': 'Authorization'
 
@@ -320,10 +325,7 @@ getProfile() {
         .subscribe((resp:ApiProfile)=>console.log(resp));
 }
 
-excursionListFromId:Excursion[]=[]
-getChosenExcursions(idTemp:string) {
-  this.excursionListFromId=this.excursionListFromAPI.filter(item=>item.excursions_template_id===idTemp)
-}
+
 
 
    }

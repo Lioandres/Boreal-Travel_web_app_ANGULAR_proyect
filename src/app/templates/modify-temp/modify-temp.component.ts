@@ -40,6 +40,7 @@ export class ModifyTempComponent implements OnInit {
        .subscribe((resp:APITempUpdate)=>{alert(resp.message)
                                           if(resp.status===200) {
                                             this.modifyTempForm.reset()
+                                            this.petitionServ.showListTemp()
                                           }
                                         }) 
     }

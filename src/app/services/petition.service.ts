@@ -68,7 +68,7 @@ export class PetitionService {
  
 
 
-  // Template module petitions
+       // Template module petitions
 excursionListTempFromAPI:ExcursionTemplate[]=[]
 
 lookIndexTemp(id_template:string):number{  
@@ -81,7 +81,7 @@ getChosenExcursions(idTemp:string) {
 }
 
 showListTemp() {
-   this.http.get<ApiTemplateShowList>(baseUrl+'/api/template/list')
+   this.http.get<ApiTemplateShowList>('/api/template/list')
     .subscribe((resp:ApiTemplateShowList)=>{this.excursionListTempFromAPI=resp.data})
 }
 
@@ -103,47 +103,29 @@ excursionTempFromApi:ApiTemplateShow={
   data:this.excursionTemp
 }
 showExcursionTemp(id:number) {
-    this.http.get<ApiTemplateShow>(baseUrl+'/api/template/show/'+id)
+    this.http.get<ApiTemplateShow>('/api/template/show/'+id)
      .subscribe((resp:ApiTemplateShow)=>{this.excursionTempFromApi=resp
                                          this.excursionTemp=resp.data})
  }
 
 deleteExcursionTemp(id:number) {
-  return this.http.delete<APIUpdate>(baseUrl+'/api/template/delete/'+id)
+  return this.http.delete<APIUpdate>('/api/template/delete/'+id)
 }
 
-addExcursionTemp(data:ExcursionTemplate) {
-  return this.http.post<APITempUpdate>(baseUrl+
-  '/api/template/add?title='+data.title+
-  '&img='+data.img+
-  '&type='+data.type+
-  '&description='+data.description+
-  '&price_default='+data.price_default+
-  '&max_num_people_default='+data.max_num_people_default, 
-  body1)
- }
+addExcursionTemp(body:ExcursionTemplate) {
+  return this.http.post<APITempUpdate>('/api/template/add',body)
+}
  
 
-modifyExcursionTemp(excursionData:ExcursionTemplate) {
-  
-  return this.http.post<APITempUpdate>(baseUrl+
-        '/api/template/update/'+excursionData.id_excursion_template+
-        "?title="+excursionData.title+
-        "&img="+excursionData.img+
-        "&type="+excursionData.type+
-        "&description="+excursionData.description+
-        "&price_default="+excursionData.price_default+
-        "&max_num_people_default="+excursionData.max_num_people_default,
-        JSON.stringify(excursionData))
-                  
-           
+modifyExcursionTemp(body:ExcursionTemplate) {
+  return this.http.post<APITempUpdate>('/api/template/update/'+body.id_excursion_template,body)
 }
 
 // Excursion Module petitions
 
 excursionListFromAPI:Excursion[]=[]
 showList() {
-   this.http.get<ApiShowList>(baseUrl+'/api/excursion/list')
+   this.http.get<ApiShowList>('/api/excursion/list')
     .subscribe((resp:ApiShowList)=>{this.excursionListFromAPI=resp.data})
 }
 
@@ -166,52 +148,44 @@ excursionFromApi:ApiShow={
   data:this.excursion
 }
 showExcursion(id:number) {
-  this.http.get<ApiShow>(baseUrl+'/api/excursion/show/'+id)
+  this.http.get<ApiShow>('/api/excursion/show/'+id)
     .subscribe((resp:ApiShow)=>{this.excursionFromApi=resp
                       this.excursion=resp.data})
 }
 
 
 deleteExcursion(id:number):Observable<APIUpdate> {
-  return this.http.delete<APIUpdate>(baseUrl+'/api/excursion/delete/'+id)
+  return this.http.delete<APIUpdate>('/api/excursion/delete/'+id)
 }
 
 
-addExcursion(excursionData:Excursion,start:string,end:string):Observable<APIUpdate> {
+addExcursion(body:Excursion,start:string,end:string):Observable<APIUpdate> {
 
-  return this.http.post<APIUpdate>(baseUrl+
-    '/api/excursion/add?excursions_template_id='+excursionData.excursions_template_id+
-    "&user_id="+excursionData.user_id+
-    "&num_max_people="+excursionData.num_max_people+
-    "&price="+excursionData.price+
-    // "&start="+start.getFullYear()+'-'+start.getMonth()+'-'+start.getDay()+' '+start.toLocaleTimeString()+
-    // "&end="+end.getFullYear()+'-'+end.getMonth()+'-'+end.getDay()+' '+end.toLocaleTimeString(), 
-    "&start="+start+
-    "&end="+end,
-    JSON.stringify(excursionData))
+   return this.http.post<APIUpdate>('/api/excursion/add',
+{   
+    excursions_template_id:body.excursions_template_id,
+    user_id:body.user_id,
+    num_max_people:body.num_max_people,
+    price:body.price,
+    start:start,
+    end:end
+  })
 }
-    
-    
-    
-    
-    
-  
             
  
 
-modifyExcursion(excursionData:Excursion,start:string,end:string):Observable<APIUpdate> {
+modifyExcursion(body:Excursion,start:string,end:string):Observable<APIUpdate> {
 
 
-  return this.http.post<APIUpdate>(baseUrl+
-    
-    '/api/excursion/update/'+excursionData.id_excursion+
-    '?excursions_template_id='+excursionData.excursions_template_id+
-    "&user_id="+excursionData.user_id+
-    "&num_max_people="+excursionData.num_max_people+
-    "&price="+excursionData.price+
-    "&start="+start+
-    "&end="+end,
-    JSON.stringify(excursionData))
+  return this.http.post<APIUpdate>('/api/excursion/update/'+body.id_excursion,
+  {   
+    excursions_template_id:body.excursions_template_id,
+    user_id:body.user_id,
+    num_max_people:body.num_max_people,
+    price:body.price,
+    start:start,
+    end:end
+  })
             
  }
 
@@ -305,30 +279,38 @@ userFromApi: ApiUserShow= {
                                     this.user=resp.data})
 }
 
-getProfile() {
-  let headers2=new HttpHeaders(
-    {  
-      //'Authorization': 'Bearer ' + this.cookieService.get('token'),
-      // 'Origin': 'http://localhost:4200',
-      // 'Access-Control-Request-Methods': 'GET',
-      // 'Access-Control-Request-Headers': 'Authorization'
 
-  })
-  const headers3= {  
-    'Authorization': 'Bearer ' + this.cookieService.get('token'),
-    'Origin': 'http://localhost:4200',
-    'Access-Control-Request-Methods': 'GET',
-    'Access-Control-Request-Header': 'Authorization'
 
+// getProfile() {
+//   let headers2=new HttpHeaders(
+//     {  
+//       //'Authorization': 'Bearer ' + this.cookieService.get('token'),
+//       // 'Origin': 'http://localhost:4200',
+//       // 'Access-Control-Request-Methods': 'GET',
+//       // 'Access-Control-Request-Headers': 'Authorization'
+
+//   })
+//   const headers3= {  
+//     'Authorization': 'Bearer ' + this.cookieService.get('token'),
+//     'Origin': 'http://localhost:4200',
+//     'Access-Control-Request-Methods': 'GET',
+//     'Access-Control-Request-Header': 'Authorization'
+
+// }
+//     this.http.get<ApiProfile>(baseUrl + "/api/profile",{headers:headers3})
+//         .subscribe((resp:ApiProfile)=>console.log(resp));
+// }
+
+    getProfile() {
+    alert(this.cookieService.get('token'));
+    const headers3= { 
+      'Authorization': 'Bearer ' + this.cookieService.get('token')
+     };
+    this.http.get<ApiProfile>("api/profile",{headers:headers3})
+          .subscribe((resp:ApiProfile)=>console.log(resp))
+  }
 }
-    this.http.get<ApiProfile>(baseUrl + "/api/profile",{headers:headers3})
-        .subscribe((resp:ApiProfile)=>console.log(resp));
-}
-
-
-
-
-   }
+  
 
 
 

@@ -2,13 +2,17 @@
   
     <div class="col-6">
 
-        <div class="input-group mb-3">
-            <input type="number" [(ngModel)]="id" class="form-control"
-                placeholder="Ingrese el Id de la excursion a eliminar"/>
-            <div class="input-group-append">
-                <button class="btn btn-dark" (click)="deleteExcursionTemp(id)" type="button">Eliminar</button>
+        <form [formGroup]="idForm" (ngSubmit)="deleteExcursionTemp()">
+            <div class="input-group mb-3">
+                <input type="number" formControlName="id" class="form-control" placeholder="Enter the id excursion to delete"/>
+                <div class="warning" *ngIf="idForm.get('id')?.invalid && idForm.get('id')?.touched" >only int numbers (max 999)</div>
+                <div class="input-group-append">
+                    <button class="btn btn-dark"  type="submit">Buscar</button>
+                </div>
             </div>
-        </div>
+        </form>
+
+   
 
     </div>
 

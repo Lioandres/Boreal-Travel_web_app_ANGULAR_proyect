@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiTemplateShow } from 'src/app/interfaces/apiTemplateShow.interface';
 import { ExcursionTemplate } from 'src/app/interfaces/apiTemplateShowList.interface';
 import { PetitionService } from 'src/app/services/petition.service';
@@ -10,33 +11,34 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class DeleteTempComponent implements OnInit {
 
-  constructor(private petitionServ:PetitionService) { }
+  constructor(private fb:FormBuilder,
+    private petitionServ:PetitionService) { }
+  
+    ngOnInit(): void {
+    }
+    idForm:FormGroup= this.fb.group({
+      id:["",[Validators.required,Validators.pattern("[0-9]{1,3}")]],
+ });
 
-  ngOnInit(): void {
-  }
-
-  id:number=1
- 
-  excursionTemp:ExcursionTemplate={
-    id_excursion_template:  "",
-    title:                  "",
-    img:                    "",
-    type:                   "",
-    description:            "",
-    price_default:          "",
-    max_num_people_default: "",
-} 
- excursionTempFromApi:ApiTemplateShow={
-    status: 0,
-    error:true,
-    messages:"",
-    data:this.excursionTemp
+ get excursionTempFromApi(){
+  return this.petitionServ.excursionTempFromApi
 }
 
-deleteExcursionTemp(id:number){
-       this.petitionServ.deleteExcursionTemp(id)
-              .subscribe((resp)=>console.log(resp))
+
+deleteExcursionTemp(){
+
+  this.idForm.markAllAsTouched()
+  if(this.idForm.valid){
+       this.petitionServ.deleteExcursionTemp(this.idForm.get('id')?.value)
+              .subscribe((resp)=>{alert(JSON.stringify(resp.message,null,4))
+                if(resp.status===200) {
+                  this.idForm.reset()
+                  this.petitionServ.showListTemp()
+                 }
+               }) 
   }
+  else {alert('Enter a valid user id')}
+}
 
 }
 

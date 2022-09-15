@@ -37,7 +37,7 @@ export class ModifyTempComponent implements OnInit {
     if(this.modifyTempForm.valid){
       
       this.petitionServ.modifyExcursionTemp(this.modifyTempForm.value)
-       .subscribe((resp:APITempUpdate)=>{alert(resp.message)
+       .subscribe((resp:APITempUpdate)=>{alert(JSON.stringify(resp.message,null,4))
                                           if(resp.status===200) {
                                             this.modifyTempForm.reset()
                                             this.petitionServ.showListTemp()

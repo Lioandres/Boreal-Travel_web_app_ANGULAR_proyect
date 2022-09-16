@@ -29,6 +29,7 @@ addToCart(excursionChosen:Excursion,numberChosen:number) {
 
 
   logInUser:string='LOG IN'
+  logInUserRole:string=""
   loggedIn:boolean=false
   id_user:number=0
 

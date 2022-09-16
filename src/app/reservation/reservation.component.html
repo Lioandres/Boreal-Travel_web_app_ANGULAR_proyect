@@ -78,7 +78,7 @@
 
           <app-payment *ngIf="isReserveFormFilled && !isPaymentFormFilled" (isPaymentFormFilled)="confirmReserve($event)"></app-payment>
 
-           <h3 *ngIf="isReservationOK">La reserva se ha realizado con éxito. Su número de reserva es el :POST(reservation_id) </h3>
+           <h3 *ngIf="isReservationOK">La reserva se ha realizado con éxito. Su número de reserva es el :{{reserId}} </h3>
 
         </div>
 

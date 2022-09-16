@@ -2,7 +2,7 @@
     <h2>Ingrese los datos de su tarjeta</h2>
     <div class="row">
       <div class="col-4 mb-3">
-        <label for="cardName" class="form-label">Nomdre del titular de la tarjeta</label>
+        <label for="cardName" class="form-label">Nombre del titular de la tarjeta</label>
         <input formControlName="cardName" class="form-control" id="cardName">
         <div class="warning" *ngIf="paymentForm.get('cardName')?.invalid && paymentForm.get('cardName')?.touched">Debe
           contener 2 caracteres min</div>

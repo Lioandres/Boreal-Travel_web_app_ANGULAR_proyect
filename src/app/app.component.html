@@ -46,11 +46,11 @@
       
       
      
-      <a *ngIf="loggedIn" class="btn btn-dark px-3  me-3" (click)="started=true">Bienvenido
+      <a *ngIf="loggedIn" class="btn btn-dark px-3  me-3" >Bienvenido
         {{logInUser}}</a>
       
              
-       <a *ngIf="loggedIn" class=" btn btn-dark px-3  me-3" (click)="started=true ; logOut()"
+       <a *ngIf="loggedIn" class=" btn btn-dark px-3  me-3" (click)="logOut()"
     routerLink="signIn">LOG-OUT</a>
 
         
@@ -63,7 +63,7 @@
 
 
 
-<router-outlet></router-outlet>
+<router-outlet (activate)="onActivate($event)"></router-outlet>
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer wow fadeIn mt-md-5 pt-md-5" data-wow-delay="0.1s">
@@ -118,11 +118,11 @@
         <h5 class="text-white mb-4">Reservado para Agentes turísticos</h5>
         <p>Eres agente u operador turistico?. inica sesion aqui</p>
         <div class="position-relative mx-auto" style="max-width: 400px;">
-            <a class="btn btn-outline-light mb-2" (click)="started=true ; logOut()"
+            <a class="btn btn-outline-light mb-2" (click)="logOut()"
             routerLink="signIn">Iniciar Sesion</a>
         <p>Aún no eres un agente u operador turistico registrado?.Regístrate aquí</p>
         <div class="position-relative mx-auto" style="max-width: 400px;">
-            <a class="btn btn-outline-light " (click)="started=true ; logOut()"
+            <a class="btn btn-outline-light " (click)="logOut()"
                 routerLink="signUp">Registrarse</a>
             </div>
         </div>

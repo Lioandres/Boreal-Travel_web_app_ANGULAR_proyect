@@ -41,7 +41,7 @@ addUser(){
   this.signUpForm.markAllAsTouched()
   
   if (this.signUpForm.valid) {
-    console.log(this.signUpForm.value)
+    
     this.pettionServ.addUser(this.signUpForm.value)
       .subscribe(resp=>{alert(JSON.stringify(resp.message,null,4))
                         if(resp.status===200) {

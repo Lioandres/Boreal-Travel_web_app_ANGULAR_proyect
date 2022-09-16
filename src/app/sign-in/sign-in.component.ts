@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiProfile } from '../interfaces/apiProfile.interface';
 
 @Component({
   selector: 'app-sign-in',
@@ -37,8 +38,9 @@ export class SignInComponent implements OnInit {
                               this.route.navigate(['home'])
                               this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
-                              this.cookieService.set('token',resp.data.token)}
-                              
+                              this.cookieService.set('token',resp.data.token)
+                              this.pettionServ.getProfile()
+                            };
                           })
 
       }

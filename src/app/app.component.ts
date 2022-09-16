@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Temps } from './interfaces/temps.interface';
 import { AuxService } from './services/general.service';
 import { PetitionService } from './services/petition.service';
@@ -10,7 +11,8 @@ import { PetitionService } from './services/petition.service';
 })
 export class AppComponent {
   constructor(private auxServ:AuxService,
-              private petitionServ:PetitionService){}
+              private petitionServ:PetitionService,
+              private route:Router){}
               
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -18,6 +20,14 @@ export class AppComponent {
    this.getWeather()
    this.petitionServ.showListTemp()
    this.petitionServ.showList()
+   this.route.events.subscribe((evt) => {
+    if (!(evt instanceof NavigationEnd)) {
+        return;
+    }
+    document.body.scrollTop = 0
+});
+
+
   
   }
 
@@ -46,10 +56,21 @@ export class AppComponent {
     this.auxServ.logOut()
   }
 
-  // showNotice(){
-  //   this.auxServ.showNotice()
-  // }
+  onActivate(event:any) {
+    // window.scroll(0,0);
+ 
+    window.scroll({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+     });
+ 
+      document.body.scrollTop = 0;
+      document.querySelector('body')!.scrollTo(0,0)
+    
+ }
+
 
   title = 'Reikjavik Excursiones';
-  started:boolean=false
+  
 }

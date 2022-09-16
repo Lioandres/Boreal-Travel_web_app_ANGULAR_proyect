@@ -39,6 +39,7 @@ import { PasswordUserComponent } from './user/password-user/password-user.compon
 import { EmailUserComponent } from './user/email-user/email-user.component';
 import { RolUserComponent } from './user/rol-user/rol-user.component';
 import { ShowListUserComponent } from './user/show-list-user/show-list-user.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
 
@@ -231,12 +232,14 @@ const routes: Routes = [
   {
     path:'rolUser',
     component: RolUserComponent,
-     pathMatch:'full'
+    canActivate:[AdminGuard],
+    pathMatch:'full'
   },
   {
     path:'listUser',
     component: ShowListUserComponent,
-     pathMatch:'full'
+    canActivate:[AdminGuard],
+    pathMatch:'full'
   }]
 }
 
@@ -244,7 +247,13 @@ const routes: Routes = [
 
 @NgModule({
  
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+   {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 0]
+    }
+                        )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

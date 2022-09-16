@@ -70,6 +70,7 @@ continue():void {
  
 isPaymentFormFilled:boolean=false
 isReservationOK:boolean=false
+reserId:string=""
 confirmReserve(eventData:boolean) {
   this.isPaymentFormFilled=eventData
   if (this.repositoryCart.length===0) return alert('debe elegir una excursion') 
@@ -85,8 +86,9 @@ confirmReserve(eventData:boolean) {
               num_people:item.numberPeople
               }
         this.petitionServ.addReserve(reservation)
-              .subscribe((resp)=>{console.log (resp.message)
-                                    this.isReservationOK=!resp.error})
+              .subscribe((resp)=>{alert(JSON.stringify(resp.message,null,4))
+                                  this.reserId=resp.data
+                                  this.isReservationOK=!resp.error})
       })
     }
   this.auxServ.repositoryCart=[]

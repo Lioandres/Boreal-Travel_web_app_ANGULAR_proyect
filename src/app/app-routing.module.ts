@@ -1,21 +1,21 @@
-import { CircleComponent } from './circle/circle.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BorealComponent } from './boreal/boreal.component';
+
 
 import { HomeComponent } from './home/home.component';
-import { LakeComponent } from './lake/lake.component';
-import { BusComponent } from './bus/bus.component';
-import { AirportComponent } from './airport/airport.component';
+
+
+
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './footer/contact/contact.component';
 import { AboutComponent } from './footer/about/about.component';
 import { PrivacyComponent } from './footer/privacy/privacy.component';
 import { TermsComponent } from './footer/terms/terms.component';
 import { CookiesComponent } from './footer/cookies/cookies.component';
-import { ExcuInfoComponent } from './excu-info/excu-info.component';
-import { GaleriaComponent } from './galeria/galeria.component';
+
+
 import { ReservationComponent } from './reservation/reservation.component';
 import { ResultComponent } from './result/result.component';
 
@@ -40,6 +40,13 @@ import { EmailUserComponent } from './user/email-user/email-user.component';
 import { RolUserComponent } from './user/rol-user/rol-user.component';
 import { ShowListUserComponent } from './user/show-list-user/show-list-user.component';
 import { AdminGuard } from './guards/admin.guard';
+import { BorealComponent } from './types/boreal/boreal.component';
+import { LakeComponent } from './types/lake/lake.component';
+import { CircleComponent } from './types/circle/circle.component';
+import { AirportComponent } from './types/airport/airport.component';
+import { BusComponent } from './types/bus/bus.component';
+import { GaleriaComponent } from './footer/galeria/galeria.component';
+import { ExcuInfoComponent } from './selection/excu-info/excu-info.component';
 
 const routes: Routes = [
 

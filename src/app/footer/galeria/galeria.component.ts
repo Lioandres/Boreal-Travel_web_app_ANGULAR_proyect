@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PetitionService } from '../services/petition.service';
+import { PetitionService } from '../../services/petition.service';
 
 
 @Component({

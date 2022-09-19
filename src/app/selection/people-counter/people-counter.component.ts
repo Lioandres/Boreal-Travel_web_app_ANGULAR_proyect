@@ -1,6 +1,7 @@
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuxService } from '../services/general.service';
+import { AuxService } from '../../services/general.service';
 
 @Component({
   selector: 'app-people-counter',

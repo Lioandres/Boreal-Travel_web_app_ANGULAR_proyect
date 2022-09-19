@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuxService } from '../services/general.service';
-import { PetitionService } from '../services/petition.service';
+import { AuxService } from '../../services/general.service';
+import { PetitionService } from '../../services/petition.service';
 
 @Component({
   selector: 'app-excu-info',

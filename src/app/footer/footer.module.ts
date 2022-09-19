@@ -4,6 +4,8 @@ import { AboutComponent } from './about/about.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { CookiesComponent } from './cookies/cookies.component';
+import { ContactComponent } from './contact/contact.component';
+import { GaleriaComponent } from './galeria/galeria.component';
 
 
 
@@ -12,7 +14,9 @@ import { CookiesComponent } from './cookies/cookies.component';
     AboutComponent,
     PrivacyComponent,
     TermsComponent,
-    CookiesComponent
+    CookiesComponent,
+    ContactComponent,
+    GaleriaComponent
   ],
   imports: [
     CommonModule

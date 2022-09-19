@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 import { CookieService } from 'ngx-cookie-service';
-import { ApiProfile } from '../interfaces/apiProfile.interface';
+
 
 @Component({
   selector: 'app-sign-in',

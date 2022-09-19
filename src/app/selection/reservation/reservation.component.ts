@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuxService } from '../services/general.service';
-import { PetitionService } from '../services/petition.service';
-import { repetedMails } from '../Shared/repetedMail';
-import { ApiReservationBody } from '../interfaces/apiReservationBody.interface';
+import { AuxService } from '../../services/general.service';
+import { PetitionService } from '../../services/petition.service';
+import { repetedMails } from '../../Shared/repetedMail';
+import { ApiReservationBody } from '../../interfaces/apiReservationBody.interface';
 
 
 @Component({

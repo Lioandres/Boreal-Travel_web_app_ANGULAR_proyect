@@ -16,8 +16,8 @@ import { TermsComponent } from './footer/terms/terms.component';
 import { CookiesComponent } from './footer/cookies/cookies.component';
 
 
-import { ReservationComponent } from './reservation/reservation.component';
-import { ResultComponent } from './result/result.component';
+import { ReservationComponent } from './selection/reservation/reservation.component';
+import { ResultComponent } from './selection/result/result.component';
 
 import { ModifyTempComponent } from './templates/modify-temp/modify-temp.component';
 import { AddTemplateComponent } from './templates/add-template/add-template.component';

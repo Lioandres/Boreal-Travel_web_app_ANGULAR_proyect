@@ -4,6 +4,9 @@ import { ExcuInfoComponent } from './excu-info/excu-info.component';
 import { PeopleCounterComponent } from './people-counter/people-counter.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResultComponent } from './result/result.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -13,7 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
    ExcuInfoComponent,
-   PeopleCounterComponent
+   PeopleCounterComponent,
+   ResultComponent,
+   ReservationComponent,
+   PaymentComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ExcursionsService } from '../services/excursions.service';
-import { AuxService } from '../services/general.service';
-import { PetitionService } from '../services/petition.service';
+import { ExcursionsService } from '../../services/excursions.service';
+
+import { PetitionService } from '../../services/petition.service';
 
 @Component({
   selector: 'app-result',

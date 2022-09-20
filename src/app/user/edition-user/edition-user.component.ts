@@ -9,15 +9,10 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class EditionUserComponent implements OnInit {
 
-  constructor(private petitionServ:PetitionService,
-              private auxServ:AuxService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.petitionServ.getProfile()
-    .subscribe(resp=>{
-                      alert((JSON.stringify(resp,null,4)))
-                      this.auxServ.logInUserRole=resp.data.profile.role
-    })
+  
     
   }
 

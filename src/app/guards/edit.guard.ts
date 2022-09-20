@@ -14,9 +14,8 @@ export class EditGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const cookie=this.cookieService.check('token')
-
-      if(!cookie){
+    
+      if(this.auxServ.loggedIn!=true){
         alert('NOT AUTHORIZED')
         this.route.navigate(['signIn'])
         return false } 

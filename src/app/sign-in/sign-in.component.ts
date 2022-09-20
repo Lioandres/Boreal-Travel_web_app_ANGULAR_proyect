@@ -46,11 +46,7 @@ export class SignInComponent implements OnInit {
                                                     alert((JSON.stringify(resp,null,4)))
                                                     this.auxServ.logInUserRole=resp.data.profile.role
                                   })
-                              this.petitionServ.getProfile()
-                                  .subscribe(resp=>{
-                                                    alert((JSON.stringify(resp,null,4)))
-                                                    this.auxServ.logInUserRole=resp.data.profile.role
-                                  })
+                             
                             };
                           })
 

@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate {
       
 
       if(this.auxServ.logInUserRole!='admin'){
-        alert('You need admin rights to access!')
+        alert('You need admin rights!')
         return false } 
       else return true;
   }

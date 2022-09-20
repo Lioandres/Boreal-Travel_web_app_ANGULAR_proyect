@@ -6,6 +6,7 @@ import { PetitionService } from '../services/petition.service';
 import { CookieService } from 'ngx-cookie-service';
 
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -17,7 +18,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private auxServ:AuxService,
-              private pettionServ:PetitionService,
+              private petitionServ:PetitionService,
               private route:Router,
               private cookieService:CookieService) { }
 
@@ -32,14 +33,24 @@ export class SignInComponent implements OnInit {
     this.logInForm.markAllAsTouched()
       if (this.logInForm.valid) {
         
-        this.pettionServ.logIn(this.logInForm.value)
+        this.petitionServ.logIn(this.logInForm.value)
           .subscribe(resp=>{alert(JSON.stringify(resp.message,null,4))
                             if(resp.status===200) {
                               this.route.navigate(['home'])
                               this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
-                              this.cookieService.set('token',resp.data.token)
-                              this.pettionServ.getProfile()
+                              localStorage.setItem('token',resp.data.token)
+                              //this.cookieService.set('token',resp.data.token)
+                              this.petitionServ.getProfile()
+                                  .subscribe(resp=>{
+                                                    alert((JSON.stringify(resp,null,4)))
+                                                    this.auxServ.logInUserRole=resp.data.profile.role
+                                  })
+                              this.petitionServ.getProfile()
+                                  .subscribe(resp=>{
+                                                    alert((JSON.stringify(resp,null,4)))
+                                                    this.auxServ.logInUserRole=resp.data.profile.role
+                                  })
                             };
                           })
 

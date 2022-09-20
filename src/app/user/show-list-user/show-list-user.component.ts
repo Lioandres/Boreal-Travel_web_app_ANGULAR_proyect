@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuxService } from 'src/app/services/general.service';
 import { PetitionService } from 'src/app/services/petition.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class ShowListUserComponent implements OnInit {
 
-  constructor(private petitionServ:PetitionService) { }
+  constructor(private petitionServ:PetitionService,
+             ) { }
 
   ngOnInit(): void {
     this.petitionServ.showListUser()
-    this.petitionServ.getProfile()
-   
+    
   }
 
 get userListFromAPI(){

@@ -1,25 +1,34 @@
 <!-- Navbar Start -->
+
+
 <div class="container-fluid nav-bar bg-transparent">
   <nav class="navbar navbar-expand-lg bg-transparent navbar-light py-0 px-4">
-    <a routerLink="home" class="navbar-brand d-flex align-items-center text-center">
-      <div class="icon p-2 me-2">
+      <a routerLink="home" class="navbar-brand mx-auto">
         <img src="/assets/img/logo.jpg" alt="" class="d-inline-block align-text-top">
-        <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt="">
-        {{temp}} ºC
-      </div>
+      </a>
+     
 
 
 
-    </a>
-    <button type="button" class="navbar-toggler bg-white" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+   
+    <button type="button" class="navbar-toggler bg-white m-1" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon bg-white"></span>
     </button>
+
+    
+
     <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <div class="icon p-2 mx-auto">
+         <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt="">
+         <div>{{temp}} ºC</div>
+      </div>
+
       <div class="navbar-nav ms-auto">
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Excursiones y actividades</a>
-          <div class="dropdown-menu rounded-0 m-0 bg-transparent">
-            <a class="dropdown-item " routerLink="boreal">Tours de la Aurora Boreal</a>
+          <div class="dropdown-menu rounded-0 m-0">
+            <a class="dropdown-item  " routerLink="boreal">Tours de la Aurora Boreal</a>
             <a class="dropdown-item " routerLink="lake">Excursiones al lago azul</a>
             <a class="dropdown-item " routerLink="circle">Excursiones al cículo Dorado</a>
           </div>
@@ -28,7 +37,7 @@
         <a class="nav-item nav-link " routerLink="bus">Recorridos en Bus</a>
         <div *ngIf="loggedIn" class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
-          <div class="dropdown-menu rounded-0 m-0 bg-transparent">
+          <div class="dropdown-menu rounded-0 m-0">
             <a class="dropdown-item " routerLink="editionExcursion/showExcursion">Operate Excursions</a>
             <a class="dropdown-item " routerLink="edition/showTemp">Edit Templates</a>
             <a class="dropdown-item " routerLink="editionUser/showUser">Edit User</a>

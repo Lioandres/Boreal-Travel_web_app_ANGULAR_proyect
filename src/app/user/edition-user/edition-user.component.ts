@@ -14,8 +14,11 @@ export class EditionUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.petitionServ.getProfile()
-     .subscribe(resp=>{this.auxServ.logInUserRole=resp.data.profile.role
-                        })
+    .subscribe(resp=>{
+                      alert((JSON.stringify(resp,null,4)))
+                      this.auxServ.logInUserRole=resp.data.profile.role
+    })
+    
   }
 
 

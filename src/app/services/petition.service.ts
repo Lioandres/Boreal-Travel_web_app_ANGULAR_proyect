@@ -240,9 +240,11 @@ export class PetitionService {
   }
 
   getProfile():Observable<ApiProfile>{
-    
+    alert(localStorage.getItem('token'))
     const headers = {
-      Authorization: 'Bearer ' + this.cookieService.get('token'),
+
+      //Authorization: 'Bearer ' + this.cookieService.get('token'),
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
     };
     
       return this.http.get<ApiProfile>('api/profile', { headers })

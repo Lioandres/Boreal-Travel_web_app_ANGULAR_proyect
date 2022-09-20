@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PetitionService } from 'src/app/services/petition.service';
 import { APIUpdate } from '../../interfaces/apiUpdate.interface';
+import { AuxService } from '../../services/general.service';
 
 @Component({
   selector: 'app-rol-user',
@@ -11,9 +12,11 @@ import { APIUpdate } from '../../interfaces/apiUpdate.interface';
 export class RolUserComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
-    private petitionServ:PetitionService) { }
+              private petitionServ:PetitionService,
+              ) { }
   
     ngOnInit(): void {
+      
     }
   
     changeRoleForm:FormGroup= this.fb.group({

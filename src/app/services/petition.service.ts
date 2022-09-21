@@ -33,9 +33,9 @@ const baseUrl: string = environment.baseUrl;
   providedIn: 'root',
 })
 export class PetitionService {
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient) { }
 
-  // whather petitions
+  // wheather petitions
 
   getWeather(): Observable<Temps> {
     return this.http.get<Temps>(
@@ -240,14 +240,11 @@ export class PetitionService {
   }
 
   getProfile():Observable<ApiProfile>{
-    alert(localStorage.getItem('token'))
     const headers = {
-
-      //Authorization: 'Bearer ' + this.cookieService.get('token'),
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
     };
     
-      return this.http.get<ApiProfile>('api/profile', { headers })
+    return this.http.get<ApiProfile>('api/profile', { headers })
       
         
   }

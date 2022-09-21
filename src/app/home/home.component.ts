@@ -1,13 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Excursion_ } from '../interfaces/excursion_';
 import { ExcursionsService } from '../services/excursions.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+ @Injectable()
+ export class CustomDateParserFormatter extends NgbDateParserFormatter {
+   readonly DELIMITER = '-';
+ 
+   parse(value: string): NgbDateStruct | null {
+     if (value) {
+       const date = value.split(this.DELIMITER);
+       return {
+         day: parseInt(date[0], 10),
+         month: parseInt(date[1], 10),
+         year: parseInt(date[2], 10),
+       };
+     }
+     return null;
+   }
+ 
+   format(date: NgbDateStruct | null): string {
+     return date
+       ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year
+       : '';
+   }
+ }
+
+
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
+   // NOTE: For this example we are only providing current component, but probably
+  // NOTE: you will want to provide your main App Module
+  providers: [
+      { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter },
+  ],
+
+
 })
 export class HomeComponent implements OnInit {
 
@@ -17,22 +55,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // get excursionList():Excursion_[] {
-  //   return this.excursionService.excursionList
-  // }
-
-  // get month(){
-  //   return this.excursionService.month
-  // }
-
-  // keyWord:string=""
-  // resultExcursionFound:Excursion_[]=[]
-
-  // findExcursion(keyWord:string) {
-  //   this.excursionService.findExcursionAux(keyWord)
-
-
-  // }
+ 
 
   searchForm:FormGroup= this.fb.group({
         dateStart:["",[Validators.required]],

@@ -40,10 +40,8 @@ export class SignInComponent implements OnInit {
                               this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
                               localStorage.setItem('token',resp.data.token)
-                              //this.cookieService.set('token',resp.data.token)
                               this.petitionServ.getProfile()
                                   .subscribe(resp=>{
-                                                    alert((JSON.stringify(resp,null,4)))
                                                     this.auxServ.logInUserRole=resp.data.profile.role
                                   })
                              

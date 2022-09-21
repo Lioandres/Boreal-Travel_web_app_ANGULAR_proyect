@@ -71,9 +71,11 @@ export class HomeComponent implements OnInit {
       let dateStart=this.searchForm.get('dateStart')?.value
       let dateEnd=this.searchForm.get('dateEnd')?.value
 
-      let  startDateAndTime= new Date(dateStart.year,dateStart.month,dateStart.day,0o0,0o0,0o0)
-      let  endDateAndTime=new Date(dateEnd.year,dateEnd.month,dateEnd.day,0o0,0o0,0o0)
-    
+
+      let  startDateAndTime= new Date(dateStart.year,dateStart.month-1,dateStart.day,0o0,0o0,0o0)
+      let  endDateAndTime=new Date(dateEnd.year,dateEnd.month-1,dateEnd.day,0o0,0o0,0o0)
+         
+
       this.excursionService.findExcursions(startDateAndTime,endDateAndTime)
     }
 

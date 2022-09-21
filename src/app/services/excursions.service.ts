@@ -292,33 +292,11 @@ setExcursionIds (id:number,idTemp:number) {
   } 
 
 
-  
- 
-
-
-// resultExcursionFound:Excursion_[]=[]
-
-// findExcursionAux(KeyWord:string) {
-//     let keyWord=KeyWord.toLowerCase()
-//     this.resultExcursionFound=this.excursionList.filter(excursion=>excursion.title.toLowerCase().includes(keyWord) ||excursion.description.toLowerCase().includes(keyWord) || excursion.month.includes(keyWord))
-//     console.log (this.resultExcursionFound)
-//     } 
-
-
-
-
-
-
-
 
 resultExcursionFound:Excursion[]=[]
+findExcursions (start1:Date,end1:Date) {
 
-findExcursions (start:Date,end:Date) {
-  
- 
- 
-
-  this.resultExcursionFound=this.petitionServ.excursionListFromAPI.filter(excursion=>(new Date(excursion.start).getTime()>=start.getTime())&&(new Date(excursion.end).getTime()<=end.getTime())) 
+  this.resultExcursionFound=this.petitionServ.excursionListFromAPI.filter(excursion=>(new Date(excursion.start).getTime()>=start1.getTime())&&(new Date(excursion.end).getTime()<=end1.getTime())) 
 
   console.log(this.resultExcursionFound)
 

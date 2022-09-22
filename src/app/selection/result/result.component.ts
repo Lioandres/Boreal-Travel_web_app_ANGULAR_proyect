@@ -28,15 +28,22 @@ lookIndexTemp(id_template:string):number{
  return this.petitionServ.lookIndexTemp(id_template) 
 }
 
-// setExcursionIds (id:string,idTemp:string) {
-//     this.excursionService.setExcursionIds(parseInt(id),parseInt(idTemp))   
-//     }
-  
+ 
 setExcursions (id:string,idTemp:string){
   this.petitionServ.showExcursion(parseInt(id))
   this.petitionServ.showExcursionTemp(parseInt(idTemp))
 }
-     
+
+orderByTime(){
+  this.excursionService.orderByTime()
+}
+
+orderByPrice(){
+  this.excursionService.orderByPrice()
+  
+}
+
+   
   
   
 

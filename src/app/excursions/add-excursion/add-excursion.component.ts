@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIUpdate } from 'src/app/interfaces/apiUpdate.interface';
 import { PetitionService } from 'src/app/services/petition.service';
+import { AuxService } from '../../services/general.service';
 
 @Component({
   selector: 'app-add-excursion',
@@ -13,9 +14,17 @@ import { PetitionService } from 'src/app/services/petition.service';
 export class AddExcursionComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
-              private petitionServ:PetitionService) { }
+              private petitionServ:PetitionService,
+              private auxServ:AuxService) { }
 
+ 
+  get logInUser(){
+    return this.auxServ.logInUser
+  }
 
+  get id_user(){
+    return this.auxServ.id_user
+  }
     
    ngOnInit(): void {}
     

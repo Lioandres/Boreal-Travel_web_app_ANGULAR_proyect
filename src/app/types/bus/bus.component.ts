@@ -16,11 +16,9 @@ export class BusComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get excursionList():Excursion_[] {
-    return this.excursionsService.excursionList
-  }
+  
 
-  busExcursionsList:Excursion_[]=this.excursionList.filter(item=>item.type==="bus")
+ 
 
 
 }

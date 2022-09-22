@@ -37,12 +37,13 @@ export class SignInComponent implements OnInit {
           .subscribe(resp=>{alert(JSON.stringify(resp.message,null,4))
                             if(resp.status===200) {
                               this.route.navigate(['home'])
-                              this.auxServ.logInUser= this.logInForm.get('user_email')?.value
                               this.auxServ.loggedIn=true
                               localStorage.setItem('token',resp.data.token)
                               this.petitionServ.getProfile()
                                   .subscribe(resp=>{
                                                     this.auxServ.logInUserRole=resp.data.profile.role
+                                                    this.auxServ.id_user=resp.data.profile.id
+                                                    this.auxServ.logInUser=resp.data.profile.name
                                   })
                              
                             };

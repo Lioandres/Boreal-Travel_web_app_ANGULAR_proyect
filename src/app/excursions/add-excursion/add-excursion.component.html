@@ -16,10 +16,11 @@
             </div>
 
             <div class="input-group mb-3">
-                <input type="text" formControlName="user_id" class="form-control"
-                    placeholder="Ingrese el número de usuario" />
-                <div class="warning" *ngIf="addForm.get('user_id')?.invalid && addForm.get('user_id')?.touched">
-                    Ingrese el numero de usuario</div>
+           
+                     <select formControlName="user_id" class="form-select" id="inputGroupSelect04">
+                        <option value="" disabled selected hidden>Choose the user</option>
+                        <option [value]="id_user" selected>{{logInUser}} - {{id_user}} </option>
+                     </select>
             </div>
 
 

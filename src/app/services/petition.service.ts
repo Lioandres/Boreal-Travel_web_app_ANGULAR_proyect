@@ -138,9 +138,14 @@ export class PetitionService {
     this.http
       .get<ApiShow>('/api/excursion/show/' + id)
       .subscribe((resp: ApiShow) => {
+        
         this.excursionFromApi = resp;
         this.excursion = resp.data;
-      });
+        
+        
+          
+                
+      }) ;
   }
 
   deleteExcursion(id: number): Observable<APIUpdate> {

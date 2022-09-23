@@ -1,20 +1,24 @@
 <div class="row">
 
-    <div class="p-4 pb-0 position-relative col-3">
+    <div class="p-4 pb-0 position-relative col-1">
       <h5 class="text-primary mb-3">id</h5>
     </div>
 
-    <div class="p-4 pb-0 position-relative col-3">
+    <div class="p-4 pb-0 position-relative col-2">
         <h5 class="text-primary mb-3">name</h5>
     </div>
 
-    <div class="p-4 pb-0 position-relative col-3">
+    <div class="p-4 pb-0 position-relative col-4">
         <h5 class="text-primary mb-3">mail</h5>
     </div>
   
-    <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">rol</h5>
+    <div class="p-4 pb-0 position-relative col-2">
+        <h5 class="text-primary mb-3">role</h5>
     </div>
+
+    <div class="p-4 pb-0 position-relative col-2">
+      <h5 class="text-primary mb-3">Edit role</h5>
+  </div>
     
 
 </div>
@@ -24,23 +28,33 @@
     <div class="property-item rounded overflow-hidden">
       <div class="row">
 
-      <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">{{item.id_user }}    </h5>
+      <div class="p-4 pb-0 position-relative col-1">
+        <h6 class="text-primary mb-3">{{item.id_user }}    </h6>
       </div>
 
-      <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">{{item.user_name}} </h5>
-      </div>
-
-
-      <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">{{item.user_email }}    </h5>
+      <div class="p-4 pb-0 position-relative col-2">
+        <h6 class="text-primary mb-3">{{item.user_name}} </h6>
       </div>
 
 
-      <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">{{item.user_role}}    </h5>
+      <div class="p-4 pb-0 position-relative col-4">
+        <h6 class="text-primary mb-3">{{item.user_email }}    </h6>
       </div>
+
+
+      <div class="p-4 pb-0 position-relative col-2">
+        <h6 class="text-primary mb-3">{{item.user_role}}    </h6>
+      </div>
+
+      <div class="p-4 pb-0 position-relative col-2">
+        <select [(ngModel)]="user_role" (ngModelChange)="changeRole({id_user:item.id_user,user_role:user_role})" class="form-select" id="inputGroupSelect04">
+          <option value="" disabled selected hidden></option>
+          <option value="operator">operator</option>
+          <option value="admin">admin</option>
+       </select>
+       
+      </div>
+
 
     </div>
     </div>

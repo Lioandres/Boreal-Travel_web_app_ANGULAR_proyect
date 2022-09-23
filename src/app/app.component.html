@@ -41,7 +41,7 @@
         </div>  
       </div>
       <a *ngIf="loggedIn" class=" btn btn-dark px-3  me-3" (click)="logOut()"
-          routerLink="signIn">LOG-OUT
+          routerLink="home">LOG-OUT
       </a>
     </div>
 
@@ -106,8 +106,9 @@
         <h5 class="text-white mb-4">Reservado para Agentes turísticos</h5>
         <p>Eres agente u operador turistico?. inica sesion aqui</p>
         <div class="position-relative mx-auto" style="max-width: 400px;">
-            <a class="btn btn-outline-light mb-2" (click)="logOut()"
-            routerLink="signIn">Iniciar Sesion</a>
+            <!-- <a class="btn btn-outline-light mb-2" (click)="logOut()"> -->
+              <app-sign-in-modal></app-sign-in-modal> 
+            <!-- </a> -->
         <p>Aún no eres un agente u operador turistico registrado?.Regístrate aquí</p>
         <div class="position-relative mx-auto" style="max-width: 400px;">
             <a class="btn btn-outline-light " (click)="logOut()"

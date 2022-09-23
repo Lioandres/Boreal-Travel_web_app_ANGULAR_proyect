@@ -38,7 +38,7 @@ addToCart(excursionChosen:Excursion,numberChosen:number) {
     if(this.loggedIn===true){
       this.logInUser='LOG IN'
       this.loggedIn=false
-      console.log('logeado:', false)
+      
     }
   }
 

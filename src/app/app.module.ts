@@ -15,6 +15,7 @@ import { UserModule } from './user/user.module';
 import { TypesModule } from './types/types.module';
 import { TemplatesModule } from './templates/templates.module';
 import { SelectionModule } from './selection/selection.module';
+import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
 
 
 
@@ -26,6 +27,7 @@ import { SelectionModule } from './selection/selection.module';
     HomeComponent,
     SignUpComponent,
     SignInComponent,
+    SignInModalComponent,
     
       ],
 

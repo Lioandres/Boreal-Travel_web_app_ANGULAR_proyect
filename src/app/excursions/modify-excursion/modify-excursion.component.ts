@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIUpdate } from 'src/app/interfaces/apiUpdate.interface';
+import { AuxService } from 'src/app/services/general.service';
 import { PetitionService } from 'src/app/services/petition.service';
 
 
@@ -12,11 +13,20 @@ import { PetitionService } from 'src/app/services/petition.service';
 export class ModifyExcursionComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
-    private petitionServ:PetitionService) { }
+    private petitionServ:PetitionService,
+    private auxServ:AuxService) { }
 
 
     
       ngOnInit(): void {
+      }
+    
+    get logInUser(){
+        return this.auxServ.logInUser
+      }
+    
+    get id_user(){
+        return this.auxServ.id_user
       }
     
       modifyForm:FormGroup= this.fb.group({

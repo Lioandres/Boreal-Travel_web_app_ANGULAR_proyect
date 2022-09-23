@@ -47,6 +47,7 @@ import { AirportComponent } from './types/airport/airport.component';
 import { BusComponent } from './types/bus/bus.component';
 import { GaleriaComponent } from './footer/galeria/galeria.component';
 import { ExcuInfoComponent } from './selection/excu-info/excu-info.component';
+import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
 
 const routes: Routes = [
 
@@ -103,7 +104,7 @@ const routes: Routes = [
 },
 {
   path:'signIn',
-  component: SignInComponent,
+  component: SignInModalComponent,
   pathMatch:'full'
 },
 {

@@ -4,10 +4,10 @@
 
         <form [formGroup]="idForm" (ngSubmit)="deleteExcursionTemp()">
             <div class="input-group mb-3">
-                <input type="number" formControlName="id" class="form-control" placeholder="Enter the id excursion to delete"/>
+                <input type="number" formControlName="id" class="form-control" placeholder="Enter the id excursion  template to delete"/>
                 <div class="warning" *ngIf="idForm.get('id')?.invalid && idForm.get('id')?.touched" >only int numbers (max 999)</div>
                 <div class="input-group-append">
-                    <button class="btn btn-dark"  type="submit">Buscar</button>
+                    <button class="btn btn-dark"  type="submit">Delete Template</button>
                 </div>
             </div>
         </form>

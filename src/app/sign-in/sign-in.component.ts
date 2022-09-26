@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit {
               private auxServ:AuxService,
               private petitionServ:PetitionService,
               private route:Router,
-              private cookieService:CookieService) { }
+             ) { }
 
   ngOnInit(): void {}
 

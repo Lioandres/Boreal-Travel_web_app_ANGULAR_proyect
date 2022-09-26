@@ -41,7 +41,7 @@ changePass(){
                       })
   }
   else{
-    alert("Rellene todo los campos correctamente")
+    alert("complete all fields")
   }
 }
 

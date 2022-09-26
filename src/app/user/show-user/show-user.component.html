@@ -3,10 +3,10 @@
     <div class="col-6">
         <form [formGroup]="idForm" (ngSubmit)="showUser()">
         <div class="input-group mb-3">
-            <input type="number" formControlName="id_user" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"/>
+            <input type="number" formControlName="id_user" class="form-control" placeholder="Enter the user id"/>
             <div class="warning" *ngIf="idForm.get('id_user')?.invalid && idForm.get('id_user')?.touched" >only int numbers (max 999)</div>
             <div class="input-group-append">
-                <button class="btn btn-dark"  type="submit">Buscar</button>
+                <button class="btn btn-dark"  type="submit">Search</button>
             </div>
         </div>
          </form>

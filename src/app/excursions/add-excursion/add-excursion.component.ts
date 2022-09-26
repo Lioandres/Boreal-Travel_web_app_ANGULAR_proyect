@@ -16,8 +16,10 @@ export class AddExcursionComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private petitionServ:PetitionService,
               private auxServ:AuxService) { }
+  
+    
+   ngOnInit(): void {}
 
- 
   get logInUser(){
     return this.auxServ.logInUser
   }
@@ -25,9 +27,6 @@ export class AddExcursionComponent implements OnInit {
   get id_user(){
     return this.auxServ.id_user
   }
-    
-   ngOnInit(): void {}
-    
       addForm:FormGroup= this.fb.group({
         excursions_template_id:["",[Validators.required]],
         user_id:["",[Validators.required]],
@@ -43,8 +42,8 @@ export class AddExcursionComponent implements OnInit {
   
     
     addExcursion(){
-      console.log('hi')
-        console.log(this.addForm.value,this.addForm.valid)
+      
+      
         this.addForm.markAllAsTouched()
 
         if(this.addForm.valid){
@@ -71,7 +70,7 @@ export class AddExcursionComponent implements OnInit {
             
           }
           
-        else alert('complete todos los campos');
+        else alert('complete all fields');
              
             
       }

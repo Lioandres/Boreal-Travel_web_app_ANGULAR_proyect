@@ -13,30 +13,7 @@ import { PetitionService } from 'src/app/services/petition.service';
 })
 export class DeleteExcursionComponent implements OnInit {
 
-//   constructor(private petitionServ:PetitionService) { }
 
-//   ngOnInit(): void {
-//   }
-
-//   id:number=1
- 
-//   excursion:Excursion={
-//     id_excursion:"",
-//     excursions_template_id:  "",
-//     user_id:                  "",
-//     num_max_people: "",
-//     price:          "",
-//     start:          new(Date) ,
-//     end:            new(Date),
-//     created_at:     new(Date),
-//     updated_at:     new(Date)
-// } 
-//  excursionFromApi:ApiShow={
-//     status: 0,
-//     error:true,
-//     messages:"",
-//     data:this.excursion
-// }
 constructor(private fb:FormBuilder,
   private petitionServ:PetitionService) { }
 

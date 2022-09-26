@@ -3,10 +3,10 @@
     <div class="col-6">
         <form [formGroup]="idForm" (ngSubmit)="showExcursionTemp()">
         <div class="input-group mb-3">
-            <input type="number" formControlName="id" class="form-control" placeholder="Ingrese el Id de la excursion a buscar"/>
+            <input type="number" formControlName="id" class="form-control" placeholder="Enter the excursion id to show"/>
             <div class="warning" *ngIf="idForm.get('id')?.invalid && idForm.get('id')?.touched" >only int numbers (max 999)</div>
             <div class="input-group-append">
-                <button class="btn btn-dark"  type="submit">Buscar</button>
+                <button class="btn btn-dark"  type="submit">Search</button>
             </div>
         </div>
         </form>
@@ -22,11 +22,11 @@
 
         <div *ngIf="excursionTempFromApi.status===200">
 
-            <h5 class="text-primary mb-3">Título</h5>
+            <h5 class="text-primary mb-3">Title</h5>
             <p> {{excursionTempFromApi.data.title}} </p>
             <hr>
 
-            <h5 class="text-primary mb-3">Descripción</h5>
+            <h5 class="text-primary mb-3">Description</h5>
             <p> {{excursionTempFromApi.data.description}} </p>
             <hr>
 
@@ -34,15 +34,15 @@
             <p> {{excursionTempFromApi.data.img}} </p>
             <hr>
 
-            <h5 class="text-primary mb-3">Numero maximo Personas</h5>
+            <h5 class="text-primary mb-3">Max number of pleople</h5>
             <p> {{excursionTempFromApi.data.max_num_people_default}} </p>
             <hr>
 
-            <h5 class="text-primary mb-3">Precio</h5>
+            <h5 class="text-primary mb-3">Price</h5>
             <p> {{excursionTempFromApi.data.price_default}} </p>
             <hr>
 
-            <h5 class="text-primary mb-3">Tipo</h5>
+            <h5 class="text-primary mb-3">Type</h5>
             <p> {{excursionTempFromApi.data.type}} </p>
             <hr>
         </div>

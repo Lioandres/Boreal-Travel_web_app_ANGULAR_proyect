@@ -44,7 +44,7 @@ export class ModifyTempComponent implements OnInit {
                                           }
                                         }) 
     }
-    else {alert('ingrese el id de la excursion')}
+    else {alert('Enter a valid Excursion id')}
   
   }
 

@@ -37,8 +37,8 @@ excuForm:FormGroup= this.fb.group({
 });
 
 setExcursion(){
-  console.log('ok')
-  console.log('el id de la excursion elegida es',this.excuForm.get('id_excursion')?.value)
+  
+  
   this.excuForm.markAllAsTouched()
   if(this.excuForm.valid){
     this.petitionServ.showExcursion(parseInt(this.excuForm.get('id_excursion')?.value))

@@ -44,7 +44,7 @@ changeMail(){
   }
   else{
       
-    alert("Rellene todo los campos correctamente")
+    alert("Complete all fields")
   }
 }
 

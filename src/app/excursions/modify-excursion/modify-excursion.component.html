@@ -7,18 +7,18 @@
 
             <div class="input-group mb-3">
                 <input formControlName="id_excursion" class="form-control"
-                    placeholder="Ingrese el Id de la excursion a modificar" />
+                    placeholder="Enter the Id of the excursion to modify"/>
                 <div class="warning"
-                    *ngIf="modifyForm.get('id_excursion')?.invalid && modifyForm.get('id_excursion')?.touched ">Ingrese
-                    solo números</div>
+                    *ngIf="modifyForm.get('id_excursion')?.invalid && modifyForm.get('id_excursion')?.touched ">Only numbers
+                    </div>
             </div>
 
             <div class="input-group mb-3">
                 <input type="text" formControlName="excursions_template_id" class="form-control"
-                    placeholder="Ingrese el id de template a asignar a la excursion" />
+                    placeholder="Enter the template id to assign to the excursion" />
                 <div class="warning"
                     *ngIf="modifyForm.get('excursions_template_id')?.invalid && modifyForm.get('excursions_template_id')?.touched">
-                    Ingrese el id de templete de excursion</div>
+                    Enter the excursion template id</div>
             </div>
 
             <div class="input-group mb-3">
@@ -31,17 +31,17 @@
 
             <div class="input-group mb-3">
                 <input type="text" formControlName="num_max_people" class="form-control"
-                    placeholder="Ingrese el número máximo de personas" />
+                    placeholder="Enter the maximum number of people" />
                 <div class="warning"
                     *ngIf="modifyForm.get('num_max_people')?.invalid && modifyForm.get('num_max_people')?.touched">
-                    Ingrese el número máximo de personas (max 30)"</div>
+                    Enter the maximum number of people max(30)</div>
             </div>
 
 
             <div class="input-group mb-3">
-                <input type="text" formControlName="price" class="form-control" placeholder="Ingrese el nuevo precio" />
+                <input type="text" formControlName="price" class="form-control" placeholder="Enter  the excursion price" />
                 <div class="warning" *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">
-                    Formato con 2 decimales (ejem: 123.00) .Número máximo 9999.99</div>
+                    Format with 2 decimals (eg: 123.00). Maximum number 9999.99</div>
             </div>
 
 
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-9">
                     <div class="input-group mb-3">
-                        <input class="form-control" placeholder=" Ingrese el dia en que comienza la excursion : yyyy-mm-dd"
+                        <input class="form-control" placeholder="Enter the day the tour starts: yyyy-mm-dd"
                             name="dateStart" formControlName="dateStart" ngbDatepicker #dateStart="ngbDatepicker">
                         <div class="input-group-append">
                             <button display="inline" class="btn btn-outline-secondary calendar" (click)="dateStart.toggle()"
@@ -62,7 +62,7 @@
                 </div>
                 <div class="warning"
                     *ngIf="(modifyForm.get('dateStart')?.invalid||modifyForm.get('timeStart')?.invalid) && (modifyForm.get('dateStart')?.touched||modifyForm.get('timeStart')?.touched)">
-                    La fecha y hora (0-24 hs)de inicio de la excursion</div>
+                    Start excursion Date and Time  (0-24 hs)</div>
             </div>
 
             <hr>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="warning"
                     *ngIf="(modifyForm.get('dateEnd')?.invalid||modifyForm.get('timeEnd')?.invalid) && (modifyForm.get('dateEnd')?.touched||modifyForm.get('timeEnd')?.touched)">
-                    La fecha y hora (0-24 hs) de inicio de la excursion</div>
+                    End excursion Date and Time (0-24 hs)</div>
             </div>
 
 
@@ -94,7 +94,7 @@
 
 
             <div class="input-group-append">
-                <button class="btn btn-dark" type="submit">modificar</button>
+                <button class="btn btn-dark" type="submit">Modify Excursion</button>
             </div>
 
         </form>

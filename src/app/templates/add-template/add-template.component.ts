@@ -42,7 +42,7 @@ export class AddTemplateComponent implements OnInit {
          
       }
        
-      else {alert('complete todos los campos')}
+      else {alert('complete all fields')}
     }
   
   

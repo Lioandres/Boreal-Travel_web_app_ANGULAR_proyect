@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultComponent } from './result/result.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CustomDatePipe } from '../Shared/custom.datepipe';
 
 
 
@@ -20,6 +21,7 @@ import { PaymentComponent } from './payment/payment.component';
    ResultComponent,
    ReservationComponent,
    PaymentComponent,
+   CustomDatePipe
   ],
   imports: [
     CommonModule,

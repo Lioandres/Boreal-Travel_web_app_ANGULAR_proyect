@@ -21,6 +21,7 @@ import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
     SignUpComponent,
     SignInComponent,
     SignInModalComponent,
+   
     
       ],
 

@@ -49,8 +49,8 @@
               </div>
               <h5 class="col-2">
                 {{excursionListTempFromAPI[lookIndexTemp(item.excursions_template_id)].title}}</h5>
-              <h5 class="col-2">{{item.start | date}}</h5>
-              <h5 class="col-2">{{item.end | date}}</h5>
+              <h5 class="col-2">{{item.start | customDate}}</h5>
+              <h5 class="col-2">{{item.end | customDate}}</h5>
               <h5 class="col-1">{{item.price}} EUR</h5>
               <div class="col-1">
                 <button routerLink="/excuInfo" (click)="setExcursions(item.id_excursion, item.excursions_template_id)"

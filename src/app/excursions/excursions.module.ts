@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExcursionListComponent } from './excursion-list/excursion-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowListExcursionCRUDComponent } from './show-list-excursion-crud/show-list-excursion-crud.component';
 
 
 
@@ -23,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShowListExcursionComponent,
     EditionExcursionComponent,
     ExcursionListComponent,
+    ShowListExcursionCRUDComponent,
   ],
   imports: [
     CommonModule,

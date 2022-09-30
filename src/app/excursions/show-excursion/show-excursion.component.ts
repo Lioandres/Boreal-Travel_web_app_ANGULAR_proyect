@@ -3,6 +3,7 @@ import { ApiShow } from 'src/app/interfaces/apiShow.interface';
 import { Excursion } from 'src/app/interfaces/apiShowList.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show-excursion',
@@ -12,9 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ShowExcursionComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
-    private petitionServ:PetitionService) { }
-  
+    private petitionServ:PetitionService,
+    private activateRoute:ActivatedRoute
+    ) { }
+    
     ngOnInit(): void {
+       const id=this.activateRoute.snapshot.paramMap.get('id')
+       this.petitionServ.showExcursion(parseInt(id!))
     }
   
       idForm:FormGroup= this.fb.group({

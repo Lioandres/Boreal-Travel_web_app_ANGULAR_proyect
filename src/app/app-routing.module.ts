@@ -192,7 +192,7 @@ const routes: Routes = [
   canActivate:[EditGuard],
   children:[
     {
-    path:'showExcursion',
+    path:'showExcursion/:id',
     component: ShowExcursionComponent,
      pathMatch:'full'
   },

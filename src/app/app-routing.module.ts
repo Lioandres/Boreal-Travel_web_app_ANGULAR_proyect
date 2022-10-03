@@ -197,7 +197,7 @@ const routes: Routes = [
      pathMatch:'full'
   },
     {
-    path:'modifyExcursion',
+    path:'modifyExcursion/:id',
     component: ModifyExcursionComponent,
     pathMatch:'full'
   },

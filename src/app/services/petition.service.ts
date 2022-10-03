@@ -134,6 +134,7 @@ export class PetitionService {
     messages: '',
     data: this.excursion,
   };
+
   showExcursion(id: number) {
     this.http
       .get<ApiShow>('/api/excursion/show/' + id)
@@ -147,6 +148,16 @@ export class PetitionService {
                 
       }) ;
   }
+
+  showExcursionLoad(id: number) {
+
+    return  this.http.get<ApiShow>('/api/excursion/show/' + id)
+     
+  }
+
+
+
+
 
   deleteExcursion(id: number): Observable<APIUpdate> {
     return this.http.delete<APIUpdate>('/api/excursion/delete/' + id);

@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIUpdate } from 'src/app/interfaces/apiUpdate.interface';
 import { AuxService } from 'src/app/services/general.service';
 import { PetitionService } from 'src/app/services/petition.service';
+import { ActivatedRoute } from '@angular/router';
+import { Excursion } from '../../interfaces/apiShowList.interface';
+import { ApiShow } from 'src/app/interfaces/apiShow.interface';
+
 
 
 @Component({
@@ -14,11 +18,31 @@ export class ModifyExcursionComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
     private petitionServ:PetitionService,
-    private auxServ:AuxService) { }
+    private auxServ:AuxService,
+    private activateRoute:ActivatedRoute) { }
 
 
-    
+    excursionLoad!:Excursion
+
       ngOnInit(): void {
+        const id=this.activateRoute.snapshot.paramMap.get('id')
+        this.petitionServ.showExcursionLoad(parseInt(id!))
+          .subscribe((resp: ApiShow) => {     
+              this.excursionLoad = resp.data;
+              this.modifyForm=this.fb.group({
+                id_excursion:[this.excursionLoad.id_excursion],
+                excursions_template_id:[this.excursionLoad.excursions_template_id],
+                user_id:[this.excursionLoad.user_id],
+                num_max_people:[this.excursionLoad.num_max_people],
+                price:[this.excursionLoad.price],
+                dateStart:["",[Validators.required]],
+                dateEnd:["",[Validators.required]],
+                timeStart:["",[Validators.required]],
+                timeEnd:["",[Validators.required]],
+               
+               })
+            })
+
       }
     
     get logInUser(){
@@ -28,6 +52,8 @@ export class ModifyExcursionComponent implements OnInit {
     get id_user(){
         return this.auxServ.id_user
       }
+
+  
     
       modifyForm:FormGroup= this.fb.group({
         id_excursion:["",[Validators.required]],

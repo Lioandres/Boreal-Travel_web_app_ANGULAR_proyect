@@ -2,23 +2,51 @@
     <div class="property-item rounded overflow-hidden">
       <div class="row">
 
-      <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">excursion id:  {{item.id_excursion }}    </h5>
+      <div class="p-4 pb-0 position-relative col-2">
+        <h6 class="text-primary mb-3">id:  {{item.id_excursion }}  </h6>
       </div>
 
 
       <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">  Starts:  {{item.start}} </h5> 
+        <h6 class="text-primary mb-3">  Starts:  {{item.start|dateList}} </h6> 
       </div>
 
       <div class="p-4 pb-0 position-relative col-3">
-        <h5 class="text-primary mb-3">  Ends:  {{item.end}} </h5>
+        <h6 class="text-primary mb-3">  Ends:  {{item.end|dateList}} </h6>
       </div>
 
-      <button routerLink="/editionExcursion/showExcursion/{{item.id_excursion}}" class="col-1">show</button>
-      <button routerLink="/editionExcursion/modifyExcursion/{{item.id_excursion}}" class="col-1">modify</button>
-   
+      <div class="col-1">
+          <button routerLink="/editionExcursion/modifyExcursion/{{item.id_excursion}}" class="btn btn-dark m-1"><i class="fas fa-edit"></i></button>
+      </div>
+
+      <div class="col-1">
+         <button routerLink="/editionExcursion/showExcursion/{{item.id_excursion}}" class="btn btn-dark m-1"><i class="fas fa-eye"></i></button>
+      </div>
+
+      <div class="col-1">
+        <button  (click)="open(content)" class="btn btn-dark m-1"><i class="fas fa-trash"></i></button>
+     </div>
+
+     <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Warning!</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <p>Are you sure to delete the excursion ID: {{item.id_excursion}}?</p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="deleteExcursion(item.id_excursion);modal.close('Save click')">Confirm</button>
+      </div>
+    </ng-template>
 
     </div>
     </div>
   </div> 
+
+
+ 

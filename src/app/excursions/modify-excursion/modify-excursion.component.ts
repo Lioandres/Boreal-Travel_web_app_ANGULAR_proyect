@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIUpdate } from 'src/app/interfaces/apiUpdate.interface';
 import { AuxService } from 'src/app/services/general.service';
 import { PetitionService } from 'src/app/services/petition.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Excursion } from '../../interfaces/apiShowList.interface';
 import { ApiShow } from 'src/app/interfaces/apiShow.interface';
 
@@ -19,7 +19,8 @@ export class ModifyExcursionComponent implements OnInit {
   constructor(private fb:FormBuilder,
     private petitionServ:PetitionService,
     private auxServ:AuxService,
-    private activateRoute:ActivatedRoute) { }
+    private activateRoute:ActivatedRoute,
+    private route:Router) { }
 
 
     excursionLoad!:Excursion
@@ -41,6 +42,7 @@ export class ModifyExcursionComponent implements OnInit {
                 timeEnd:["",[Validators.required]],
                
                })
+               
             })
 
       }
@@ -89,8 +91,10 @@ export class ModifyExcursionComponent implements OnInit {
            .subscribe((resp:APIUpdate)=>{alert(resp.message)
                                         
                                           if(resp.status===200) {
-                                            this.modifyForm.reset()
+                                            //this.modifyForm.reset()
                                             this.petitionServ.showList()
+                                            this.route.navigate(["/editionExcursion/showListExcursion"])
+                                            
 
                                           } }) 
           }

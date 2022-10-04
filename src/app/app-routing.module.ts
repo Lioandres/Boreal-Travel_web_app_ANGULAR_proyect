@@ -161,12 +161,12 @@ const routes: Routes = [
   canActivate:[EditGuard],
   children:[
     {
-    path:'showTemp',
+    path:'showTemp/:id',
     component: ShowExcursionTempComponent,
      pathMatch:'full'
   },
     {
-    path:'modify',
+    path:'modify/:id',
     component: ModifyTempComponent,
     pathMatch:'full'
   },

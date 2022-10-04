@@ -8,7 +8,8 @@
             <div class="mb-3">
                 <h5 class="text-primary m-2">Excursion Id </h5>
                 <input formControlName="id_excursion" class="form-control"
-                    placeholder="Enter the Id of the excursion to modify"/>
+                    placeholder="Enter the Id of the excursion to modify"
+                    />
                 <div class="warning"
                     *ngIf="modifyForm.get('id_excursion')?.invalid && modifyForm.get('id_excursion')?.touched ">Only numbers
                     </div>
@@ -28,11 +29,11 @@
         
 
             <div class="mb-3">
-                <h5 class="text-primary m-2">Created by:</h5>
+                <h5 class="text-primary m-2">Modified by</h5>
                     <select formControlName="user_id" class="form-select" id="inputGroupSelect04">
-                        <option value="" disabled selected hidden>Choose the user</option>
                         <option [value]="id_user" selected>{{logInUser}} </option>
                      </select>
+                    
             </div>
             <hr>
 
@@ -77,7 +78,7 @@
                     *ngIf="(modifyForm.get('dateStart')?.invalid||modifyForm.get('timeStart')?.invalid) && (modifyForm.get('dateStart')?.touched||modifyForm.get('timeStart')?.touched)">
                     Start excursion Date and Time  (0-24 hs)</div>
             </div>
-            <p>{{modifyForm.valid|json}}</p>
+            
             
 
             

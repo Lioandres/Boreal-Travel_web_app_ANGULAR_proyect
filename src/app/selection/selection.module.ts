@@ -29,6 +29,9 @@ import { CustomDatePipe } from '../Shared/custom.datepipe';
     FormsModule,
     ReactiveFormsModule
    
+  ],
+  exports:[
+    CustomDatePipe
   ]
 })
 export class SelectionModule { }

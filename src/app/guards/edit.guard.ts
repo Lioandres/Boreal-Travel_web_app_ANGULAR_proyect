@@ -9,8 +9,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class EditGuard implements CanActivate {
   constructor(private auxServ: AuxService,
-              private route:Router,
-              private cookieService:CookieService) { }
+              private route:Router
+              ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

@@ -25,6 +25,23 @@
       <button  (click)="open(content)" class="btn btn-dark m-1"><i class="fas fa-trash"></i></button>
    </div>
 
+   <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Warning!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <p>Are you sure to delete the template ID: {{item.id_excursion_template}}?</p>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="deleteExcursionTemp(item.id_excursion_template);modal.close('Save click')">Confirm</button>
+    </div>
+  </ng-template>
+
     </div>
     </div>
   </div> 

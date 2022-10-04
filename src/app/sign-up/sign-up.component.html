@@ -10,14 +10,14 @@
                     <input formControlName="user_name" class="form-control" id="inputName">
                     <div class="warning" *ngIf="signUpForm.get('user_name')?.invalid && signUpForm.get('user_name')?.touched">Debe contener 5 caracteres min</div>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="user_role" class="form-label">User Role</label>
                     <select formControlName="user_role" class="form-select" id="user_role">
                         <option value="" disabled selected hidden>Choose a user role</option>
                         <option value="operator">operator</option>
                         <option value="admin">admin</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="mb-3">
                   <label for="inputPassword" class="form-label">Password</label>
                   <input formControlName="user_password" class="form-control" id="inputPassword">

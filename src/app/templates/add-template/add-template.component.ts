@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { APITempUpdate } from 'src/app/interfaces/apiTempUpdate.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 
@@ -11,7 +12,8 @@ import { PetitionService } from 'src/app/services/petition.service';
 export class AddTemplateComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
-  private petitionServ:PetitionService) { }
+  private petitionServ:PetitionService,
+  private route:Router) { }
   
     ngOnInit(): void {
     }
@@ -35,8 +37,10 @@ export class AddTemplateComponent implements OnInit {
         this.petitionServ.addExcursionTemp(this.addTempForm.value)
          .subscribe((resp:APITempUpdate)=>{alert(JSON.stringify(resp.message,null,4))
                                             if(resp.status===200) {
-                                              this.addTempForm.reset()
+                                              //this.addTempForm.reset()
                                               this.petitionServ.showListTemp()
+                                              this.route.navigate(['/edition/showTempList'])
+                                              
                                             }
                                           }) 
          

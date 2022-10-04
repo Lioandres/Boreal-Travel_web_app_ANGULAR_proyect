@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIUpdate } from 'src/app/interfaces/apiUpdate.interface';
 import { PetitionService } from 'src/app/services/petition.service';
 import { AuxService } from '../../services/general.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-excursion',
@@ -15,7 +16,8 @@ export class AddExcursionComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private petitionServ:PetitionService,
-              private auxServ:AuxService) { }
+              private auxServ:AuxService,
+              private route:Router) { }
   
     
    ngOnInit(): void {}
@@ -62,8 +64,9 @@ export class AddExcursionComponent implements OnInit {
           this.petitionServ.addExcursion(this.addForm.value,startDateAndTime,endDateAndTime)
            .subscribe((resp:APIUpdate)=>{alert(JSON.stringify(resp.message,null,4))
                                           if(resp.status===200) {
-                                            this.addForm.reset()
+                                           // this.addForm.reset()
                                             this.petitionServ.showList()
+                                            this.route.navigate(["/editionExcursion/showListExcursion"])
 
                                           }
                                         }) 

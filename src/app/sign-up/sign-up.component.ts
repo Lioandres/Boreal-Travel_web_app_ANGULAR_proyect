@@ -6,7 +6,7 @@ import { creatDateRangeValidator} from './custom.validator'
 import { AuxService } from '../services/general.service';
 import { PetitionService } from '../services/petition.service';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+
 
 
 @Component({
@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
 
   signUpForm:FormGroup= this.fb.group({
     user_name:["",[Validators.required,Validators.minLength(5)]],
-    user_role:["",[Validators.required]],
+    user_role:["operator",[Validators.required]],
     user_password:["",[Validators.required,Validators.minLength(8)]],
     user_email:["",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),Validators.minLength(5)]],
     repeatMail:["",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),Validators.minLength(5)]]
@@ -48,6 +48,8 @@ addUser(){
                           this.route.navigate(['home'])
                           this.auxServ.logInUser= this.signUpForm.get('user_name')?.value
                           this.auxServ.loggedIn=true
+                          this.auxServ.logInUserRole=this.signUpForm.get('user_role')?.value
+  
                           }
                       })
 

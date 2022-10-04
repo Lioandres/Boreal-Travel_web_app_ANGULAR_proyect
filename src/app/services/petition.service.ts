@@ -82,6 +82,7 @@ export class PetitionService {
     messages: '',
     data: this.excursionTemp,
   };
+
   showExcursionTemp(id: number) {
     this.http
       .get<ApiTemplateShow>('/api/template/show/' + id)
@@ -90,6 +91,14 @@ export class PetitionService {
         this.excursionTemp = resp.data;
       });
   }
+  
+  showTempLoad(id_temp: number) {
+
+    return  this.http.get<ApiTemplateShow>('/api/template/show/' + id_temp)
+     
+  }
+
+
 
   deleteExcursionTemp(id: number) {
     return this.http.delete<APIUpdate>('/api/template/delete/' + id);

@@ -29,7 +29,7 @@ closeResult = '';
 
  
 
-  open(content) {
+  open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',
     centered: true
   }).result.then((result) => {
@@ -48,6 +48,18 @@ closeResult = '';
       return `with: ${reason}`;
     }
   }
+
+
+  deleteExcursionTemp(id_temp:string){
+    this.petitionServ.deleteExcursionTemp(parseInt(id_temp))
+            .subscribe((resp)=>{
+              alert(JSON.stringify(resp.message,null,4))
+              if(resp.status===200) {
+                this.petitionServ.showListTemp()
+               }
+             }) 
+}
+
 
 
 }

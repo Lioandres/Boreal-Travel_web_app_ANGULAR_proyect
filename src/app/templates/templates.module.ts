@@ -10,6 +10,7 @@ import { ShowExcursionTempComponent } from './show-excursion-temp/show-excursion
 import { ExcursionListTempComponent } from './excursion-list-temp/excursion-list-temp.component';
 import { ExcuInfoTempComponent } from './excu-info-temp/excu-info-temp.component';
 import { EditionComponent } from './edition/edition.component';
+import { SelectionModule } from '../selection/selection.module';
 
 
 
@@ -31,7 +32,8 @@ import { EditionComponent } from './edition/edition.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SelectionModule
   ],
   exports: [
     ExcursionListTempComponent

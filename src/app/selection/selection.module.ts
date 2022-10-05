@@ -8,6 +8,7 @@ import { ResultComponent } from './result/result.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CustomDatePipe } from '../Shared/custom.datepipe';
+import { DateHour } from '../Shared/custom.dateHour';
 
 
 
@@ -21,7 +22,9 @@ import { CustomDatePipe } from '../Shared/custom.datepipe';
    ResultComponent,
    ReservationComponent,
    PaymentComponent,
-   CustomDatePipe
+   CustomDatePipe,
+   DateHour
+   
   ],
   imports: [
     CommonModule,

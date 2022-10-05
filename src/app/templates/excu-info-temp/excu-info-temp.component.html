@@ -22,7 +22,7 @@
                 <div>
                   <select  formControlName='id_excursion' class="form-select border-0 py-3">
                     <option value="" disabled selected hidden>Eliga una fecha</option>
-                    <option *ngFor="let item of excursionListFromId" [value]="item.id_excursion">{{item.start | date}}</option>  
+                    <option *ngFor="let item of excursionListFromId" [value]="item.id_excursion">{{item.start | customDate}}</option>  
                   </select>
                   <div class="warning" *ngIf="excuForm.get('id_excursion')?.invalid && excuForm.get('id_excursion')?.touched">Debe elegir una fecha</div>
                 </div>

@@ -86,7 +86,8 @@ confirmReserve(eventData:boolean) {
               num_people:item.numberPeople
               }
         this.petitionServ.addReserve(reservation)
-              .subscribe((resp)=>{alert(JSON.stringify(resp.message,null,4))
+              .subscribe((resp)=>{
+                                  // alert(JSON.stringify(resp.message,null,4))
                                   this.reserId=resp.data
                                   this.isReservationOK=!resp.error})
       })

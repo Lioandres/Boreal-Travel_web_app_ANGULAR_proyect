@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-6">
+
+        <form [formGroup]="modifyForm" (ngSubmit)="modifyExcursion()">
+
+
+
+            <div class="mb-3">
+                <h5 class="text-primary m-2">Excursion Id </h5>
+                <input formControlName="id_excursion" class="form-control"
+                    placeholder="Enter the Id of the excursion to modify"
+                    />
+                <div class="warning"
+                    *ngIf="modifyForm.get('id_excursion')?.invalid && modifyForm.get('id_excursion')?.touched ">Only numbers
+                    </div>
+            </div>
+
+           <hr>
+
+            <div class="mb-3">
+                <h5 class="text-primary m-2">Excursion template Id  </h5>
+                <input type="text" formControlName="excursions_template_id" class="form-control"
+                    placeholder="Enter the template id to assign to the excursion" />
+                <div class="warning"
+                    *ngIf="modifyForm.get('excursions_template_id')?.invalid && modifyForm.get('excursions_template_id')?.touched">
+                    Enter the excursion template id</div>
+            </div>
+            <hr>
+        
+
+            <div class="mb-3">
+                <h5 class="text-primary m-2">Modified by</h5>
+                    <select formControlName="user_id" class="form-select" id="inputGroupSelect04">
+                        <option [value]="id_user" selected>{{logInUser}} </option>
+                     </select>
+                    
+            </div>
+            <hr>
+
+
+            <div class="mb-3">
+                <h5 class="text-primary m-2">max number of people</h5>
+                <input type="text" formControlName="num_max_people" class="form-control"
+                    placeholder="Enter the maximum number of people" />
+                <div class="warning"
+                    *ngIf="modifyForm.get('num_max_people')?.invalid && modifyForm.get('num_max_people')?.touched">
+                    Enter the maximum number of people max(30)</div>
+            </div>
+            <hr>
+
+
+            <div class="mb-3">
+                <h5 class="text-primary m-2">Price</h5>
+               
+                <input type="text" formControlName="price" class="form-control" placeholder="Enter  the excursion price" />
+                <div class="warning" *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">
+                    Format with 2 decimals (eg: 123.00). Maximum number 9999.99</div>
+            </div>
+            <hr>
+
+
+
+            <div class="row">
+                <div class="col-9">
+                    <div class="input-group mb-3">
+                         <input class="form-control" placeholder="Enter the day the tour starts: yyyy-mm-dd"
+                            name="dateStart" formControlName="dateStart" ngbDatepicker #dateStart="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button display="inline" class="btn btn-outline-secondary calendar" (click)="dateStart.toggle()"
+                                type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <ngb-timepicker formControlName="timeStart"></ngb-timepicker>
+                </div>
+                <div class="warning"
+                    *ngIf="(modifyForm.get('dateStart')?.invalid||modifyForm.get('timeStart')?.invalid) && (modifyForm.get('dateStart')?.touched||modifyForm.get('timeStart')?.touched)">
+                    Start excursion Date and Time  (0-24 hs)</div>
+            </div>
+            
+            
+
+            
+            <div class="row">
+                <div class="col-9">
+                    <div class="input-group mb-3">
+                        <input class="form-control" placeholder="Ingrese el dia en que finaliza la excursion yyyy-mm-dd "
+                            name="dateEnd" formControlName="dateEnd" ngbDatepicker #dateEnd="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button display="inline" class="btn btn-outline-secondary calendar" (click)="dateEnd.toggle()"
+                                type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <ngb-timepicker formControlName="timeEnd"></ngb-timepicker>
+                </div>
+                <div class="warning"
+                    *ngIf="(modifyForm.get('dateEnd')?.invalid||modifyForm.get('timeEnd')?.invalid) && (modifyForm.get('dateEnd')?.touched||modifyForm.get('timeEnd')?.touched)">
+                    End excursion Date and Time (0-24 hs)</div>
+            </div>
+          
+
+
+
+
+
+
+
+
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit">Modify Excursion</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

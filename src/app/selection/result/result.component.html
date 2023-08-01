@@ -1,0 +1,65 @@
+<!-- Result header Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-0 gx-5 align-items-end">
+      <div class="col-lg-6">
+        <div class="text-start mx-auto mb-5 wow fadeInUp position-relative" data-wow-delay="0.1s">
+          <h1 style="z-index:-3" class="mb-3 ">Resultado de la búsqueda</h1>
+          <p>Estas son las excursiones que coinciden con el criterio de búsqueda</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result End -->
+
+
+    <div class="tab-content">
+      <div id="tab-1" class="tab-pane fade show p-0 active">
+
+        <div class="row m-2">
+           <div class="col-8"></div>
+                <div class="col-2">
+                  <button (click)="orderByTime()"
+                    type="button" class="btn btn-primary" >ordenar por fecha</button>
+                </div>
+                <div class="col-2">
+                  <button (click)="orderByPrice()"
+                    type="button" class="btn btn-primary">ordenar por precio</button>
+                </div>
+          </div>
+
+          
+
+        <div class="row m-2">
+
+              <h3 class="col-4"></h3>
+              <h3 class="col-2">Excursion:</h3>
+              <h3 class="col-2 ">Inicia:</h3>
+              <h3 class="col-2 ">Termina:</h3>
+              <h3 class="col-1 ">Precio:</h3>
+             
+
+        </div>
+      
+        <hr>
+
+        <div *ngFor="let item of resultExcursionFound" class="row m-2 wow fadeInUp borderResults" data-wow-delay="0.1s">
+              <div class="col-4 position-relative overflow-hidden"> <img class="img-fluid"
+                  [src]="excursionListTempFromAPI[lookIndexTemp(item.excursions_template_id)].img" alt="">
+              </div>
+              <h5 class="col-2">
+                {{excursionListTempFromAPI[lookIndexTemp(item.excursions_template_id)].title}}</h5>
+              <h5 class="col-2">{{item.start | customDate}}</h5>
+              <h5 class="col-2">{{item.end | customDate}}</h5>
+              <h5 class="col-1">{{item.price}} EUR</h5>
+              <div class="col-1">
+                <button routerLink="/excuInfo" (click)="setExcursions(item.id_excursion, item.excursions_template_id)"
+                  type="button" class="btn btn-primary">Ver detalles</button>
+              </div>
+        </div>
+
+
+
+
+      </div>
+    </div>

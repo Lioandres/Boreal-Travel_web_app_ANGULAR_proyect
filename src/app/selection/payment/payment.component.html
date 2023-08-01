@@ -1,0 +1,35 @@
+<form [formGroup]=paymentForm (ngSubmit)="pay()">
+    <h2>Ingrese los datos de su tarjeta</h2>
+    <div class="row">
+      <div class="col-4 mb-3">
+        <label for="cardName" class="form-label">Nombre del titular de la tarjeta</label>
+        <input formControlName="cardName" class="form-control" id="cardName">
+        <div class="warning" *ngIf="paymentForm.get('cardName')?.invalid && paymentForm.get('cardName')?.touched">Debe
+          contener 2 caracteres min</div>
+      </div>
+      <div class="col-4 mb-3">
+        <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+        <input formControlName="cardNumber" class="form-control" id="cardNumber">
+        <div class="warning"
+          *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">Ingrese un número de tarjeta válido</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 mb-3">
+        <label for="expirationDate" class="form-label">Fecha de expiración </label>
+        <input formControlName="expirationDate" class="form-control" id="expirationDate" placeholder="MM-YYYY">
+        <div class="warning" *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched">
+          Ingrese una fecha vádlida</div>
+      </div>
+      <div class="col-4 mb-3">
+        <label for="CVV" class="form-label">CVV</label>
+        <input formControlName="CVV" class="form-control" id="CVV">
+        <div class="warning"
+          *ngIf="paymentForm.get('CVV')?.invalid && paymentForm.get('CVV')?.touched">ingrese un
+          CVV válido</div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-dark mb-3">Ingresar</button>
+  </form>

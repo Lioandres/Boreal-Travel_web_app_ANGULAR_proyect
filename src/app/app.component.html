@@ -1,30 +1,144 @@
+<!-- Navbar Start -->
 
-<nav class="navbar navbar-expand-lg ">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"> <img src="/assets/img/logo.jpg" alt="" class="d-inline-block align-text-top"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <img src="/assets/img/menu.png" alt="" height ="40" width="40">
+
+<div class="container-fluid nav-bar bg-transparent">
+<div class="navOpa">
+  <nav class="navbar navbar-expand-lg bg-transparent navbar-light py-0 px-4">
+
+     <a routerLink="home" class="navbar-brand mx-auto">
+        <img src="/assets/img/logo1.webp" alt="" class="d-inline-block align-text-top">
+     </a>
+     
+   
+    <button type="button" class="navbar-toggler bg-white m-1" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon bg-white"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav m-auto mb-2 mb-lg-0 fs-4 ">
-        <li class="nav-item m-3">
-          <a class="nav-link" aria-current="page" href="#">Excursiones</a>
-        </li>
-        <li class="nav-item m-3">
-          <a class="nav-link" href="#">Traslados</a>
-        </li>
-        <li class="nav-item m-3">
-          <a class="nav-link" href="#">Circuitos en buses</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-      </form>
+
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="icon p-2 mx-auto">
+         <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt="">
+         <div>{{temp}} ºC</div>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Excursiones y actividades</a>
+          <div class="dropdown-menu rounded-0 m-0">
+            <a class="dropdown-item" routerLink="boreal">Tours de la Aurora Boreal</a>
+            <a class="dropdown-item " routerLink="lake">Excursiones al lago azul</a>
+            <a class="dropdown-item " routerLink="circle">Excursiones al cículo Dorado</a>
+          </div>
+        </div>
+        <a class="nav-item nav-link " routerLink="airport">Traslados desde el aeropuerto</a>
+        <a class="nav-item nav-link " routerLink="bus">Recorridos en Bus</a>
+        <div *ngIf="loggedIn" class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+          <div class="dropdown-menu rounded-0 m-0">
+            <a class="dropdown-item " routerLink="editionExcursion/showListExcursion">Operate Excursions</a>
+            <a class="dropdown-item " routerLink="edition/showTempList">Edit Templates</a>
+            <a class="dropdown-item " routerLink="editionUser/showUser">Edit User</a>
+          </div>
+        </div>  
+      </div>
+      <a *ngIf="loggedIn" class=" btn btn-dark px-3  me-3" (click)="logOut()"
+          routerLink="home">LOG-OUT
+      </a>
+    </div>
+
+  </nav>
+</div>
+</div>
+<!-- Navbar End -->
+
+
+
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer wow fadeIn mt-md-5 pt-md-5" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6 position-relative">
+        <h5 class="text-white mb-4">Como contactar con nosotros</h5>
+        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Mallorca 112, Barcelona, España</p>
+        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+34 610 3045 77</p>
+        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@boreal.com</p>
+        <div class="d-flex pt-2">
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 position-relative">
+        <h5 class="text-white mb-4">Enlaces</h5>
+        <a class="btn btn-link text-white-50" href="" routerLink="about">Acerca de nosotros</a>
+        <a class="btn btn-link text-white-50" href="" routerLink="contact">Contacto</a>
+        <a class="btn btn-link text-white-50" href="" routerLink="privacy">Politica de privacidad</a>
+        <a class="btn btn-link text-white-50" href="" routerLink="terms">Términos y Condiciones</a>
+      </div>
+      <div class="col-lg-3 col-md-6 position-relative">
+        <a routerLink="galeria">
+          <h5 class="text-white mb-4">Galeria de fotos</h5>
+        
+        <div class="row g-2 pt-2">
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/aurora.jpg" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/boreal_1.webp" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/boreal_2.webp" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/boreal_3.webp" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/boreal_4.webp" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid rounded bg-light p-1" src="assets/img/boreal_5.webp" alt="">
+          </div>
+        </div>
+      </a>
+      </div>
+      <div class="col-lg-3 col-md-6 position-relative">
+        <h5 class="text-white mb-4">Reservado para Agentes turísticos</h5>
+        <p>Eres agente u operador turistico?. inica sesion aqui</p>
+        <div class="position-relative mx-auto" style="max-width: 400px;">
+            <!-- <a class="btn btn-outline-light mb-2" (click)="logOut()"> -->
+              <app-sign-in-modal></app-sign-in-modal> 
+            <!-- </a> -->
+        <p>Aún no eres un agente u operador turistico registrado?.Regístrate aquí</p>
+        <div class="position-relative mx-auto" style="max-width: 400px;">
+            <a class="btn btn-outline-light " (click)="logOut()"
+                routerLink="signUp">Registrarse</a>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
-<app-home></app-home>
+  <div class="container">
+    <div class="copyright">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          &copy; <a class="border-bottom" routerLink="home">Boreal</a>, All Right Reserved.
 
 
+          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+          Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="footer-menu">
+            <a href="" routerLink="home">Home</a>
+            <a href="" routerLink="cookies">Cookies</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer End -->
 

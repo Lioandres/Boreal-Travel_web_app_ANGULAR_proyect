@@ -1,0 +1,32 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Sign In</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]=logInForm (ngSubmit)="logIn()">
+        <div class="mb-3">
+            <label for="inputName" class="form-label">User mail</label>
+            <input formControlName="user_email" class="form-control" id="inputName">
+            <div class="warning" *ngIf="logInForm.get('user_email')?.invalid && logInForm.get('user_email')?.touched">Incorrect mail format</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputPassword" class="form-label">Password</label>
+          <input formControlName="user_password" class="form-control" id="inputPassword">
+          <div class="warning" *ngIf="logInForm.get('user_password')?.invalid && logInForm.get('user_password')?.touched">Make sure it's at least 8 characters </div>
+        </div>
+        
+        <button type="submit" class="btn btn-dark mb-3">Ingresar</button>
+      </form>
+      
+    </div>
+    
+  </ng-template>
+  
+  <a class="btn btn-outline-light mb-2" 
+  (click)="open(content);logInForm.reset()">Ingresar</a>
+  
+  
+  
+  

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2>Log in</h2>
+            <form [formGroup]=logInForm (ngSubmit)="logIn()">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">User mail</label>
+                    <input formControlName="user_email" class="form-control" id="inputName">
+                    <div class="warning" *ngIf="logInForm.get('user_email')?.invalid && logInForm.get('user_email')?.touched">Incorrect mail format</div>
+                </div>
+                <div class="mb-3">
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input formControlName="user_password" class="form-control" id="inputPassword">
+                  <div class="warning" *ngIf="logInForm.get('user_password')?.invalid && logInForm.get('user_password')?.touched">Make sure it's at least 8 characters </div>
+                </div>
+                
+               
+                <button type="submit" class="btn btn-dark mb-3">Ingresar</button>
+              </form>
+            
+
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+</div>
+

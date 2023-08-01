@@ -1,0 +1,31 @@
+<div class="raw">
+    <div class="col-6">
+        <h3>Change user Rol</h3>
+        <form [formGroup]="changeRoleForm" (ngSubmit)="changeRole()">
+
+            
+
+        <div class="input-group mb-3">
+            <input  formControlName="id_user" class="form-control" placeholder="Enter the user id"/>
+            <div class="warning" *ngIf="changeRoleForm.get('id_user')?.invalid && changeRoleForm.get('id_user')?.touched" >only numbers</div>
+        </div>
+
+        
+
+        <div class="input-group mb-3">
+            <select formControlName="user_role" class="form-select" id="inputGroupSelect04">
+                <option value="" disabled selected hidden>Choose a user Rol</option>
+                <option value="operator">operator</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
+         
+
+        <div class="input-group-append">
+            <button class="btn btn-dark" type="submit">Change user Rol</button>
+        </div>
+
+        </form>
+
+    </div>
+</div>

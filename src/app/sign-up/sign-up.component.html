@@ -1,0 +1,46 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2>Sign up</h2>
+            <form [formGroup]="signUpForm" (ngSubmit)="addUser()">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Username</label>
+                    <input formControlName="user_name" class="form-control" id="inputName">
+                    <div class="warning" *ngIf="signUpForm.get('user_name')?.invalid && signUpForm.get('user_name')?.touched">Debe contener 5 caracteres min</div>
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="user_role" class="form-label">User Role</label>
+                    <select formControlName="user_role" class="form-select" id="user_role">
+                        <option value="" disabled selected hidden>Choose a user role</option>
+                        <option value="operator">operator</option>
+                        <option value="admin">admin</option>
+                    </select>
+                </div> -->
+                <div class="mb-3">
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input formControlName="user_password" class="form-control" id="inputPassword">
+                  <div class="warning" *ngIf="signUpForm.get('user_password')?.invalid && signUpForm.get('user_password')?.touched">Make sure it's at least 8 characters </div>
+                </div>
+                <div class="mb-3">
+                    <label for="InputEmail1" class="form-label">Email address</label>
+                    <input formControlName="user_email"  class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                    <div class="warning" *ngIf="signUpForm.get('user_email')?.invalid && signUpForm.get('user_email')?.touched">Incorrect Email format</div>
+                </div>
+                <div class="mb-3">
+                    <label for="repeatMail" class="form-label">Confirm Email address</label>
+                    <input formControlName="repeatMail" class="form-control" id="repeatMail">
+                    <div class="warning" *ngIf="signUpForm.get('repeatMail')?.value!=signUpForm.get('user_email')?.value && signUpForm.get('repeatMail')?.touched">Emails Do not Match</div>
+                </div>
+               
+                <button type="submit" class="btn btn-dark mb-3">Register</button>
+              </form>
+            
+
+        </div>
+        <div class="col-4">
+            
+        </div>
+    </div>
+</div>

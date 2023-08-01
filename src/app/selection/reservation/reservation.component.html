@@ -1,0 +1,89 @@
+<!-- Reservetion header Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-0 gx-5 align-items-end">
+      <div class="col-lg-6">
+        <div class="text-start mx-auto mb-5 wow fadeInUp position-relative" data-wow-delay="0.1s">
+          <h1 style="z-index:-3" class="mb-3 ">Resumen de la Reserva</h1>
+          <p *ngIf="repositoryCart.length>=1">Estas son las excursiones reservadas:</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="tab-content">
+      <div id="tab-1" class="tab-pane fade show p-0 active">
+
+
+        <div *ngFor="let item of repositoryCart; let i = index" class="row m-2 wow fadeInUp borderExcursion"
+          data-wow-delay="0.1s">
+          <div class="col-2 position-relative overflow-hidden"> <img class="img-fluid"
+              [src]="excursionListTempFromAPI[lookIndexTemp(item.excursion.excursions_template_id)].img" alt=""></div>
+          <p class="col-2">Excursion: <br>
+            {{excursionListTempFromAPI[lookIndexTemp(item.excursion.excursions_template_id)].title}} </p>
+          <p class="col-2">Fecha: <br>{{item.excursion.start}}</p>
+          <p class="col-2">Personas: <br> {{item.numberPeople}}</p>
+          <p class="col-2">Total: <br> {{item.totalPrice}} EUR</p>
+          <button (click)="removeExcursion(i)" type="button" class="col-2 btn btn-primary  mt-4 mb-4 ">Quitar</button>
+        </div>
+
+        <div class="row">
+         
+          <form *ngIf="!isReserveFormFilled && repositoryCart.length>=1" [formGroup]=reserveForm (ngSubmit)="continue()">
+            <h2>Ingrese sus datos</h2>
+            <div class="row">
+              <div class="col-4 mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input formControlName="name" class="form-control" id="name">
+                <div class="warning" *ngIf="reserveForm.get('name')?.invalid && reserveForm.get('name')?.touched">Debe
+                  contener 2 caracteres como minimo</div>
+              </div>
+              <div class="col-4 mb-3">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input formControlName="lastName" class="form-control" id="lastName">
+                <div class="warning"
+                  *ngIf="reserveForm.get('lastName')?.invalid && reserveForm.get('lastName')?.touched">Debe contener 2
+                  caracteres como minimo</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 mb-3">
+                <label for="email" class="form-label">correo electrónico</label>
+                <input formControlName="email" class="form-control" id="email">
+                <div class="warning" *ngIf="reserveForm.get('email')?.invalid && reserveForm.get('email')?.touched">
+                  Ingrese un email válido</div>
+              </div>
+              <div class="col-4 mb-3">
+                <label for="emailRepete" class="form-label">Confirme su correo electrónico</label>
+                <input formControlName="emailRepete" class="form-control" id="emailRepete">
+                <div class="warning"
+                  *ngIf="reserveForm.get('emailRepete')?.invalid && reserveForm.get('emailRepete')?.touched">ingrese un
+                  email válido</div>
+                <div class="warning"
+                  *ngIf="reserveForm.get('emailRepete')?.value!= reserveForm.get('email')?.value &&reserveForm.get('emailRepete')?.touched">
+                  Los emails no coinciden</div>
+              </div>
+            </div>
+            <div class="col-4 mb-3">
+              <label for="phone" class="form-label">Telefono</label>
+              <input formControlName="phone" class="form-control" id="phone">
+              <div class="warning" *ngIf="reserveForm.get('phone')?.invalid && reserveForm.get('phone')?.touched">Debe
+                contener 9 caracteres min</div>
+            </div>
+
+            <button type="submit" class="btn btn-dark mb-3">Continuar</button>
+          </form>
+
+          <app-payment *ngIf="isReserveFormFilled && !isPaymentFormFilled" (isPaymentFormFilled)="confirmReserve($event)"></app-payment>
+
+           <h3 *ngIf="isReservationOK">La reserva se ha realizado con éxito. Su número de reserva es el :{{reserId}} </h3>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

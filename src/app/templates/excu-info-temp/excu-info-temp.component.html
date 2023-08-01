@@ -1,0 +1,60 @@
+<div class="tab-content">
+    <div id="tab-1" class="tab-pane fade show p-0 active">
+      <div class="row g-4">
+  
+        <div class="col-lg-9 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="property-item rounded overflow-hidden">
+            <div class="position-relative overflow-hidden">
+              <a routerLink="/boreal" href=""><img class="img-fluid" [src]="excursionTemp.img" alt=""></a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6">
+  
+  
+            <div class="p-4 pb-0 position-relative">
+               <h5 class="text-primary mb-3">{{excursionTemp.title}} </h5>
+            <hr>
+
+            <form  [formGroup]='excuForm' (ngSubmit)= "setExcursion()">
+
+                <div>
+                  <select  formControlName='id_excursion' class="form-select border-0 py-3">
+                    <option value="" disabled selected hidden>Eliga una fecha</option>
+                    <option *ngFor="let item of excursionListFromId" [value]="item.id_excursion">{{item.start | customDate}}</option>  
+                  </select>
+                  <div class="warning" *ngIf="excuForm.get('id_excursion')?.invalid && excuForm.get('id_excursion')?.touched">Debe elegir una fecha</div>
+                </div>
+              
+                <button type="submit" class="btn btn-primary mx-auto mt-3 mb-3 me-3 ">Seleccionar fecha</button>
+
+            </form>
+
+
+            
+
+         </div>
+       
+         
+          <p>{{excursionTemp.description}}</p>
+  
+  
+  
+  
+         
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
